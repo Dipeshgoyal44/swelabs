@@ -1,9 +1,11 @@
 #include<iostream>	
 #include<string>	
-using namespace std; 	
+using namespace std; 
+
+// Calculates the sum of three integers
 
 int main() {	
-	int x,y,z,result;
+	int x,y,z,result = 0; // Variable Declaration
 
 	cout << "Enter the First Integer:"<< endl;	 // Instructs the user to enter first integer
 	cin >> x;                                   // stores user input in variable x

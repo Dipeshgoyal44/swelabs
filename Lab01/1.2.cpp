@@ -12,7 +12,7 @@ int main() {
 	cout << "How many greetings?"<< endl;	
 	cin >> count;
 	for (int i = 0; i < count; i++) {
-         cout << "Have a Good Day!" << "\n";
+        cout << "Have a Good Day!" << "\n";
     }
 	
 	return 0;	
