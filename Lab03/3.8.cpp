@@ -10,6 +10,7 @@ int main()
     int nocores, ipadd=0;
     char serialno[10];
     
+    // User Prompts
     cout<<" Please Enter The Username: ";
     cin>> username;
     cout<<"\n Please Enter The Employee Name: ";
