@@ -5,6 +5,7 @@ using namespace std;
 
 int main()
 {
+    //Variable Declarations
     string username, empname,pctype,mac;
     float cpuspeed,ipv4=0;
     int nocores, ipadd=0;
@@ -28,6 +29,8 @@ int main()
     cout<<"\n Please Enter The IPV4 Address Without The Dots (e.g. 111 222 333 444) : ";
     cin>> ipv4;
     
-   // ipadd = iP_part_1 * pow(256., 3)+iP_part_2 * pow(256., 2) +iP_part_3 * 256 +iP_part_4 
+    //Calculation here
+    // ipadd = iP_part_1 * pow(256., 3)+iP_part_2 * pow(256., 2) +iP_part_3 * 256 +iP_part_4 
+    //Output here
     return 0;
 }
