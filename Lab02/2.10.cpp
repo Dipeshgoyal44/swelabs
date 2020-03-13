@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
     const double PI = 3.14159; // PI VALUE
-    float resistance, frequency, capacitance, inductance, EMF, current ,calc1,calc2 = 0; // Variable Declarations
+    double resistance, frequency, capacitance, inductance, EMF, current ,calc1,calc2 = 0; // Variable Declarations
     // Asks for input and stores user input
     cout<<"Enter the Resistance: \n";
     cin>> resistance;
