@@ -7,9 +7,10 @@ int main()
 {
     //Variable Declarations
     string username, empname,pctype,mac;
-    float cpuspeed,ipv4=0;
+    float cpuspeed,IP=0;
     int nocores, ipadd=0;
     char serialno[10];
+    int iP_part_1, iP_part_2, iP_part_3, iP_part_4 = 0;
     
     // User Prompts
     cout<<" Please Enter The Username: ";
@@ -27,10 +28,13 @@ int main()
     cout<<"\n Please Enter The MAC Address : ";
     cin>> mac;
     cout<<"\n Please Enter The IPV4 Address Without The Dots (e.g. 111 222 333 444) : ";
-    cin>> ipv4;
+    cin>> iP_part_1;    
+    cin>> iP_part_2;
+    cin>> iP_part_3;
+    cin>> iP_part_4;
     
-    //Calculation here
-    // ipadd = iP_part_1 * pow(256., 3)+iP_part_2 * pow(256., 2) +iP_part_3 * 256 +iP_part_4 
-    //Output here
+    IP =  iP_part_1 * pow(256., 3)+iP_part_2 * pow(256., 2) + iP_part_3 * 256 + iP_part_4;
+    cout<<"\n IP";
+
     return 0;
 }
