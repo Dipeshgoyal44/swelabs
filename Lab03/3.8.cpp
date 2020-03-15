@@ -8,7 +8,7 @@ int main()
     //Variable Declarations
     string username, empname,pctype,mac;
     float cpuspeed;
-    float IP=0;
+    long long int IP=0;
     int nocores =0;
     char serialno[10];
     int iP_part_1, iP_part_2, iP_part_3, iP_part_4 = 0;
@@ -33,13 +33,9 @@ int main()
     cin>> iP_part_2;
     cin>> iP_part_3;
     cin>> iP_part_4;
-    cout <<iP_part_1 << "\n";
-    cout <<iP_part_2 << "\n";
-    cout <<iP_part_3 << "\n";
-    cout <<iP_part_4 << "\n";
     
     IP = iP_part_1 * pow(256., 3)+iP_part_2 * pow(256., 2) +iP_part_3 * 256 +iP_part_4;
-    cout<< int(IP);
+    cout<< IP;
 
     return 0;
 }
