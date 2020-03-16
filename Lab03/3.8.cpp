@@ -1,30 +1,30 @@
 #include <iostream>
 #include <cmath>
 #include <iomanip> 
+#include <string>
 
 using namespace std;
 
 int main()
 {
     //Variable Declarations
-    string username, empname,pctype,mac;
+    string username, empname,pctype,mac,serialno;
     float cpuspeed;
     long long int IP=0;
-    int nocores =0;
-    char serialno[10];
+    int cores =0;
     int iP_part_1, iP_part_2, iP_part_3, iP_part_4 = 0;
     
     // User Prompts
     cout<<" Please Enter The Username: ";
-    cin>> username;
+    getline (cin,username);
     cout<<"\n Please Enter The Employee Name: ";
-    cin>> empname;
+    getline (cin,empname);
     cout<<"\n Please Enter The PC serial number(max 10): ";
     cin>> serialno;
     cout<<"\n Please Enter The PC type (S=Server, D= Dekstop, L=Laptop, T=Tablet, P= Phone) : ";
     cin>> pctype;
     cout<<"\n Please Enter The Number Of Cores: ";
-    cin>> nocores;
+    cin>> cores;
     cout<<"\n Please Enter The CPU Speed (GHz) : ";
     cin>> cpuspeed;
     cout<<"\n Please Enter The MAC Address : ";
@@ -36,19 +36,18 @@ int main()
     cin>> iP_part_4;
     
     IP = iP_part_1 * pow(256., 3)+iP_part_2 * pow(256., 2) +iP_part_3 * 256 +iP_part_4;
-    cout<< IP;
-
+ 
     //DISPLAY
 
     // First Line 
-	cout<< " __________" << setw(67)
+	cout<< "\n __________" << setw(67)
 	<< "+ \n";
     cout << "| User: "
-	<<"   gswinburne |" <<  setw(10) 
+	<<  username << "|" <<  setw(10) 
 	<< "Employee:" <<  setw(20) 
-	<< "George Swinburne |" << setw(8) 
+	<<  empname  << "|" << setw(8) 
 	<< "Serial:" << setw(12) 
-	<< "130201nxx5"<< setw(5)
+	<<  serialno << setw(8)
 	<< "| \n";
 	
 	// Second Line 
@@ -56,13 +55,15 @@ int main()
 	<< "+ \n";
 
 	cout << "| Type: "
-	<<" D |" <<  setw(7) 
-	<< "Cores:" <<  setw(5) 
-	<< "2 |" << setw(5) 
-	<< "MAC:" << setw(15) 
-	<< "005056C00001 |"<< setw(5)
-	<< "IP:" << setw(13) 
-	<< "136.186.1.10"<< setw(16)
+	<<  pctype << "|" <<  setw(7) 
+	<< "Cores:" <<  setw(3) 
+	<< cores << " |" << setw(5) 
+    << "Speed:" <<  setw(5) 
+	<< cpuspeed <<"Ghz "<< "|" << setw(5) 
+	<< "MAC:" << setw(10) 
+	<<  mac << " |"<< setw(3)
+	<< " IP:" << setw(4) 
+	<< iP_part_1 << "." << iP_part_2 << "." << iP_part_3 << "." << iP_part_4 << setw(4)
 	<< "| \n";
 	
 	// Second Line 
@@ -71,7 +72,7 @@ int main()
 	
 	cout << "|" <<  setw(40)
 	<< "IP Address as integer:" << setw(11)
-	<< "2293891338" << setw(26)
+	<<  IP << setw(26)
 	<< "| \n";
 	
 	cout << setw(78) << "+ \n";
