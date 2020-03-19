@@ -22,7 +22,7 @@ int main()
     switch (length)
     {
     case 2:
-        cout << "\nCase 1:\n";
+        cout << "\n Case 1:\n";
         for (int i = length - 1; i >= 0; i--)
         {
             cout << num[i];
@@ -40,18 +40,38 @@ int main()
         }
         break;
     case 4:
-        cout << "Case 3\n";
+        for (int i = length; i >= 1; i--)
+        {
+            cout << (num[i-1]+i) % 10 << endl;
+        }
+        cout << "\nCase 3\n";
         break;
     case 5:
+    for (int i = length; i >= 1; i--)
+        {
+            cout << (num[i-1]+i) % 10 << endl;
+        }
         cout << "Case 3\n";
         break;
     case 6:
+    for (int i = length; i >= 1; i--)
+        {
+            cout << (num[i-1]+i) % 10 << endl;
+        }
         cout << "Case 3\n";
         break;
     case 7:
+    for (int i = length; i >= 1; i--)
+        {
+            cout << (num[i-1]+i) % 10 << endl;
+        }
         cout << "Case 3\n";
         break;
     case 8:
+    for (int i = length; i >= 1; i--)
+        {
+            cout << (num[i-1]+i) % 10 << endl;
+        }
         cout << "Case 3\n";
         break;
     }
