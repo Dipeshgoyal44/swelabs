@@ -9,11 +9,19 @@ int main()
     int number = 0;
     int length = 0;
     int temp = 0;
+    do
+    {
+        cout << "Enter The Number: \n";
+        cin >> number;
+        if (number < 10 || number > 99999999)
+        {
+            cout << "Not a valid input, re enter the number\n";
+        }
+    } while (number < 10 || number > 99999999);
 
-    cout << "Enter The Number: \n";
-    cin >> number;
     length = to_string(number).length();
     int num[length];
+
     cout << "Number contains " << length << " digits\n";
     for (int i = length - 1; i >= 0; i--)
     {
@@ -24,17 +32,29 @@ int main()
     switch (length)
     {
     case 2:
+        cout << "The encoded number is ";
         for (int i = length - 1; i >= 0; i--)
         {
-            cout << "The encoded number is " << num[i];
+            cout << num[i];
+        }
+        reverse_array(num, length);
+        cout << "\nThe decoded number is ";
+        for (int i = length - 1; i >= 0; i--)
+        {
+            cout << num[i];
         }
         break;
     case 3:
-        reverse_array(num, length);
-        temp = num[0];
-        num[0] = num[2];
-        num[2] = temp;
+        // temp = num[0];
+        // num[0] = num[2];
+        // num[2] = temp;
         cout << "The encoded number is ";
+        for (int i = length - 1; i >= 0; i--)
+        {
+            cout << num[i];
+        }
+        reverse_array(num, length);
+        cout << "\nThe decoded number is ";
         for (int i = length - 1; i >= 0; i--)
         {
             cout << num[i];
@@ -45,53 +65,7 @@ int main()
         cout << "The encoded number is ";
         for (int i = length; i >= 1; i--)
         {
-            int calc = (num[i - 1] + i) % 10;
-            cout << calc;
-        }
-        if (num[0] > 0)
-        {
-            num[0] = num[0] - 1;
-        }
-        else
-        {
-            num[0] = 9;
-        }
-        if (num[1] > 1)
-        {
-            num[1] = num[1] - 2;
-        }
-        else
-        {
-            num[1] = num[1] + 8;
-        }
-        if (num[2] > 2)
-        {
-            num[2] = num[2] - 3;
-        }
-        else
-        {
-            num[2] = num[2] + 7;
-        }
-        if (num[3] > 3)
-        {
-            num[3] = num[3] - 4;
-        }
-        else
-        {
-            num[3] = num[3] + 6;
-        }
-        if (num[4] > 4)
-        {
-            num[4] = num[4] - 5;
-        }
-        else
-        {
-            num[4] = num[4] + 5;
-        }
-        for (int i = length - 1; i >= 0; i--)
-        {
-            cout << "\n"
-                 << num[i];
+            cout << (num[i - 1] + i) % 10;
         }
         break;
     case 5:
@@ -101,51 +75,6 @@ int main()
         {
             int calc = (num[i - 1] + i) % 10;
             cout << calc;
-        }
-        if (num[0] > 0)
-        {
-            num[0] = num[0] - 1;
-        }
-        else
-        {
-            num[0] = 9;
-        }
-        if (num[1] > 1)
-        {
-            num[1] = num[1] - 2;
-        }
-        else
-        {
-            num[1] = num[1] + 8;
-        }
-        if (num[2] > 2)
-        {
-            num[2] = num[2] - 3;
-        }
-        else
-        {
-            num[2] = num[2] + 7;
-        }
-        if (num[3] > 3)
-        {
-            num[3] = num[3] - 4;
-        }
-        else
-        {
-            num[3] = num[3] + 6;
-        }
-        if (num[4] > 4)
-        {
-            num[4] = num[4] - 5;
-        }
-        else
-        {
-            num[4] = num[4] + 5;
-        }
-        for (int i = length - 1; i >= 0; i--)
-        {
-            cout << "\n"
-                 << num[i];
         }
         break;
     case 6:
