@@ -171,7 +171,7 @@ int main()
         }
         else
         {
-            array[4] = array[4] + 5;
+            array[4] = array[4] + 6;
         }
         for (int i = 0; i < length; i++)
         {
