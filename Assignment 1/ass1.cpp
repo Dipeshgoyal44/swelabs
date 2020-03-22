@@ -165,7 +165,7 @@ int main()
         {
             array[3] = array[3] + 6;
         }
-         if (array[4] > 4)
+        if (array[4] > 4)
         {
             array[4] = array[4] - 5;
         }
