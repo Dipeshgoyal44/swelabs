@@ -141,18 +141,18 @@ int main()
         cin >> choice;
         if (choice=="yes"){
         reverse_array(num, length);
+        cout << "The encoded number is ";
         for (int i = length; i >= 1; i--)
         {
-            num[i-1] = (num[i - 1] + i) % 10;
-        }
-        cout << "The encoded number is ";
-        for (int i = 0; i < length; i++) {
-        cout << num[i];
+            calc = num[i-1] = (num[i - 1] + i) % 10;
+            array[j] = calc;
+            j++;
+            cout << calc;
         }
         cout << "\nThe decoded number is ";
-        reverse_array(num, length);
-        Decode(num, length);
-        reverse_array(num, length);
+        reverse_array(array, length);
+        Decode(array, length);
+        reverse_array(array, length);
         for (int i = 0; i < length; i++)
         {
             cout << num[i];
