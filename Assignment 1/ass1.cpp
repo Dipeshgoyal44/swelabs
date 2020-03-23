@@ -136,6 +136,9 @@ int main()
             cout << array[i];
         }
         break;
+
+// extra protection not working. need to store encoded extra protection array to pass into decode
+
     case 8:
         cout << "Do you want to do a second level of encryption, enter yes or no? ";
         cin >> choice;
@@ -144,7 +147,8 @@ int main()
         cout << "The encoded number is ";
         for (int i = length; i >= 1; i--)
         {
-            calc = num[i-1] = (num[i - 1] + i) % 10;
+            num[i-1] = (num[i - 1] + i) % 10;
+            calc = num[i];
             array[j] = calc;
             j++;
             cout << calc;
