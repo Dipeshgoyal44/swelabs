@@ -10,7 +10,7 @@ int main()
     int temp1 = 0;
     int temp2 = 0;
     int j;
-    string choice;
+    
     do
     {
         cout << "Enter The Number: \n";
@@ -136,10 +136,8 @@ int main()
             cout << array[i];
         }
         break;
-
-// extra protection not working. need to store encoded extra protection array to pass into decode
-
     case 8:
+    string choice;
         cout << "Do you want to do a second level of encryption, enter yes or no? ";
         cin >> choice;
         if (choice=="yes"){
@@ -149,7 +147,7 @@ int main()
         {
             num[i-1] = (num[i - 1] + i) % 10;
         }
-         for (int i = 0; i < length; i++)
+        for (int i = 0; i < length; i++)
         {
             cout << num[i];
         }
