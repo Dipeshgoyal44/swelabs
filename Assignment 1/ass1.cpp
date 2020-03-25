@@ -45,9 +45,6 @@ int main()
         }
         break;
     case 3:
-        // temp = num[0];
-        // num[0] = num[2];
-        // num[2] = temp;
         cout << "The encoded number is ";
         for (int i = length - 1; i >= 0; i--)
         {
