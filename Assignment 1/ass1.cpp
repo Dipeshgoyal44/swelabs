@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 void reverse_array(int array[], int arraylength);
-void Decode(int array[], int arraylength);
+void decode(int array[], int arraylength);
 int main()
 {
     int number = 0;
@@ -72,7 +72,7 @@ int main()
         }
         cout << "\nThe decoded number is ";
         reverse_array(array, length);
-        Decode(array, length);
+        decode(array, length);
         reverse_array(array, length);
         for (int i = 0; i < length; i++)
         {
@@ -80,7 +80,7 @@ int main()
         }
         break;
     case 5:
-       reverse_array(num, length);
+        reverse_array(num, length);
         cout << "The encoded number is ";
         for (int i = length; i >= 1; i--)
         {
@@ -91,7 +91,7 @@ int main()
         }
         cout << "\nThe decoded number is ";
         reverse_array(array, length);
-        Decode(array, length);
+        decode(array, length);
         reverse_array(array, length);
         for (int i = 0; i < length; i++)
         {
@@ -110,7 +110,7 @@ int main()
         }
         cout << "\nThe decoded number is ";
         reverse_array(array, length);
-        Decode(array, length);
+        decode(array, length);
         reverse_array(array, length);
         for (int i = 0; i < length; i++)
         {
@@ -118,7 +118,7 @@ int main()
         }
         break;
     case 7:
-       reverse_array(num, length);
+        reverse_array(num, length);
         cout << "The encoded number is ";
         for (int i = length; i >= 1; i--)
         {
@@ -129,7 +129,7 @@ int main()
         }
         cout << "\nThe decoded number is ";
         reverse_array(array, length);
-        Decode(array, length);
+        decode(array, length);
         reverse_array(array, length);
         for (int i = 0; i < length; i++)
         {
@@ -155,12 +155,13 @@ int main()
         }
         cout << "\nThe decoded number is ";
         reverse_array(array, length);
-        Decode(array, length);
+        decode(array, length);
         reverse_array(array, length);
         for (int i = 0; i < length; i++)
         {
             cout << num[i];
         }
+        //WORKING!
         } else {
         reverse_array(num, length);
         cout << "The encoded number is ";
@@ -173,7 +174,7 @@ int main()
         }
         cout << "\nThe decoded number is ";
         reverse_array(array, length);
-        Decode(array, length);
+        decode(array, length);
         reverse_array(array, length);
         for (int i = 0; i < length; i++)
         {
@@ -183,7 +184,7 @@ int main()
     }}
     return 0;
 }
-void Decode(int array[], int arraylength)
+void decode(int array[], int arraylength)
 {
     for (int i = 0; i < arraylength; i++)
     {
