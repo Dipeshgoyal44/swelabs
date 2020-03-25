@@ -148,15 +148,14 @@ int main()
         for (int i = length; i >= 1; i--)
         {
             num[i-1] = (num[i - 1] + i) % 10;
-            calc = num[i];
-            array[j] = calc;
-            j++;
-            cout << calc;
+        }
+         for (int i = 0; i < length; i++)
+        {
+            cout << num[i];
         }
         cout << "\nThe decoded number is ";
-        reverse_array(array, length);
-        decode(array, length);
-        reverse_array(array, length);
+        decode(num, length);
+        reverse_array(num, length);
         for (int i = 0; i < length; i++)
         {
             cout << num[i];
