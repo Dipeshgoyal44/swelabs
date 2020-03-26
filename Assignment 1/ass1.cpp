@@ -1,53 +1,58 @@
 #include <iostream>
 using namespace std;
 
-
+// Function Prototype
 void reverse_array(int array[], int arraylength);
 void decode(int array[], int arraylength);
 
 int main()
 {
+    //Variables
     int number = 0;
     int length = 0;
     int calc = 0;
     int j;
     
+    //Do while loop for validation of input
     do
     {
-        cout << "Enter The Number: \n";
+        cout << "Enter The Number: \n"; //Prompt to enter input
         cin >> number;
-        if (number < 10 || number > 99999999)
+        if (number < 10 || number > 99999999) // condition if input out of range
         {
-            cout << "Not a valid input, re enter the number\n";
+            cout << "Not a valid input, re enter the number\n"; // display if out of range
         }
-    } while (number < 10 || number > 99999999);
-    length = to_string(number).length();
-    int num[length];
-    cout << "Number contains " << length << " digits\n";
-    for (int i = length - 1; i >= 0; i--)
+    } while (number < 10 || number > 99999999); //while condition
+
+    length = to_string(number).length(); //convering the input into string to check no. of digits and storing in length
+    int num[length]; // using the length for array size.
+    cout << "Number contains " << length << " digits\n"; //Display how many digits in the input
+
+    for (int i = length - 1; i >= 0; i--) // Loop to store the input entered into the array
     {
         num[i] = number % 10;
         number /= 10;
     }
-    int array[length];
-    switch (length)
+    int array[length]; // Second array initiliazation
+
+    switch (length) // Switch statement based on the length of the input
     {
     case 2:
-        cout << "The encoded number is ";
-        for (int i = length - 1; i >= 0; i--)
+        cout << "The encoded number is "; //Encoded Number
+        for (int i = length - 1; i >= 0; i--) // Backwards loop to  to encode the input
         {
             cout << num[i];
         }
         reverse_array(num, length);
-        cout << "\nThe decoded number is ";
-        for (int i = length - 1; i >= 0; i--)
+        cout << "\nThe decoded number is "; //Decoded Number
+        for (int i = length - 1; i >= 0; i--) // Loop to display the decoded output
         {
             cout << num[i];
         }
         break;
     case 3:
-        cout << "The encoded number is ";
-        for (int i = length - 1; i >= 0; i--)
+        cout << "The encoded number is "; //Encoded Number
+        for (int i = length - 1; i >= 0; i--) // Backwards loop to  to encode the input
         {
             cout << num[i];
         }
