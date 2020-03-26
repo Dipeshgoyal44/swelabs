@@ -43,7 +43,7 @@ int main()
         {
             cout << num[i];
         }
-        reverse_array(num, length);
+        reverse_array(num, length); // reversing the encoded array to decode
         cout << "\nThe decoded number is "; //Decoded Number
         for (int i = length - 1; i >= 0; i--) // Loop to display the decoded output
         {
@@ -56,15 +56,15 @@ int main()
         {
             cout << num[i];
         }
-        reverse_array(num, length);
-        cout << "\nThe decoded number is ";
-        for (int i = length - 1; i >= 0; i--)
+        reverse_array(num, length); // reversing the encoded array to decode
+        cout << "\nThe decoded number is "; //Decoded Number
+        for (int i = length - 1; i >= 0; i--) // Loop to display the decoded output
         {
             cout << num[i];
         }
         break;
     case 4:
-        reverse_array(num, length);
+        reverse_array(num, length); // reversing the array
         cout << "The encoded number is ";
         for (int i = length; i >= 1; i--)
         {
@@ -140,15 +140,15 @@ int main()
         }
         break;
     case 8:
-    string choice;
-        cout << "Do you want to do a second level of encryption, enter yes or no? ";
+    string choice; // variable for extra protection
+        cout << "Do you want to do a second level of encryption, enter yes or no? "; // prompt
         cin >> choice;
-        if (choice=="yes"){
+        if (choice=="yes"){ //condition if yes to prompt
         reverse_array(num, length);
         cout << "The encoded number is ";
         for (int i = length; i >= 1; i--)
         {
-            num[i-1] = (num[i - 1] + i) % 10;
+            num[i-1] = (num[i - 1] + i) % 10; //extra protection encoding
         }
         for (int i = 0; i < length; i++)
         {
@@ -162,7 +162,7 @@ int main()
             cout << num[i];
         }
         //WORKING!
-        } else {
+        } else {  // condition if no to the prompt
         reverse_array(num, length);
         cout << "The encoded number is ";
         for (int i = length; i >= 1; i--)
@@ -184,7 +184,7 @@ int main()
     }}
     return 0;
 }
-void decode(int array[], int arraylength)
+void decode(int array[], int arraylength) // function to decode taken from video
 {
     for (int i = 0; i < arraylength; i++)
     {
@@ -192,11 +192,11 @@ void decode(int array[], int arraylength)
         array[i] = array[i] % 10;
     }
 }
-void reverse_array(int array[], int arraylength)
+void reverse_array(int array[], int arraylength) // Function to reverse arrays that are passed
 {
     for (int i = 0; i < (arraylength / 2); i++)
     {
-        int temporary = array[i]; // temporary wasn't declared
+        int temporary = array[i]; 
         array[i] = array[(arraylength - 1) - i];
         array[(arraylength - 1) - i] = temporary;
     }
