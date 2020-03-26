@@ -1,14 +1,15 @@
 #include <iostream>
 using namespace std;
+
+
 void reverse_array(int array[], int arraylength);
 void decode(int array[], int arraylength);
+
 int main()
 {
     int number = 0;
     int length = 0;
     int calc = 0;
-    int temp1 = 0;
-    int temp2 = 0;
     int j;
     
     do
