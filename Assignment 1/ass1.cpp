@@ -141,7 +141,7 @@ int main()
         }
         break;
     case 8:
-        string choice;                                                               // variable for extra protection
+        string choice;  // variable for extra protection
         cout << "Do you want to do a second level of encryption, enter yes or no? "; // prompt
         cin >> choice;
         if (choice == "yes")
