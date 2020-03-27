@@ -65,23 +65,24 @@ int main()
         break;
     case 4:
         reverse_array(num, length); // reversing the array
-        cout << "The encoded number is ";
-        for (int i = length; i >= 1; i--)
+        cout << "The encoded number is "; //Encoded Number
+        for (int i = length; i >= 1; i--)// Backwards loop to  to encode the input
         {
-            calc = (num[i - 1] + i) % 10;
-            array[j] = calc;
-            j++;
-            cout << calc;
+            calc = (num[i - 1] + i) % 10; // the encoded logic from vid and stored in var calc
+            array[j] = calc; // initializing array to calc and storing the values in array to be used later
+            j++; //increments everytime the loop runs
+            cout << calc; //prints encoded number
         }
-        cout << "\nThe decoded number is ";
-        reverse_array(array, length);
-        decode(array, length);
-        reverse_array(array, length);
-        for (int i = 0; i < length; i++)
+        cout << "\nThe decoded number is "; //Decoded Number
+        reverse_array(array, length); // reversing the array
+        decode(array, length); //decode function passing the array that stored calc values
+        reverse_array(array, length); // reversing the array
+        for (int i = 0; i < length; i++) // loop to display decoded value
         {
             cout << array[i];
         }
         break;
+        // the same process is used for rest of the cases till 7
     case 5:
         reverse_array(num, length);
         cout << "The encoded number is ";
