@@ -10,7 +10,8 @@ using namespace std;
 int main()
 {
     //Variable Declarations
-    string username, empname, pctype, mac, serialno;
+    string username, empname , mac, serialno;
+    char pctype;
     double cpuspeed;
     long long int IP = 0; // The integer data type wasn't big enough to store the ip so used long long.
     int cores = 0;
