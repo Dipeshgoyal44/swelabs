@@ -206,3 +206,9 @@ void reverse_array(int array[], int arraylength) // Function to reverse arrays t
         array[(arraylength - 1) - i] = temporary;
     }
 }
+
+// TO DO:
+// Appropriate comments
+// indentation
+// variable naming convention
+// maybe fix the stpuid reverse arrays and loops?????????????!!!
