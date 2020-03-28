@@ -28,7 +28,7 @@ int main()
     int num[length];                                     // using the length for array size.
     cout << "Number contains " << length << " digits\n"; //Display how many digits in the input
 
-    for (int i = length - 1; i >= 0; i--) // Loop to store the input entered into the array
+    for (int i = length - 1; i >= 0; i--) // Loop to store the input entered into the array backwards
     {
         num[i] = number % 10;
         number /= 10;
@@ -154,14 +154,14 @@ int main()
             }
             for (int i = 0; i < length; i++)
             {
-                cout << num[i];
+                cout << num[i]; // prints encoded number
             }
             cout << "\nThe decoded number is ";
-            decode(num, length);
-            reverse_array(num, length);
+            decode(num, length); // decode the number
+            reverse_array(num, length); // reverses the number
             for (int i = 0; i < length; i++)
             {
-                cout << num[i];
+                cout << num[i]; // prints the decoded number
             }
             //WORKING!
         }
@@ -169,7 +169,7 @@ int main()
         { // condition if no to the prompt
             reverse_array(num, length);
             cout << "The encoded number is ";
-            for (int i = length; i >= 1; i--)
+            for (int i = length; i >= 1; i--) // the normal 8 digit encoding if choice is no
             {
                 calc = (num[i - 1] + i) % 10;
                 array[j] = calc;
@@ -189,7 +189,7 @@ int main()
     }
     return 0;
 }
-void decode(int array[], int arraylength) // function to decode taken from video
+void decode(int array[], int arraylength) // function to decode logic taken from video
 {
     for (int i = 0; i < arraylength; i++)
     {
@@ -207,8 +207,4 @@ void reverse_array(int array[], int arraylength) // Function to reverse arrays t
     }
 }
 
-// TO DO:
-// Appropriate comments
-// indentation
-// variable naming convention
-// maybe fix the stpuid reverse arrays and loops?????????????!!!
+
