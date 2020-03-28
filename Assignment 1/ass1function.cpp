@@ -71,7 +71,7 @@ int main()
         cout << "\nThe decoded number is "; //Decoded Number
         //reverse_array(array, length); // reversing the array
         decode(array, length,calc); //decode function passing the array that stored calc values
-        //reverse_array(array, length); // reversing the array
+        reverse_array(array, length); // reversing the array
         for (int i = 0; i < length; i++) // loop to display decoded value
         {
             cout << array[i];
@@ -204,7 +204,7 @@ void decode(int array2[], int arraylength,int result) // function to decode logi
         array2[j] = result; // initializing array to calc and storing the values in array to be used later
         j++; //increments everytime the loop runs
     }
-    for (int i = 0; i < arraylength; i++)
+   for (int i = arraylength; i >= 1; i--)
     {
         array2[i] += 9 - i;
         array2[i] = array2[i] % 10;   
