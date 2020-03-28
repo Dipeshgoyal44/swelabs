@@ -13,9 +13,9 @@ int main()
     string username, empname , mac, serialno;
     char pctype;
     double cpuspeed;
-    long long int IP = 0; // The integer data type wasn't big enough to store the ip so used long long.
+    unsigned long long int IP = 0; // The integer data type wasn't big enough to store the ip so used long long.
     int cores = 0;
-    int iP_part_1, iP_part_2, iP_part_3, iP_part_4 = 0;
+    unsigned int iP_part_1, iP_part_2, iP_part_3, iP_part_4 = 0;
 
     // User Prompts
     cout << " Please Enter The Username: ";
