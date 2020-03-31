@@ -28,7 +28,7 @@ int main()
     int num[length];                                     // using the length for array size.
     cout << "Number contains " << length << " digits\n"; //Display how many digits in the input
 
-    for (int i = length - 1; i >= 0; i--) // Loop to store the input entered into the array backwards
+    for (int i = length - 1; i >= 0; i--) // Loop to store the input entered into the array.
     {
         num[i] = number % 10;
         number /= 10;
