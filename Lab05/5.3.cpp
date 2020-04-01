@@ -45,7 +45,6 @@ int main()
 	return 0;
 }
 
-
 //Function 1
 int random(int num)
 {
@@ -53,7 +52,6 @@ int random(int num)
 	num = rand() % 1000 + 1; // random number between 1 and 100
     return num;
 }
-
 
 //Function 2
 void comment(int attempts)
