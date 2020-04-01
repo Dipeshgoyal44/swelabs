@@ -2,8 +2,11 @@
 #include <cstdlib>
 #include <ctime>
 using namespace std;
+
 int random(int num);
 void comment(int attempts);
+
+
 int main()
 {
     int num = random(num);
@@ -41,12 +44,18 @@ int main()
 	} while (answer == 'y');
 	return 0;
 }
+
+
+//Function 1
 int random(int num)
 {
     srand(time(NULL)); //seed random number generator
-	num = rand() % 10 + 1; // random number between 1 and 100
+	num = rand() % 1000 + 1; // random number between 1 and 100
     return num;
 }
+
+
+//Function 2
 void comment(int attempts)
 {
     if(attempts <= 10){
