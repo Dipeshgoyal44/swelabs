@@ -4,16 +4,11 @@
 using namespace std;
 int random(int num);
 void comment(int attempts);
-
-
-
-
-
 int main()
 {
-
     int num = random(num);
 	int guess, attempts = 0;
+    char answer = 'y';
 	cout << "I have a number between 1 and 1000.\n";
     cout << "Can you guess my number?\n";
 	do
@@ -21,7 +16,6 @@ int main()
 		cout << "Enter a guess between 1 and 1000 : ";
 		cin >> guess;
 		attempts++;
-
 		if (guess > num)
         {
 			cout << "Too high. Try again\n";
@@ -32,22 +26,27 @@ int main()
         }
 		else
             {
-			cout << "\nExcellent! You guessed the number!\n";
-            comment(attempts);
-            cout << "Would you like to play again?\n";
-            cout << "Please type y or n?\n";
+                cout << "\nExcellent! You guessed the number!\n";
+                comment(attempts);
+                cout << "Would you like to play again?\n";
+                cout << "Please type y or n?\n";
+                cin >> answer;
+                if(answer == 'y')
+                {
+                    num = random(num);
+                    guess = 0; 
+                    attempts = 0;    
+                }
             }
-	} while (guess != num);
-
+	} while (answer == 'y');
 	return 0;
 }
 int random(int num)
 {
     srand(time(NULL)); //seed random number generator
-	num = rand() % 1000 + 1; // random number between 1 and 100
+	num = rand() % 10 + 1; // random number between 1 and 100
     return num;
 }
-
 void comment(int attempts)
 {
     if(attempts <= 10){
