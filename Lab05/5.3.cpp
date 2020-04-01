@@ -3,26 +3,43 @@
 #include <ctime>
 using namespace std;
 
+int random(int num);
+
+
 int main()
 {
-	int num, guess, tries = 0;
-	srand(time(0)); //seed random number generator
-	num = rand() % 100 + 1; // random number between 1 and 100
-	cout << "Guess My Number Game\n\n";
-
+    string choice;
+    do
+    {
+    int num = random(num);
+	int guess, tries = 0;
+	cout << "I have a number between 1 and 1000.\n";
+    cout << "Can you guess my number?\n";
 	do
 	{
-		cout << "Enter a guess between 1 and 100 : ";
+		cout << "Enter a guess between 1 and 1000 : ";
 		cin >> guess;
 		tries++;
 
 		if (guess > num)
-			cout << "Too high!\n\n";
+			cout << "Too high. Try again\n";
 		else if (guess < num)
-			cout << "Too low!\n\n";
+			cout << "Too low. Try again\n";
 		else
-			cout << "\nCorrect! You got it in " << tries << " guesses!\n";
+			cout << "\nExcellent! You guessed the number!\n";
+            cout << "Would you like to play again?\n";
+            cout << "Please type yes or no?\n";
+            cin >> choice;
+            // << tries << " guesses!\n";
 	} while (guess != num);
+    }while (choice !="no");
 
 	return 0;
+}
+
+int random(int num)
+{
+    srand(time(0)); //seed random number generator
+	num = rand() % 1000 + 1; // random number between 1 and 100
+    return num;
 }
