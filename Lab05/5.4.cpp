@@ -24,14 +24,21 @@ int main()
     cin.ignore();
     int sum = dice1 + dice2;
     cout << "Player rolled " << dice1 << " + " << dice2 << " = " << sum << "\n";
-    cout<< "The sum of these two rolls is: " << sum << "\n";
     if(sum == 7 || sum == 11){
         cout << "Player Wins!!\n";
+        cout << "You're up big. Now's the time to cash in your chips!\n";
+        bankBalance += wager;
+        cout << "Your new bank balance is: " << bankBalance << "\n";
     }else if(sum == 2 || sum == 3 || sum == 12){
         cout << "Player Lost.\n";
+        cout << "Sorry. You busted!\n"; 
+        bankBalance = bankBalance - wager;
+        cout << "Your new bank balance is: " << bankBalance << "\n";
     }else{ 
         cout << "Player made a point!\n";
         cout << "Point is: " << sum << "\n";
+        cout << "Aw cmon, take a chance!\n";
+        }
         do{
             dice1 = Random();
             dice2 = Random();
@@ -41,13 +48,18 @@ int main()
             cout << "Player rolled " << dice1 << " + " << dice2 << " = " << sum2 << "\n";
             if(sum==sum2){
                 cout << "Player Wins!!\n";
+                cout << "Nice Win. Better cash those chips now!!\n";
+                bankBalance += wager;
+                cout << "Your new bank balance is: " << bankBalance << "\n";
                 return 0;
             }else if(sum2==7){
                 cout << "Player Lost.\n";
+                cout <<  "Oh, you're going for broke, huh?\n";
+                bankBalance = bankBalance - wager;
+                cout << "Your new bank balance is: " << bankBalance << "\n";
                 return 0;
             }
         }while(sum !=sum2 || sum2 == 7);
-    }
 
     return 0;
 }
@@ -68,3 +80,15 @@ int Random()
     number = rand() % 6 + 1;
     return number;
 }
+
+// int bankBalanceWin()
+// {
+
+
+// }
+
+// int bankBalanceLose()
+// {
+
+
+// }
