@@ -16,6 +16,13 @@ int main()
     cout << "The second dice rolled: " << dice2 << "\n";
     int sum = dice1 + dice2;
     cout<< "The sum of these two rolls is:" << sum << "\n";
+    if(sum == 7 || sum == 11){
+        cout << "Player Wins!!\n";
+    }else if(sum == 2 || sum == 3 || sum == 12){
+        cout << "Player Lost.\n";
+    }else{
+        
+    }
 
     return 0;
 }
