@@ -9,13 +9,21 @@ int main()
 {
     int dice1 = Random();
     int dice2 = Random();
+    int bankBalance = 100;
+    int wager = 0;
     int sum2 = 0;
-
-    cout << "Press any key to roll the two dice\n";
+    cout << "You have $100 in the bank.\n";
+    do{
+    cout << "Place your wager: ";
+    cin >> wager;
+    if(wager > bankBalance){
+        cout << "The wager amount cannot exceed your bank balance. Please try again!\n";
+    }
+    }while(wager > bankBalance);
+    cout << "\nRolling the dice....\n";
     cin.ignore();
-    cout << "The first dice rolled: " << dice1 << "\n";
-    cout << "The second dice rolled: " << dice2 << "\n";
     int sum = dice1 + dice2;
+    cout << "Player rolled " << dice1 << " + " << dice2 << " = " << sum << "\n";
     cout<< "The sum of these two rolls is: " << sum << "\n";
     if(sum == 7 || sum == 11){
         cout << "Player Wins!!\n";
