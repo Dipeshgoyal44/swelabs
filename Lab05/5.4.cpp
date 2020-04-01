@@ -4,6 +4,8 @@
 using namespace std;
 
 int Random();
+int bankBalanceWin(int balance, int wager);
+int bankBalanceLose(int balance, int wager);
 
 int main()
 {
@@ -27,13 +29,13 @@ int main()
     if(sum == 7 || sum == 11){
         cout << "Player Wins!!\n";
         cout << "You're up big. Now's the time to cash in your chips!\n";
-        bankBalance += wager;
-        cout << "Your new bank balance is: " << bankBalance << "\n";
+        cout << "Your new bank balance is: " << bankBalanceWin(bankBalance,wager) << "\n";
+        return 0;
     }else if(sum == 2 || sum == 3 || sum == 12){
         cout << "Player Lost.\n";
         cout << "Sorry. You busted!\n"; 
-        bankBalance = bankBalance - wager;
-        cout << "Your new bank balance is: " << bankBalance << "\n";
+        cout << "Your new bank balance is: " << bankBalanceLose(bankBalance,wager) << "\n";
+        return 0;
     }else{ 
         cout << "Player made a point!\n";
         cout << "Point is: " << sum << "\n";
@@ -49,14 +51,12 @@ int main()
             if(sum==sum2){
                 cout << "Player Wins!!\n";
                 cout << "Nice Win. Better cash those chips now!!\n";
-                bankBalance += wager;
-                cout << "Your new bank balance is: " << bankBalance << "\n";
+                cout << "Your new bank balance is: " << bankBalanceWin(bankBalance,wager) << "\n";
                 return 0;
             }else if(sum2==7){
                 cout << "Player Lost.\n";
                 cout <<  "Oh, you're going for broke, huh?\n";
-                bankBalance = bankBalance - wager;
-                cout << "Your new bank balance is: " << bankBalance << "\n";
+                cout << "Your new bank balance is: " << bankBalanceLose(bankBalance,wager) << "\n";
                 return 0;
             }
         }while(sum !=sum2 || sum2 == 7);
@@ -67,28 +67,23 @@ int main()
 int Random()
 {
     int number;
-    static int flag = 1; // initial value - holds value when changed
+    static int flag = 1; 
 
-    // Seed the random number generator - ONCE
     if (flag == 1)
     {
-        srand(time(0)); // use clock to get a seed
-        flag = 0;       // clear flag: never enter here again
+        srand(time(0)); 
+        flag = 0;       
     }
-
-    // get the actual random number here
     number = rand() % 6 + 1;
     return number;
 }
 
-// int bankBalanceWin()
-// {
+int bankBalanceWin(int balance, int wager)
+{
+    return wager + balance;
+}
 
-
-// }
-
-// int bankBalanceLose()
-// {
-
-
-// }
+int bankBalanceLose(int balance, int wager)
+{
+    return balance - wager;
+}
