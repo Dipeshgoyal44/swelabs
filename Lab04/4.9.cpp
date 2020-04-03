@@ -40,7 +40,7 @@ int main()
     } while (week <= 0 || week > 7);         // Do while loop for invalid input
     do
     {
-        cout << "\nIs it raining today? (1)-Yes OR (0)-No.\n";
+        cout << "\nIs it raining today? (1)-Yes OR (0)-No.\n"; //taking 1 for yes and 0 for no
         cin >> rain;
     } while (rain < 0 || rain > 1); // Do while loop for invalid input
 
