@@ -6,7 +6,7 @@ int main()
 {
     // Variable Declarations
     int week;
-    int weather;
+    int rain;
     do
     {
         cout << "\nEnter week number (1-7):"; // User input for weekday.
@@ -37,116 +37,75 @@ int main()
         default:
             cout << "\nInvalid Input! Please enter week in between 1-7."; 
         }
-    } while (week <= 0 | week > 7);         // Do while loop for invalid input
+    } while (week <= 0 || week > 7);         // Do while loop for invalid input
     do
     {
-        cout << "\nHow's the weather today? (1)Sunny,(2)Cold or (3)Raining\n";
-        cin >> weather;
-        switch (weather)
-        {
-        case 1:
-            cout << "Sunny";                            //Switch statement to display weather output
-            break;
-        case 2:
-            cout << "Cold";
-            break;
-        case 3:
-            cout << "Raining";
-            break;
-        default:
-            cout << "\nInvalid Input! Please enter the weather between 1-3.";
-        }
-    } while (weather <= 0 | weather > 3);          // Do while loop for invalid input
+        cout << "\nIs it raining today? (1)-Yes OR (0)-No.\n";
+        cin >> rain;
+    } while (rain < 0 || rain > 1); // Do while loop for invalid input
+
+
     // OUTPUT STATEMENTS
     // If statements to display output
-    if (week == 1 & weather == 1) //STARTING FROM SUNDAY.
+
+    // IF IT IS RAINING
+    if (week == 1 && rain == 1)
     {
-        cout << "\nEat Ice cream and go to the beach";
+        cout << "\nRead in bed";
     }
-    if (week == 1 & weather == 2)
+    if (week == 2 && rain == 1)
     {
-        cout << "\nStay home and watch a movie";
+        cout << "\nIt is raining today. Take an umbrella with you.";
     }
-    if (week == 1 & weather == 3)
+    if (week == 3 && rain == 1)
     {
-        cout << "\nCook soup and play a video game";
+        cout << "\nIt is raining today. Take an umbrella with you.";
     }
-    if (week == 2 & weather == 1)
+    if (week == 4 && rain == 1)
     {
-        cout << "\nYou walk.";
+        cout << "\nIt is raining today. Take an umbrella with you.";
+    }
+    if (week == 5 && rain == 1)
+    {
+        cout << "\nIt is raining today. Take an umbrella with you.";
+    }
+    if (week == 6 && rain == 1)
+    {
+        cout << "\nIt is raining today. Take an umbrella with you.";
+    }
+    if (week == 7 && rain == 1)
+    {
+        cout << "\nRead in bed";
     }
 
-    if (week == 2 & weather == 2)
+    // IF IT IS NOT RAINING
+    if (week == 1 && rain == 0) //STARTING FROM SUNDAY.
     {
-        cout << "\nYou take your jacket with you";
+        cout << "\nYou go out and have fun";
     }
-    if (week == 2 & weather == 3)
+    if (week == 2 && rain == 0)
     {
-        cout << "\nYou take your Car.";
+        cout << "\nIts not raining. You won't need a umbrella today";
     }
-    if (week == 3 & weather == 1)
+    if (week == 3 && rain == 0)
     {
-        cout << "\nYou walk.";
+        cout << "\nIts not raining. You won't need a umbrella today";
     }
-    if (week == 3 & weather == 2)
+    if (week == 4 && rain == 0)
     {
-        cout << "\nYou take your jacket with you";
+        cout << "\nIts not raining. You won't need a umbrella today";
     }
-    if (week == 3 & weather == 3)
+    if (week == 5 && rain == 0)
     {
-        cout << "\nYou take your Car.";
+        cout << "\nIts not raining. You won't need a umbrella today";
     }
-    if (week == 4 & weather == 1)
+    if (week == 6 && rain == 0)
     {
-        cout << "\nYou walk.";
+        cout << "\nIts not raining. You won't need a umbrella today";
     }
-    if (week == 4 & weather == 2)
+    if (week == 7 && rain == 0)
     {
-        cout << "\nYou take your jacket with you";
-    }
-    if (week == 4 & weather == 3)
-    {
-        cout << "\nYou take your Car.";
+        cout << "\nYou go out and have fun";
     }
 
-    if (week == 5 & weather == 1)
-    {
-        cout << "\nYou walk.";
-    }
-
-    if (week == 5 & weather == 2)
-    {
-        cout << "\nYou take your jacket with you";
-    }
-    if (week == 5 & weather == 3)
-    {
-        cout << "\nYou take your Car.";
-    }
-
-    if (week == 6 & weather == 1)
-    {
-        cout << "\nYou walk..";
-    }
-
-    if (week == 6 & weather == 2)
-    {
-    cout << "\nYou take your jacket with you";
-    }
-    if (week == 6 & weather == 3)
-    {
-    cout << "\nYou take your Car.";
-    }
-
-    if (week == 7 & weather == 1)
-    {
-    cout << "\nEat Ice cream and go to the beach";
-    }
-    if (week == 7 & weather == 2)
-    {
-    cout << "\nStay home and watch a movie";
-    }
-    if (week == 7 & weather == 3)
-    {
-    cout << "\nCook soup and play a video game";
-    }
 }
