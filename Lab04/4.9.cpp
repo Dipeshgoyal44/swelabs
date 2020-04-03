@@ -37,7 +37,7 @@ int main()
         default:
             cout << "\nInvalid Input! Please enter week in between 1-7."; 
         }
-    } while (week == 0 | week > 7);         // Do while loop for invalid input
+    } while (week <= 0 | week > 7);         // Do while loop for invalid input
     do
     {
         cout << "\nHow's the weather today? (1)Sunny,(2)Cold or (3)Raining\n";
@@ -54,9 +54,9 @@ int main()
             cout << "Raining";
             break;
         default:
-            cout << "\nInvalid Input! Please enter week in between 1-3.";
+            cout << "\nInvalid Input! Please enter the weather between 1-3.";
         }
-    } while (weather == 0 | weather > 3);          // Do while loop for invalid input
+    } while (weather <= 0 | weather > 3);          // Do while loop for invalid input
     // OUTPUT STATEMENTS
     // If statements to display output
     if (week == 1 & weather == 1) //STARTING FROM SUNDAY.
