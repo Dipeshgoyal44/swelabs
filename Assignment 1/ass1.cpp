@@ -2,7 +2,7 @@
 using namespace std;
 
 // Function Prototypes
-void reverse_array(int array[], int arraylength);
+void reverse_array(int array[], int length); 
 void decode(int array[], int arraylength);
 
 int main()
@@ -197,13 +197,13 @@ void decode(int array[], int arraylength) // function to decode logic taken from
         array[i] = array[i] % 10;
     }
 }
-void reverse_array(int array[], int arraylength) // Function to reverse arrays that are passed
+void reverse_array(int array[], int length) // Function to reverse arrays that are passed
 {
-    for (int i = 0; i < (arraylength / 2); i++)
+    for (int i = 0; i < (length / 2); i++)
     {
-        int temporary = array[i];
-        array[i] = array[(arraylength - 1) - i];
-        array[(arraylength - 1) - i] = temporary;
+        int temp = array[i];
+        array[i] = array[(length - 1) - i];
+        array[(length - 1) - i] = temp;
     }
 }
 
