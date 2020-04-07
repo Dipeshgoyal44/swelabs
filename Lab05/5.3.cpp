@@ -3,6 +3,7 @@
 #include <ctime>
 using namespace std;
 
+//Function Prototypes
 int random(int num);
 void comment(int attempts);
 
@@ -46,7 +47,7 @@ int main()
 }
 
 //Function 1
-int random(int num)
+int random(int num) // Function to generate random number
 {
     srand(time(NULL)); //seed random number generator
 	num = rand() % 1000 + 1; // random number between 1 and 100
@@ -54,7 +55,7 @@ int random(int num)
 }
 
 //Function 2
-void comment(int attempts)
+void comment(int attempts) // function to display comment based on number of attempts
 {
     if(attempts <= 10){
         cout << "Either you know the secret or you got lucky!\n"; 
