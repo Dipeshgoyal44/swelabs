@@ -3,6 +3,7 @@
 #include <ctime>
 using namespace std;
 
+//Function Prototypes
 int Random();
 int bankBalanceWin(int balance, int wager);
 int bankBalanceLose(int balance, int wager);
@@ -64,12 +65,13 @@ int main()
     return 0;
 }
 
+//Function to generate random number
 int Random()
 {
     int number;
-    static int flag = 1; 
+    static int flag = 1; //static so only meets the condition once.
 
-    if (flag == 1)
+    if (flag == 1) // this ensures the function gives different random numbers everytime.
     {
         srand(time(0)); 
         flag = 0;       
@@ -77,12 +79,12 @@ int Random()
     number = rand() % 6 + 1;
     return number;
 }
-
+// Function to add balance and wager when player wins.
 int bankBalanceWin(int balance, int wager)
 {
     return wager + balance;
 }
-
+// Function to minus the wager from balance when player loses.
 int bankBalanceLose(int balance, int wager)
 {
     return balance - wager;
