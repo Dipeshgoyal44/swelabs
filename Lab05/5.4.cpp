@@ -13,7 +13,7 @@ int main()
     //variable declaration
     int dice1 = Random();
     int dice2 = Random();
-    int bankBalance = 100;
+    int bankBalance = 100; // bank balance
     int wager = 0;
     int sum2 = 0;
     cout << "You have $100 in the bank.\n";
@@ -29,16 +29,19 @@ int main()
     int sum = dice1 + dice2;
     cout << "Player rolled " << dice1 << " + " << dice2 << " = " << sum << "\n";
     if(sum == 7 || sum == 11){
+        // when plater wins
         cout << "Player Wins!!\n";
         cout << "You're up big. Now's the time to cash in your chips!\n";
         cout << "Your new bank balance is: " << bankBalanceWin(bankBalance,wager) << "\n";
         return 0;
+        // when player losses
     }else if(sum == 2 || sum == 3 || sum == 12){
         cout << "Player Lost.\n";
         cout << "Sorry. You busted!\n"; 
         cout << "Your new bank balance is: " << bankBalanceLose(bankBalance,wager) << "\n";
         return 0;
     }else{ 
+        // when a point is made
         cout << "Player made a point!\n";
         cout << "Point is: " << sum << "\n";
         cout << "Aw cmon, take a chance!\n";
