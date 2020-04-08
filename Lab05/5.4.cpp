@@ -10,6 +10,7 @@ int bankBalanceLose(int balance, int wager);
 
 int main()
 {
+    //variable declaration
     int dice1 = Random();
     int dice2 = Random();
     int bankBalance = 100;
