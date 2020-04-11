@@ -47,6 +47,7 @@ int main()
         cout << "Aw cmon, take a chance!\n";
         }
         do{
+            // reset values of dice 1 and  dice 2.
             dice1 = Random();
             dice2 = Random();
             cout << "Press any key to reroll.\n";
@@ -56,15 +57,15 @@ int main()
             if(sum==sum2){
                 cout << "Player Wins!!\n";
                 cout << "Nice Win. Better cash those chips now!!\n";
-                cout << "Your new bank balance is: " << bankBalanceWin(bankBalance,wager) << "\n";
+                cout << "Your new bank balance is: " << bankBalanceWin(bankBalance,wager) << "\n"; // function to display
                 return 0;
             }else if(sum2==7){
                 cout << "Player Lost.\n";
                 cout <<  "Oh, you're going for broke, huh?\n";
-                cout << "Your new bank balance is: " << bankBalanceLose(bankBalance,wager) << "\n";
+                cout << "Your new bank balance is: " << bankBalanceLose(bankBalance,wager) << "\n"; // function to display
                 return 0;
             }
-        }while(sum !=sum2 || sum2 == 7);
+        }while(sum !=sum2 || sum2 == 7); // loop to keep running until player loses or wins
 
     return 0;
 }
