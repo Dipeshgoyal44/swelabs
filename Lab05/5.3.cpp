@@ -32,10 +32,11 @@ int main()
         }
 		else
             {
+                // When user wins
                 cout << "\nExcellent! You guessed the number!\n";
                 comment(attempts);
                 cout << "Would you like to play again?\n";
-                cout << "Please type y or n?\n";
+                cout << "Please type y or n?\n"; // Prompt if they want to play again or not
                 cin >> answer;
                 if(answer == 'y')
                 {
@@ -59,6 +60,7 @@ int random(int num) // Function to generate random number
 //Function 2
 void comment(int attempts) // function to display comment based on number of attempts
 {
+    // Condition to check number of attempts and displasy message accordingly
     if(attempts <= 10){
         cout << "Either you know the secret or you got lucky!\n"; 
     }
