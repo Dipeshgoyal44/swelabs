@@ -17,7 +17,7 @@ int main()
     int wager = 0;
     int sum2 = 0;
     cout << "You have $100 in the bank.\n";
-    do{
+    do{ // loop to keep running if wafer is higher than bank balance
     cout << "Place your wager: ";
     cin >> wager;
     if(wager > bankBalance){
@@ -27,6 +27,7 @@ int main()
     cout << "\nRolling the dice....\n";
     cin.ignore();
     int sum = dice1 + dice2;
+    //Displays the dice1 and 2 with the sum
     cout << "Player rolled " << dice1 << " + " << dice2 << " = " << sum << "\n";
     if(sum == 7 || sum == 11){
         // when plater wins
