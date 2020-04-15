@@ -13,13 +13,15 @@ int main()
     int num = random(num);
 	int guess, attempts = 0;
     char answer = 'y';
+    // Prompts User
 	cout << "I have a number between 1 and 1000.\n";
     cout << "Can you guess my number?\n";
-	do
+	do // loop to keep running until users chose not to play.
 	{
 		cout << "Enter a guess between 1 and 1000 : ";
 		cin >> guess;
 		attempts++;
+        // Conditions to display message if guess is bigger or less than the number
 		if (guess > num)
         {
 			cout << "Too high. Try again\n";
