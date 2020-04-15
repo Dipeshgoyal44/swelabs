@@ -85,6 +85,8 @@ int Random()
     number = rand() % 6 + 1;
     return number;
 }
+
+
 // Function to add balance and wager when player wins.
 int bankBalanceWin(int balance, int wager)
 {
