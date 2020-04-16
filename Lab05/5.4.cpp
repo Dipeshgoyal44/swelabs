@@ -53,6 +53,7 @@ int main()
             dice2 = Random();
             cout << "Press any key to reroll.\n";
             cin.ignore();
+            // new sum if player makes a point
             int sum2 = dice1 + dice2;
             cout << "Player rolled " << dice1 << " + " << dice2 << " = " << sum2 << "\n";
             if(sum==sum2){
@@ -95,5 +96,5 @@ int bankBalanceWin(int balance, int wager)
 // Function to minus the wager from balance when player loses.
 int bankBalanceLose(int balance, int wager)
 {
-    return balance - wager;
+    return balance - wager; 
 }
