@@ -62,6 +62,7 @@ int main()
                 cout << "Your new bank balance is: " << bankBalanceWin(bankBalance,wager) << "\n"; // function to display
                 return 0;
             }else if(sum2==7){
+                //Player loses if summ is equal to 7
                 cout << "Player Lost.\n";
                 cout <<  "Oh, you're going for broke, huh?\n";
                 cout << "Your new bank balance is: " << bankBalanceLose(bankBalance,wager) << "\n"; // function to display
