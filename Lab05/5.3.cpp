@@ -1,6 +1,6 @@
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
+#include <cstdlib> //for random function library
+#include <ctime> // for srand
 using namespace std;
 
 //Function Prototypes
