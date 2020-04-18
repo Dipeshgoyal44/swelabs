@@ -4,47 +4,63 @@
 
 using namespace std;
 void scan(char input[], int size);
+void alphabetSort(char input[], int size);
 
 int main()
 {
- char input[10];
+	char input[10];
 	scan(input, 10);
+	alphabetSort(input, 10);
 }
-
 
 void scan(char input[], int size)
 {
-	int i,c;
+	int i, c;
 	char m;
-	
-	for(i=0;i<size;i++)
-	{												                                                         
-		cout<< "Enter character \n";
+
+	for (i = 0; i < size; i++)
+	{
+		cout << "Enter character \n";
 		fflush(stdin);
-		cin>> m;
-														/* this is were the letter is going to be scanned and looked at*/ 
-		if(tolower(m) < 'a' || tolower(m) > 'z')			/*this is going to let me see the a to z                                                           */
-	/* if these are not entered it should print this                                                          */
-			{
-				cout << "Not an alphabet \n";
-				i--;
-			}
-
+		cin >> m;
+		if (tolower(m) < 'a' || tolower(m) > 'z')
+		{
+			cout << "Not an alphabet \n";
+			i--;
+		}
 		else
-			input[i]=m;
-
-		
-
-	for(c=0;c<i;c++)
+			input[i] = m;
+		for (c = 0; c < i; c++)
 		{
 
-		if(input[c] == input[i])								
+			if (input[c] == input[i])
 			{
 				cout << "repeat \n";
-				c=i;
+				c = i;
 			}
-		}		
-
+		}
 	}
+}
 
+void alphabetSort(char input[], int size)
+{
+	int i = 0, m = 0;
+	char L;
+	for (i = 0; i < size; i++)
+	{
+		for (m = i + 1; m < size; m++)
+		{
+			if (tolower(input[i]) > tolower(input[m]))
+			{
+				L = input[i];
+				input[i] = input[m];
+				input[m] = L;
+			}
+		}
+	}
+	cout << "Sorted\n");
+	for (i = 0; i < size; i++)
+	{
+		cout << input[i];
+	}
 }
