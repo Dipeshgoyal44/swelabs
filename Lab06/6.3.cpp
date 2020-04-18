@@ -5,7 +5,7 @@
 using namespace std;
 void scan(char input[], int size);
 void alphabetSort(char input[], int size);
-void frequent (char input[], int size);
+void frequent(char input[], int size);
 
 int main()
 {
@@ -74,17 +74,36 @@ void alphabetSort(char input[], int size)
 	}
 }
 
-void frequent (char input[], int size)
+void frequent(char input[], int size) // Frequent Letter function
 {
-	int i,max=0,mode=0;
-	int fre[100]={0};//all values of array initialised with 0 
-	for(i=0;i<size;i++) 
-		++fre[x[i]]; //count the occurence of each number 
-	for(i=0;i<100;i++) //loop to find most frequent number 
-	if(fre[i]>max)
+	char mode[20];
+	int count=0, Max=0, a=0, fre[20], i, j;
+	
+	for(i=0; i<size; i++)
 	{
-		max=fre[i];
-		mode=i;
+		count =1;
+		for(j=i+1; j<size; j++)
+		{ 
+			if(input[i] == input[j])
+				count++;
+			else
+				break;									
+		}
+		mode[a]= input[i];
+		fre[a]= count;
+		if(Max<count)	
+			Max = count;
+		a++;
+		i = j-1;
 	}
-	cout<<"The most frequent number is "<<mode<<" occuring "<< fre[mode]<<" times\n";
+	for(i=0; i<size; i++)	
+	{
+		if(Max == fre[i])
+		{
+			cout << "\nThe mode is " << mode[i] << "and it is occuring  " << fre[i] << "times\n";
+		}else if(Max == 20){
+			cout << "\n All characters are the same\n";
+		}else if(Max == 1){
+			cout << "\n All characters are entered only one time\n";
+	}
 }
