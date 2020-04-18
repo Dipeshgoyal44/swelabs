@@ -40,6 +40,13 @@ void scan(char input[], int size)
 			}
 		}
 	}
+	cout << "\n";
+	cout << "The original array is:\n";
+	for (i = 0; i < size; i++)
+	{
+		cout << input[i];
+	}
+	
 }
 
 void alphabetSort(char input[], int size)
@@ -58,7 +65,7 @@ void alphabetSort(char input[], int size)
 			}
 		}
 	}
-	cout << "Sorted\n");
+	cout << "\nThe sorted array is:\n";
 	for (i = 0; i < size; i++)
 	{
 		cout << input[i];
