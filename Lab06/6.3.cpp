@@ -10,9 +10,9 @@ void frequent(char input[], int size);
 int main()
 {
 	char input[10];
-	scan(input, 10);
-	alphabetSort(input, 10);
-	frequent(input, 10);
+	scan(input, 5);
+	alphabetSort(input, 5);
+	frequent(input, 5);
 }
 
 void scan(char input[], int size)
@@ -27,7 +27,7 @@ void scan(char input[], int size)
 		cin >> m;
 		if (tolower(m) < 'a' || tolower(m) > 'z')
 		{
-			cout << "Not an alphabet \n";
+			cout << m << " is not an alphabet\n";
 			i--;
 		}
 		else
@@ -37,7 +37,7 @@ void scan(char input[], int size)
 
 			if (input[c] == input[i])
 			{
-				cout << "repeat \n";
+				cout << input[c] << " is a duplicate letter.\n";
 				c = i;
 			}
 		}
@@ -98,12 +98,15 @@ void frequent(char input[], int size) // Frequent Letter function
 	}
 	for(i=0; i<size; i++)	
 	{
-		if(Max == fre[i])
-		{
-			cout << "\nThe mode is " << mode[i] << "and it is occuring  " << fre[i] << "times\n";
-		}else if(Max == 20){
-			cout << "\n All characters are the same\n";
-		}else if(Max == 1){
-			cout << "\n All characters are entered only one time\n";
+		if(Max == 1){
+			cout << "\nAll characters are entered only one time.\n";
+			break;
+		}else if(Max == size){
+			cout << "\nAll characters are the same.\n";
+			break;
+		}else if(Max == fre[i]){
+			cout << "\nThe mode is '" << mode[i] << "' and it is occuring  " << fre[i] << " times.\n";
+			break;
 	}
+}
 }
