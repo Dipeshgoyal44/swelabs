@@ -5,12 +5,14 @@
 using namespace std;
 void scan(char input[], int size);
 void alphabetSort(char input[], int size);
+void frequent (char input[], int size);
 
 int main()
 {
 	char input[10];
 	scan(input, 10);
 	alphabetSort(input, 10);
+	frequent(input, 10);
 }
 
 void scan(char input[], int size)
@@ -70,4 +72,19 @@ void alphabetSort(char input[], int size)
 	{
 		cout << input[i];
 	}
+}
+
+void frequent (char input[], int size)
+{
+	int i,max=0,mode=0;
+	int fre[100]={0};//all values of array initialised with 0 
+	for(i=0;i<size;i++) 
+		++fre[x[i]]; //count the occurence of each number 
+	for(i=0;i<100;i++) //loop to find most frequent number 
+	if(fre[i]>max)
+	{
+		max=fre[i];
+		mode=i;
+	}
+	cout<<"The most frequent number is "<<mode<<" occuring "<< fre[mode]<<" times\n";
 }
