@@ -10,7 +10,8 @@ int main()
 {
     FILE *fp;
     int count, i,a;
-    float total, max , min, average, b;
+    float total, max , average, b;
+    float min=10000000; // for the condition to work
 
     fp = fopen("speed.dat", "r");
     if (fp == NULL)
@@ -23,7 +24,7 @@ int main()
     for (i = 0; i < count; i++)
     {
         fscanf(fp, "%d %f", &a, &b);
-       // printf("%d           %.2f \n", a, b);
+        //printf("%d           %.2f \n", a, b);
         total = total + b;
         if (max < b)
             max = b;
@@ -34,11 +35,11 @@ int main()
     printf("Maximum price: %.2f \n", max);
     printf("Minimum price: %.2f \n", min);
     printf("Average price: %.2f \n", total / count);
-//  fp = fopen("output.txt", "a");
-    // fprintf(fp, "The total is = %d \n", total);
-    // fprintf(fp, "The average is = %d \n", total / count);
-    // fprintf(fp, "The max is =%d \n", max);
-    // fprintf(fp, "The min is =%d \n", min);
+    fp = fopen("output.txt", "a");
+    fprintf(fp, "The total is = %d \n", total);
+    fprintf(fp, "The average is = %d \n", total / count);
+    fprintf(fp, "The max is =%d \n", max);
+    fprintf(fp, "The min is =%d \n", min);
 
     return 0;
 }
