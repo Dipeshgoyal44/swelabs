@@ -28,17 +28,18 @@ int main()
 	faces[dice1][dice2]++;
 	faces[6][6] = faces[dice1][dice2];
 	}
+    cout<< "\n\t -----\t -----\t -----\t -----\t -----\t -----";
 	for(int row = 0; row < 6; row++)
 	{
-		cout<< "\n\t-----\t-----\t-----\t-----\t-----\t-----";
+		
         cout<<endl;
 		for(int column = 0; column < 6; column++)
 		{
-			cout<< "\t" << faces[column][row];
+			cout<< "\t:" << faces[column][row];
             
 		}
-        cout<< "\n\t-----\t-----\t-----\t-----\t-----\t-----";
-		cout<<endl;
+        cout<< "\n\t -----\t -----\t -----\t -----\t -----\t -----";
+
 	}
 
 	return 0;
