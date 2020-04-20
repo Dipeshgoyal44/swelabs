@@ -6,6 +6,7 @@ using namespace std;
 
 int total1(int array[],int arraySize);
 int total2(int array[],int arraySize);
+void reverse_array(int array[], int length);
 
 int main()
 {
@@ -70,8 +71,10 @@ int total1(int array[],int arraySize)
     int i = 0;
     int x= 0;
     int sum= 0;
+    cout<< "Numbers for sum1 are ";
     for (i = arraySize - 2; i >= 0; i = i - 2)
     {
+        cout<<  array[i] << " ";   
         x = array[i] * 2;
         if (x > 9)
         {
@@ -85,6 +88,7 @@ int total1(int array[],int arraySize)
             total1 += array[i] * 2;
         }
     }
+    cout <<  "\n";   
     return total1;
 
 }
@@ -93,7 +97,6 @@ int total2(int array[],int arraySize)
 {
     int total2= 0;
     int i = 0;
-
     cout<< "Numbers for sum2 are ";
     for(i = arraySize - 3; i >= 0; i = i - 2)
     {
@@ -104,3 +107,6 @@ int total2(int array[],int arraySize)
     return total2;
     
 }
+
+
+
