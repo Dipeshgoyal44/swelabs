@@ -36,6 +36,7 @@ int main()
     }
     printf("\n");
 
+
 // SUM 1
     int sum1 = total1(array,count);
     printf("Sum 1 is %d \n", sum1);
@@ -69,7 +70,6 @@ int total1(int array[],int arraySize)
     int i = 0;
     int x= 0;
     int sum= 0;
-    //int numberOne[20];
     for (i = arraySize - 2; i >= 0; i = i - 2)
     {
         x = array[i] * 2;
@@ -94,10 +94,13 @@ int total2(int array[],int arraySize)
     int total2= 0;
     int i = 0;
 
+    cout<< "Numbers for sum2 are ";
     for(i = arraySize - 3; i >= 0; i = i - 2)
     {
         total2 = total2 + array[i];
-    }
+        cout<<  array[i] << " ";   
+        }
+        cout <<  "\n";   
     return total2;
     
 }
