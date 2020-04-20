@@ -10,8 +10,11 @@ int total2(int array[],int arraySize);
 int main()
 {
     int array[20];
-    int i=0,temp=0,count=0;
-    int sumTotal,checksum;
+    int i;
+    int temp = 0;
+    int count= 0;
+    int sumTotal = 0;
+    int checksum= 0;
 
     printf("Enter The Credit Card Number Below: \n");
     for (i = 0; i < 20; i++)
@@ -62,12 +65,14 @@ int main()
 
 int total1(int array[],int arraySize)
 {
-    int total1,i,x=0,sum;
+    int total1=0;
+    int i = 0;
+    int x= 0;
+    int sum= 0;
     //int numberOne[20];
     for (i = arraySize - 2; i >= 0; i = i - 2)
     {
         x = array[i] * 2;
-
         if (x > 9)
         {
 
@@ -86,7 +91,8 @@ int total1(int array[],int arraySize)
 
 int total2(int array[],int arraySize)
 {
-    int total2,i;
+    int total2= 0;
+    int i = 0;
 
     for(i = arraySize - 3; i >= 0; i = i - 2)
     {
