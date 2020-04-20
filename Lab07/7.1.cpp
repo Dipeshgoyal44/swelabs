@@ -35,11 +35,11 @@ int main()
     printf("Maximum price: %.2f \n", max);
     printf("Minimum price: %.2f \n", min);
     printf("Average price: %.2f \n", total / count);
-    fp = fopen("output.txt", "a");
-    // fprintf(fp, "The total is = %d \n", total);
-    // fprintf(fp, "The average is = %d \n", total / count);
-    // fprintf(fp, "The max is =%d \n", max);
-    // fprintf(fp, "The min is =%d \n", min);
+    fp = fopen("output.dat", "a");
+    fprintf(fp, "The total is = %d \n", total);
+    fprintf(fp, "The average is = %d \n", total / count);
+    fprintf(fp, "The max is =%d \n", max);
+    fprintf(fp, "The min is =%d \n", min);
 
     return 0;
 }
