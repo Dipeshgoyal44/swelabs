@@ -9,33 +9,31 @@ int main()
 
 {
     FILE *fp;
-    int count, i;
-    int a, total = 0, max = 0, min = 1000000, average = 0;
-    double b;
+    int count, i,a;
+    float total, max , min, average, b;
 
-    fp = fopen("price.dat", "r");
+    fp = fopen("speed.dat", "r");
     if (fp == NULL)
     {
         cout << " Error in opening the file....\n";
         return 0;
     }
     fscanf(fp, "%d", &count);
-    
-    for (i = 0; i < 10; i++)
+
+    for (i = 0; i < count; i++)
     {
-        fscanf(fp, "%d%f", &a, &b);
-        printf("%d           %.2f \n", a, b);
+        fscanf(fp, "%d %f", &a, &b);
+       // printf("%d           %.2f \n", a, b);
         total = total + b;
         if (max < b)
             max = b;
         if (min > b)
             min = b;
     }
-   
-    // printf("The total is = %d \n", total);
-    // printf("The average is = %d \n", total / count);
-    // printf("The max is =%d \n", max);
-    // printf("The min is =%d \n", min);
+    printf("Number of price readings: %d \n", count);
+    printf("Maximum price: %.2f \n", max);
+    printf("Minimum price: %.2f \n", min);
+    printf("Average price: %.2f \n", total / count);
 //  fp = fopen("output.txt", "a");
     // fprintf(fp, "The total is = %d \n", total);
     // fprintf(fp, "The average is = %d \n", total / count);
