@@ -35,6 +35,8 @@ int main()
     printf("Maximum price: %.2f \n", max);
     printf("Minimum price: %.2f \n", min);
     printf("Average price: %.2f \n", total / count);
+
+    
     fp = fopen("output.dat", "a");
     fprintf(fp,"Number of price readings: %d \n", count);
     fprintf(fp,"Maximum price: %.2f \n", max);
