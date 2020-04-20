@@ -13,7 +13,7 @@ int main()
     float total, max , average, b;
     float min=10000000; // for the condition to work
 
-    fp = fopen("speed.dat", "r");
+    fp = fopen("price.dat", "r");
     if (fp == NULL)
     {
         cout << " Error in opening the file....\n";
@@ -36,10 +36,10 @@ int main()
     printf("Minimum price: %.2f \n", min);
     printf("Average price: %.2f \n", total / count);
     fp = fopen("output.txt", "a");
-    fprintf(fp, "The total is = %d \n", total);
-    fprintf(fp, "The average is = %d \n", total / count);
-    fprintf(fp, "The max is =%d \n", max);
-    fprintf(fp, "The min is =%d \n", min);
+    // fprintf(fp, "The total is = %d \n", total);
+    // fprintf(fp, "The average is = %d \n", total / count);
+    // fprintf(fp, "The max is =%d \n", max);
+    // fprintf(fp, "The min is =%d \n", min);
 
     return 0;
 }
