@@ -6,7 +6,6 @@ using namespace std;
 
 int total1(int array[],int arraySize);
 int total2(int array[],int arraySize);
-void reverse_array(int array[], int length);
 
 int main()
 {
