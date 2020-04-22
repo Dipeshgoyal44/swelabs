@@ -24,7 +24,6 @@ int main()
     for (i = 0; i < count; i++)
     {
         fscanf(fp, "%d %f", &a, &b);
-        //printf("%d           %.2f \n", a, b);
         total = total + b;
         if (max < b)
             max = b;
