@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstdio>
-#include <cstdlib>
+//#include <cstdlib>
 
 using namespace std;
 
@@ -19,7 +19,7 @@ int main()
     printf("Enter The Credit Card Number Below: \n");
     for (i = 0; i < 20; i++)
     {
-        scanf("%d", &temp);
+       cin >> temp; // can i use scanf in c++ with cstdlib
         if (temp != -1) // stores till -1 is entered
         {
             array[i] = temp;
@@ -28,38 +28,38 @@ int main()
         else
             break;
     }
-    printf("The Credit Card number is: ");
+    cout << "The Credit Card number is: ";
     int c;
     for (c = 0; c < count; c++)
     {
         cout <<array[c];
     }
-    printf("\n");
+    cout << "\n";
 
 
 // SUM 1
     int sum1 = total1(array,count);
-    printf("Sum 1 is %d \n", sum1);
+    cout << "Sum 1 is " << sum1 << "\n";
 
     // SUM 2 
     int sum2 = total2(array,count);
-    printf("Sum 2 is %d \n", sum2);
+    cout << "Sum 2 is " <<  sum2 << "\n";
 
     // CheckSum
     sumTotal = sum1 + sum2;
     sumTotal = sumTotal * 9;
     checksum = sumTotal % 10;
 
-    printf("Check sum is %d \n", checksum);
-    printf("The last digit of the credit card is %d \n", array[count - 1]);
+    cout << "Check sum is " << checksum << "\n";
+    cout << "The last digit of the credit card is " << array[count - 1] << "\n";
 
     if (array[count - 1] == checksum)
     {
-        printf("Check sum digit %d and the last digit %d are the same: Valid credit card number. \n", checksum, array[count - 1]);
+        cout << "Check sum digit "<< checksum << " and the last digit " << array[count - 1] << " are the same: Valid credit card number. \n";
     }
     else
     {
-        printf("Check sum digit %d and the last digit %d are not the same: Invalid credit card number. \n", checksum, array[count - 1]);
+        cout << "Check sum digit "<< checksum << "and the lastdigit " << array[count - 1] << " are not the same: Invalid credit card number. \n";
     }
     return 0;
 }
