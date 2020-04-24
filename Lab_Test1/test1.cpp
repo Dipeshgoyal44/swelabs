@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <ctime> 
 
 
@@ -16,62 +17,58 @@ int menu(char type);
 int main()
 {
     char type;
+    int total;
+    do {
+    srand(time(NULL));
+    int number = number_generator();
+    double price = price_generator(type);
     cout<< "Enter Type: \n";
     cin >> type;
-    srand(time(NULL));
-    
-    //cout << "\nTV TOTAL: " << tv_price(number_generator(), price) << "\n"; 
-    // cout << "\nREFRIGRATOR TOTAL: " << refrigirator_price(number_generator(), price) << "\n"; 
-//cout << "\n LAPTOP TOTAL: " << laptop_price(number_generator(), price) << "\n"; 
-    // cout << "\n MOBILE TOTAL: " << mobile_price(number_generator(), price) << "\n"; 
-    menu(type);
-    
-
-}
-
-int menu(char type)
-{
-    double price = price_generator(type);
-    int number = number_generator();
-    while(type != 'E'){
     switch (type)
     {
     case 'T':
-        cout << "Rate for TV is: " << price << "\n";
+        total = tv_price(number,price_generator(type));
+        //cout << "\nRate for TV is: " << price << "\n";
         cout << "Number of TVs in this purchase is : " << number << "\n";
-        cout << "Total Price of the TV is " << tv_price(number,price) << "\n";
-        cout << "Bill amount for TVs after payback (if any) is " << tv_price(number,price) << "\n";
-        menu(type);
+        cout << "Total Price of the TV is " << total << "\n";
+        cout << "Bill amount for TVs after payback (if any) is " << total << "\n";
         break;
 
     case 'R':
-        cout << "Rate for refrigerator is: " << price << "\n";
+        total = refrigirator_price(number,price_generator(type) );
+        cout << "Rate for refrigerator is: " << price_generator(type)  << "\n";
         cout << "Number of Refrigerators in this purchase is " << number << "\n";
-        cout << "Bill amount for Refrigerator is " << refrigirator_price(number,price) << "\n";
+        cout << "Bill amount for Refrigerator is " << total << "\n";
         break;
 
     case 'L':
+        total = laptop_price(number,price_generator(type) );
         cout << "Number of Laptops in this purchase is : " << number << "\n";
-        cout << "Bill amount for Laptop is " << laptop_price(number,price) << "\n";
+        cout << "Bill amount for Laptop is " << total << "\n";
         break; 
 
     case 'M':
+        total = mobile_price(number,price_generator(type) );
         cout << "Number of Mobiles in this purchase is : " << number << "\n";
-        cout << "Bill amount for Mobile is " << mobile_price(number,price) << "\n";
+        cout << "Bill amount for Mobile is " << total << "\n";
         break;
 
     case 'E':
-        cout << "FINAL RECEIPT \n";
-        
+        cout << "FINAL RECEIPT \n\n";
+        cout << setw(20) << "********************\n";
+         cout << setw(20) << "*   Final Receipt  *\n";
+
         return 0;
         break;
     default:
         cout << "Error! Invalid Selection";
         break;
-    }}
+    }}while(type != 'E');
+    
     
 
 }
+
 
 int number_generator()
 {
@@ -100,8 +97,8 @@ double price_generator(char type)
 
 double tv_price(int number, double price)
 {
-    // cout << "\n PRICE:" << price;
-    // cout << "\n number:" << number;
+    cout << "\n PRICE:" << price;
+    cout << "\n number:" << number << "\n";
     double total = 0;
     if(price > 500){
     total = number * price;
@@ -114,8 +111,6 @@ double tv_price(int number, double price)
 
 double refrigirator_price(int number, double price)
 {
-    // cout << "\n PRICE:" << price;
-    // cout << "\n number:" << number;
     double total = 0;
     total = number * price;
     double tax = total * 5.5 /100;
@@ -125,8 +120,6 @@ double refrigirator_price(int number, double price)
 
 double laptop_price(int number, double price)
 {
-    // cout << "\n PRICE:" << price;
-    // cout << "\n number:" << number;
     double total = 0;
     total = number * price;
     return total;
@@ -134,14 +127,12 @@ double laptop_price(int number, double price)
 
 double mobile_price(int number, double price)
 {
-    // cout << "\n PRICE:" << price;
-    // cout << "\n number:" << number;
     double total = 0;
     if(number <= 10){
         total = number * price;
         return total;
     }else{
-        int numberdiscount = number - 10; // number = 14
+        int numberdiscount = number - 10; 
         total = price * 10;
         numberdiscount = numberdiscount * price / 2;
         total = total + numberdiscount;
