@@ -8,9 +8,9 @@ using namespace std;
 int number_generator();
 double price_generator(char type);
 double tv_price(int number, double price);
-double refrigirator_price();
-double laptop_price();
-double mobile_price();
+double refrigirator_price(int number, double price);
+double laptop_price(int number, double price);
+double mobile_price(int number, double price);
 
 int main()
 {
@@ -20,7 +20,11 @@ int main()
     srand(time(NULL));
     double price = price_generator(type);
     cout << "Price is: " << price  << "\n";
-    cout << "\nTV TOTAL: " << tv_price(number_generator(), price) << "\n"; 
+    //cout << "\nTV TOTAL: " << tv_price(number_generator(), price) << "\n"; 
+    // cout << "\nREFRIGRATOR TOTAL: " << refrigirator_price(number_generator(), price) << "\n"; 
+//cout << "\n LAPTOP TOTAL: " << laptop_price(number_generator(), price) << "\n"; 
+    cout << "\n MOBILE TOTAL: " << mobile_price(number_generator(), price) << "\n"; 
+
 
 
 }
@@ -54,7 +58,7 @@ double tv_price(int number, double price)
 {
     cout << "\n PRICE:" << price;
     cout << "\n number:" << number;
-    double total;
+    double total = 0;
     if(price > 500){
     total = number * price;
     total = total - number * 50;    
@@ -66,16 +70,37 @@ double tv_price(int number, double price)
 
 double refrigirator_price(int number, double price)
 {
-
+    cout << "\n PRICE:" << price;
+    cout << "\n number:" << number;
+    double total = 0;
+    total = number * price;
+    double tax = total * 5.5 /100;
+    total = total + tax;
+    return total;
 }
 
+double laptop_price(int number, double price)
+{
+    cout << "\n PRICE:" << price;
+    cout << "\n number:" << number;
+    double total = 0;
+    total = number * price;
+    return total;
+}
 
-// double laptop_price(int number, double price)
-// {
-
-
-// }
-// double mobile_price(int number, double price)
-// {
-
-// }
+double mobile_price(int number, double price)
+{
+    cout << "\n PRICE:" << price;
+    cout << "\n number:" << number;
+    double total = 0;
+    if(number <= 10){
+        total = number * price;
+        return total;
+    }else{
+        int numberdiscount = number - 10; // number = 14
+        total = price * 10;
+        numberdiscount = numberdiscount * price / 2;
+        total = total + numberdiscount;
+        return total;
+    }
+}
