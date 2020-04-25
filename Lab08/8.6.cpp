@@ -7,10 +7,12 @@ void reorder(int *a , int *b, int *c);
 
 int main()
 {
-    int a = 0;
-    int b = 0;
-    int c = 0;
-
+    int a = 7;
+    int b = 3;
+    int c = 1;
+    
+    reorder(&a,&b,&c);
+    cout << "A: " << a << "B: " << b << "C: " << c << "\n";
 
     return 0;
 
