@@ -17,46 +17,62 @@ int menu(char type);
 int main()
 {
     char type;
-    int total;
+    double total1 = 0,total2 = 0,total3 = 0,total4 = 0;
+    int finaltotal= 0;
     do {
     srand(time(NULL));
     int number = number_generator();
     double price = price_generator(type);
-    cout<< "Enter Type: \n";
+    cout << "\n(T)Enter T for TV\n" <<
+        "(R)Enter R for Refrigerator\n" <<
+        "(L)Enter L for Laptop\n" <<
+        "(M)Enter M for Mobile\n" <<
+        "(E)Enter E to exit\n";
     cin >> type;
     switch (type)
     {
+        
     case 'T':
-        total = tv_price(number,price_generator(type));
+        total1 = tv_price(number,price_generator(type));
         //cout << "\nRate for TV is: " << price << "\n";
         cout << "Number of TVs in this purchase is : " << number << "\n";
-        cout << "Total Price of the TV is " << total << "\n";
-        cout << "Bill amount for TVs after payback (if any) is " << total << "\n";
+        cout << "Total Price of the TV is " << total1 << "\n";
+        cout << "Bill amount for TVs after payback (if any) is " << total1 << "\n";
         break;
 
     case 'R':
-        total = refrigirator_price(number,price_generator(type) );
+        total2 = refrigirator_price(number,price_generator(type) );
         cout << "Rate for refrigerator is: " << price_generator(type)  << "\n";
         cout << "Number of Refrigerators in this purchase is " << number << "\n";
-        cout << "Bill amount for Refrigerator is " << total << "\n";
+        cout << "Bill amount for Refrigerator is " << total2 << "\n";
         break;
 
     case 'L':
-        total = laptop_price(number,price_generator(type) );
+        total3 = laptop_price(number,price_generator(type) );
         cout << "Number of Laptops in this purchase is : " << number << "\n";
-        cout << "Bill amount for Laptop is " << total << "\n";
+        cout << "Bill amount for Laptop is " << total3 << "\n";
         break; 
 
     case 'M':
-        total = mobile_price(number,price_generator(type) );
+        total4 = mobile_price(number,price_generator(type) );
         cout << "Number of Mobiles in this purchase is : " << number << "\n";
-        cout << "Bill amount for Mobile is " << total << "\n";
+        cout << "Bill amount for Mobile is " << total4 << "\n";
         break;
 
     case 'E':
-        cout << "FINAL RECEIPT \n\n";
-        cout << setw(20) << "********************\n";
-         cout << setw(20) << "*   Final Receipt  *\n";
+        cout << "\n";
+        cout << setw(30) << "******************************\n";
+        cout << setw(30) << "*       FINAL  RECIEPT       *\n";
+        cout << setw(30) << "******************************\n";
+        cout << " * TV" << "\t" << ":" << "\t" << total1 << "\t" <<" *\n ";
+        cout << "* Refrigerator" << "\t" << ":" << "\t" << total2 << "\t" <<" *\n ";
+        cout << "* Laptop" << "\t" << ":" << "\t"  << total3 << "\t" <<" * \n";
+        cout << " * Mobile" << setw(15) << ":" << setw(5)  << total4 << setw(12) <<" * \n";
+        cout << setw(30) << "------------------------------\n";
+        finaltotal = total1 + total2 + total3 + total4;
+        cout << " * Total" << setw(15) << ":" << setw(5)  << finaltotal << setw(12) <<" *\n";
+        cout << setw(30) << "******************************\n";
+        cout << "Rounded bill amount is: " << finaltotal;
 
         return 0;
         break;
@@ -64,16 +80,13 @@ int main()
         cout << "Error! Invalid Selection";
         break;
     }}while(type != 'E');
-    
-    
-
 }
-
 
 int number_generator()
 {
 	return rand() % 15+ 1  ; // random number between 1 and 15
 }
+
 
 
 double price_generator(char type)
@@ -97,8 +110,8 @@ double price_generator(char type)
 
 double tv_price(int number, double price)
 {
-    cout << "\n PRICE:" << price;
-    cout << "\n number:" << number << "\n";
+    // cout << "\n PRICE:" << price;
+    // cout << "\n number:" << number << "\n";
     double total = 0;
     if(price > 500){
     total = number * price;
