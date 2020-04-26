@@ -1,14 +1,25 @@
 #include <iostream>
 #include <iomanip>
+#include <time.h>
 
 using namespace std;
 int calcVolts(int *current, int *resistance, int *voltage);
 void dispVolts(int *current, int *resistance, int *voltage);
+int getRandomNumber();
+
+
 int main()
 {
-    int current[10] = {2, 5, 10, 9, 3, 6, 2, 2, 6, 8};
-    int resistance[10] = {8, 1, 5, 9, 5, 6, 8, 2, 3, 7};
+    int current[10];
+    int resistance[10];
     int voltage[10];
+    srand(time(NULL));
+
+    for(int i = 0; i < 10; ++i) {
+    current[i] = rand() % 10 + 1;
+    resistance[i] = rand() % 10 + 1;
+    }
+
     calcVolts(current, resistance, voltage);
     dispVolts(current, resistance, voltage);
 
@@ -30,4 +41,14 @@ void dispVolts(int *current, int *resistance, int *voltage)
     {
         cout << current[i] << setw(15) << resistance[i] << setw(19) << voltage[i] << "\n";
     }
+}
+int getRandomNumber()
+{
+	int randomNumber = 0; 
+	
+	srand(time(0)); //Seed the random system
+
+	randomNumber = rand() % 1500; //keep random numbers under 1500
+
+	return randomNumber;
 }

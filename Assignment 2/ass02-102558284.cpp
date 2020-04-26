@@ -71,7 +71,7 @@ int total1(int array[],int arraySize)
     int x= 0;
     int sum= 0;
     cout<< "Numbers for sum1 are ";
-    for (i = arraySize - 2; i >= 0; i = i - 2)
+    for (i = 0; i < arraySize - 2; i = i + 2)
     {
         cout<<  array[i] << " ";   
         x = array[i] * 2;
