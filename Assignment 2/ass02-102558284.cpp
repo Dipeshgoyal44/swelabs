@@ -1,7 +1,9 @@
 #include <iostream>
 #include <cstdio>
-//#include <cstdlib>
+
+
 using namespace std;
+
 int total1(int array[],int arraySize);
 int total2(int array[],int arraySize);
 int main()
@@ -87,6 +89,8 @@ int total1(int array[],int arraySize)
     cout <<  "\n";   
     return total1;
 }
+
+
 int total2(int array[],int arraySize)
 {
     int total2= 0;
