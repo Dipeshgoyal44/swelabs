@@ -6,6 +6,7 @@ using namespace std;
 
 int total1(int array[],int arraySize);
 int total2(int array[],int arraySize);
+
 int main()
 {
     int array[20];
@@ -55,6 +56,8 @@ int main()
     }
     return 0;
 }
+
+
 int total1(int array[],int arraySize)
 {
     int total1=0;
