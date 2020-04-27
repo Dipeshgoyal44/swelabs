@@ -8,11 +8,12 @@ using namespace std;
 
 int Random();
 
+
 int main() 
 {			
     int i;
-    int x;
     int j;
+	int sum =0;
 	int dice1;	
 	int dice2;
 	int total = 0;
@@ -58,6 +59,16 @@ int main()
                 }
             cout << " +\n";
             cout << "-------\n";
+			for(i=0;i<6;i++)
+			{
+				for(j=0;j<6;j++)
+				{
+					if(i==j)
+					sum=sum+faces[i][j];
+				}
+			}
+			cout << sum << "\n";
+
 	return 0;
 
 }
