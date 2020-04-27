@@ -1,11 +1,10 @@
 #include <iostream>
-#include <cstdio>
 
+using namespace std; 
 
-using namespace std;
-
-int total1(int array[],int arraySize);
-int total2(int array[],int arraySize);
+//Fuction Protypes
+int total1(int array[],int arraySize); // to get sum1
+int total2(int array[],int arraySize); // to get sum2
 
 int main()
 {
@@ -15,13 +14,14 @@ int main()
     int count= 0;
     int sumTotal = 0;
     int checksum= 0;
+
     printf("Enter The Credit Card Number Below: \n");
     for (i = 0; i < 20; i++)
     {
-       cin >> temp; // can i use scanf in c++ with cstdlib
-        if (temp != -1) // stores till -1 is entered
+        cin >> temp; // storing credit card numbers
+        if (temp != -1) // stores till -1.
         {
-            array[i] = temp;
+            array[i] = temp; // storing in array.
             count++;
         }
         else
@@ -31,16 +31,19 @@ int main()
     int c;
     for (c = 0; c < count; c++)
     {
-        cout <<array[c];
+        cout <<array[c]; // print credit card number that is entered
     }
     cout << "\n";
-// SUM 1
-    int sum1 = total1(array,count);
+
+    // SUM 1
+    int sum1 = total1(array,count); // function is also printing sum numbers
     cout << "Sum 1 is " << sum1 << "\n";
+
     // SUM 2 
-    int sum2 = total2(array,count);
+    int sum2 = total2(array,count); // function is also printing sum numbers
     cout << "Sum 2 is " <<  sum2 << "\n";
-    // CheckSum
+
+    // CheckSum 
     sumTotal = sum1 + sum2;
     sumTotal = sumTotal * 9;
     checksum = sumTotal % 10;
@@ -58,7 +61,7 @@ int main()
 }
 
 
-int total1(int array[],int arraySize)
+int total1(int array[],int arraySize) // Function to get sum1 numbers and sum1.
 {
     int total1=0;
     int i = 0;
@@ -85,16 +88,13 @@ int total1(int array[],int arraySize)
     }
     for (i = count; i > 0; i--)
     {
-        cout << temp[i] << " ";
-
-
+        cout << temp[i] << " ";// printing sum1 numbers
     }
     cout <<  "\n";   
     return total1;
 }
 
-
-int total2(int array[],int arraySize)
+int total2(int array[],int arraySize) // Function to get sum2 numbers and sum2.
 {
     int total2= 0;
     int i = 0;
@@ -107,7 +107,7 @@ int total2(int array[],int arraySize)
         count++;
         total2 = total2 + array[i]; 
         }
-    for (i = count; i > 0; i--)
+    for (i = count; i > 0; i--) // printing sum2 numbers
     {
         cout << temp[i] << " ";
     }

@@ -1,12 +1,11 @@
 #include <iostream>
-#include <cstdlib>
 #include <iomanip>
 #include <ctime>
 
 using namespace std;
 
 
-int Random();
+int Random(); //Function Prototype
 
 
 int main() 
@@ -20,13 +19,13 @@ int main()
 	const int columnSize = 6;
 	const int rowSize = 6;
 	int diagonal[6];
-	int faces[columnSize][rowSize];
+	int faces[columnSize][rowSize]; // two dimensional array
 	for (int row = 0; row < 6; row++)
 	{
 		for (int column = 0; column < 6; column++)
 		faces[row][column] = 0;
 	}
-	for (int i = 0; i < 50000; i++) 
+	for (int i = 0; i < 50000; i++) // runs 50000 times
 	{ 
 		dice1 = Random();
 		dice2 = Random();
@@ -64,7 +63,7 @@ int main()
 				for(j=0;j<6;j++)
 				{
 					if(i==j)
-					sum=sum+faces[i][j];
+					sum=sum+faces[i][j]; // total of diagonals
 				}
 			}
 			cout << sum << "\n";
@@ -78,13 +77,12 @@ int main()
 
 }
 
-
 int Random()
 {
     int number;
     static int flag = 1; //static so only meets the condition once.
 
-    if (flag == 1) // this ensures the function gives different random numbers everytime.
+    if (flag == 1) 
     {
         srand(time(0)); 
         flag = 0;       

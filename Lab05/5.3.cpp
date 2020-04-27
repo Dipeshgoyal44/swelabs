@@ -14,10 +14,10 @@ int main()
 	int guess, attempts = 0;
     char answer = 'y';
     // Prompts User
+    do // loop to keep running until users chose not to play.
+	{
 	cout << "I have a number between 1 and 1000.\n";
     cout << "Can you guess my number?\n";
-	do // loop to keep running until users chose not to play.
-	{
 		cout << "Enter a guess between 1 and 1000 : ";
 		cin >> guess;
 		attempts++;

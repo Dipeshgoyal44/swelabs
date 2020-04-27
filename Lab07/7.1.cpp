@@ -14,7 +14,7 @@ int main()
     float min=10000000; // for the condition to work
 
     fp = fopen("price.dat", "r");
-    if (fp == NULL)
+    if (fp == NULL) // if file not found
     {
         cout << " Error in opening the file....\n";
         return 0;
@@ -30,10 +30,10 @@ int main()
         if (min > b)
             min = b;
     }
-    printf("Number of price readings: %d \n", count);
-    printf("Maximum price: %.2f \n", max);
-    printf("Minimum price: %.2f \n", min);
-    printf("Average price: %.2f \n", total / count);
+    cout << "Number of price readings: "<< count << "\n";
+    cout << "Maximum price: " << max << "\n";
+    cout << "Minimum price: " << min << "\n";
+    cout << "Average price: " << total / count << "\n";
 
     
     fp = fopen("output.dat", "a");
