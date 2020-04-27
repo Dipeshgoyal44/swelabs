@@ -68,6 +68,11 @@ int main()
 				}
 			}
 			cout << sum << "\n";
+			if(sum > 8350){
+			cout << sum << " is greater than 8350, the player wins the game !!!\n";
+			}else if( sum < 8350){
+			cout << sum << " is less than 8350, the player lost the game !!!\n";
+			}
 
 	return 0;
 
