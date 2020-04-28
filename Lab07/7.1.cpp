@@ -1,46 +1,58 @@
 #include <iostream>
-#include <fstream> // file open header file
-#include <cstdio> // c file 
+#include <fstream> 
+#include <iomanip>
 
 using namespace std;
 
-
 int main()
-
 {
-    FILE *fp;
-    int count, i,a;
-    float total, max , average, b;
-    float min=10000000; // for the condition to work
+    string filename = "price.dat";
+    int descrip;
+    double price = 0;
+    int count = 0;
+    double total = 0;
+    float max = 0;
+    double min = 10000000; // for condition to satisfy
+    int i;
 
-    fp = fopen("price.dat", "r");
-    if (fp == NULL) // if file not found
+    ifstream inFile;
+
+    inFile.open(filename.c_str());
+
+    if (inFile.fail()) // if file doesnt open successfully
     {
-        cout << " Error in opening the file....\n";
+        cout << "The File was not opened successfully\n";
+        cout << "Please check that the file currently exists\n";
         return 0;
     }
-    fscanf(fp, "%d", &count);
+    inFile >> count; // storing number of records in count
 
-    for (i = 0; i < count; i++)
+    for (i = 0; i < count; i++) // for loop to get the total, min and max
     {
-        fscanf(fp, "%d %f", &a, &b);
-        total = total + b;
-        if (max < b)
-            max = b;
-        if (min > b)
-            min = b;
+        inFile >> descrip >> price;
+        total = total + price; // total for average
+        if (max < price) // condition for max
+            max = price;
+        if (min > price) // condition for min
+            min = price;
     }
-    cout << "Number of price readings: "<< count << "\n";
-    cout << "Maximum price: " << max << "\n";
+    inFile.close(); // file close
+
+    // display output in terminal
+    cout << "Number of price readings: " << count << "\n";
+    cout <<  "Maximum price: " << setprecision(2) << fixed  << max << "\n";
     cout << "Minimum price: " << min << "\n";
     cout << "Average price: " << total / count << "\n";
 
-    
-    fp = fopen("output.dat", "a");
-    fprintf(fp,"Number of price readings: %d \n", count);
-    fprintf(fp,"Maximum price: %.2f \n", max);
-    fprintf(fp,"Minimum price: %.2f \n", min);
-    fprintf(fp,"Average price: %.2f \n", total / count);
+    ofstream outFile;
+    //write output to file.
+    outFile.open("output.dat");
+    outFile << "Number of price readings: " << count << "\n";
+    outFile << "Maximum price: " << setprecision(2) << fixed  << max << "\n";
+    outFile << "Minimum price: " << min << "\n";
+    outFile << "Average price: " << total / count << "\n";
+
+    outFile.close(); // close output file.
 
     return 0;
 }
