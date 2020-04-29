@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -13,14 +14,15 @@ typedef struct album
     string tracklocation;
 };
 
-void add_album();
+int add_album(vector <album> add);
 void print_all_album();
 void select_track_to_play();
 
 int main()
 {
+    vector <album> add;
     int menu =0;
-
+    
     do {
         cout << "\n(1)Enter 1 to add an album\n" <<
         "(2)Enter 2 to print the album details.\n" <<
@@ -30,8 +32,9 @@ int main()
 
     switch (menu)
     {
-        
     case 1:
+    cout << "Case 1\n";
+    add_album(add);
 
         break;
 
@@ -51,6 +54,20 @@ int main()
         cout << "Error! Invalid Selection";
         break;
     }}while(menu != 4);
+}
 
+int add_album(vector <album> add)
+{
+    int newalbum = 0;
+    string temp;
+    
+    cout << "Enter album name \n";
+    cin >> temp;
+
+    for (int i = 1 ; i <= 1 + newalbum; i++){ 
+        add.album_name.insert(i,temp);
+    }
+    cout << add[1].album_name << endl;
+    newalbum++;
 
 }
