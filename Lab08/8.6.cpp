@@ -3,6 +3,7 @@
 #include <time.h>
 
 using namespace std;
+
 int calcVolts(int *current, int *resistance, int *voltage);
 void dispVolts(int *current, int *resistance, int *voltage);
 
