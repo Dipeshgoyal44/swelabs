@@ -5,7 +5,6 @@
 using namespace std;
 int calcVolts(int *current, int *resistance, int *voltage);
 void dispVolts(int *current, int *resistance, int *voltage);
-int getRandomNumber();
 
 
 int main()
@@ -41,14 +40,4 @@ void dispVolts(int *current, int *resistance, int *voltage)
     {
         cout << current[i] << setw(15) << resistance[i] << setw(19) << voltage[i] << "\n";
     }
-}
-int getRandomNumber()
-{
-	int randomNumber = 0; 
-	
-	srand(time(0)); //Seed the random system
-
-	randomNumber = rand() % 1500; //keep random numbers under 1500
-
-	return randomNumber;
 }
