@@ -29,22 +29,23 @@ int main()
 void reorder(int *a , int *b, int *c)
 {
     int temp = 0;
-    if(*a>*b && *a>*c)
+    if(*a>*c)
     {
         temp=*c;
         *c=*a;
         *a=temp;
-        if(*a>*b)
+    }
+    if(*a>*b)
         {
             temp=*b;
             *b=*a;
             *a=temp;
         }
-    }
-    if(*b>*a && *b>*c)
+    if(*b>*c)
     {
         temp=*c;
         *c=*b;
         *b=temp;
+
     }
-}
+    }
