@@ -71,3 +71,14 @@ int add_album(vector <album> add)
     newalbum++;
 
 }
+
+void print_all_album()
+{
+
+
+}
+void select_track_to_play()
+{
+
+    
+}
