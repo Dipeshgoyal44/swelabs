@@ -10,6 +10,7 @@ int main()
     int a = 9;
     int b = 6;
     int c = 7;
+    
     cout << "Enter the value for A \n";
     cin >> a;
     cout << "Enter the value for B \n";
@@ -26,6 +27,7 @@ int main()
 
 }
 
+//Function with pointers
 void reorder(int *a , int *b, int *c)
 {
     int temp = 0;
