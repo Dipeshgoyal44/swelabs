@@ -8,7 +8,6 @@ using namespace std;
 int calcVolts(int *current, int *resistance, int *voltage);
 void dispVolts(int *current, int *resistance, int *voltage);
 
-
 int main()
 {
     int current[10];
@@ -26,6 +25,7 @@ int main()
 
     return 0;
 }
+
 int calcVolts(int *current, int *resistance, int *voltage)
 {
     for (int i = 0; i < 10; i++)
@@ -33,6 +33,7 @@ int calcVolts(int *current, int *resistance, int *voltage)
         voltage[i] = current[i] * resistance[i];
     }
 }
+
 void dispVolts(int *current, int *resistance, int *voltage)
 {
     cout << "Current";
