@@ -4,6 +4,7 @@
 
 using namespace std;
 
+//Function Protypes
 int calcVolts(int *current, int *resistance, int *voltage);
 void dispVolts(int *current, int *resistance, int *voltage);
 
