@@ -2,7 +2,7 @@
 
 using namespace std;
 
-
+//Function Prototype
 void reorder(int *a , int *b, int *c);
 
 int main()
