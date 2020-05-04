@@ -59,10 +59,24 @@ int main()
 int add_album(vector <album> add)
 {
     int newalbum = 0;
-    string temp;
+    string album_name ;
+    string kind;
+    int track_number;
+    string tracks[5];
+    string tracklocation;
     
     cout << "Enter album name \n";
-    cin >> temp;
+    cin >> album_name;
+    cout << "Enter genre 0 ->  pop, 1 -> Jazz, 2 -> Classic \n";
+    cin >> kind;
+    cout << "Enter number of tracks in the album \n";
+    cin >> track_number;
+    cout << "Enter the names for these 3 tracks\n";
+    for (int i = 0; i < track_number; i++) {
+        cin >> tracks[i];
+    }
+    cout << "Enter the file location of these tracks\n";
+    cin >> tracklocation;
 
     for (int i = 1 ; i <= 1 + newalbum; i++){ 
         add.album_name.insert(i,temp);
