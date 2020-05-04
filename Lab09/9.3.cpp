@@ -8,7 +8,7 @@ enum genre{pop, Jazz, Classic};
 typedef struct album
 {
     string album_name;
-    genre kind;
+    int kind;
     int track_number;
     string tracks[5];
     string tracklocation;
@@ -33,7 +33,6 @@ int main()
     switch (menu)
     {
     case 1:
-    cout << "Case 1\n";
     add_album(add);
 
         break;
@@ -60,7 +59,7 @@ int add_album(vector <album> add)
 {
     int newalbum = 0;
     string album_name ;
-    string kind;
+    int kind;
     int track_number;
     string tracks[5];
     string tracklocation;
@@ -77,23 +76,17 @@ int add_album(vector <album> add)
     }
     cout << "Enter the file location of these tracks\n";
     cin >> tracklocation;
-
-    for (int i = 1 ; i <= 1 + newalbum; i++){ 
-        add.album_name.insert(i,temp);
-    }
-    cout << add[1].album_name << endl;
-    newalbum++;
-
+    add.push_back({album_name, kind, track_number,tracklocation}); 
 }
 
-void print_all_album()
-{
+// void print_all_album()
+// {
 
 
-}
+// }
 
-void select_track_to_play()
-{
+// void select_track_to_play()
+// {
 
     
-}
+// }
