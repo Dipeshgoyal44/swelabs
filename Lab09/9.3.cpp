@@ -5,22 +5,22 @@ using namespace std;
 
 enum genre{pop, Jazz, Classic};
 
-struct album
+typedef struct album
 {
     string album_name;
     int kind;
     int track_number;
     string tracks[5];
     string tracklocation;
-};
+}album;
 
-int add_album(vector <struct album> add);
+int add_album(vector <album> add);
 void print_all_album();
 void select_track_to_play();
 
 int main()
 {
-    vector <struct album> add;
+    vector <album> add;
     int menu =0;
     
     do {
@@ -55,7 +55,7 @@ int main()
     }}while(menu != 4);
 }
 
-int add_album(vector <struct album> add)
+int add_album(vector <album> add)
 {
     album store;
     cout << "Enter album name \n";
