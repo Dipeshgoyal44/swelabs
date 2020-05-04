@@ -58,32 +58,33 @@ int main()
 int add_album(vector <album> add)
 {
     int newalbum = 0;
-    string album_name ;
-    int kind;
-    int track_number;
-    string tracks[5];
-    string tracklocation;
+    album store;
+    // string album_name ;
+    // int kind;
+    // int track_number;
+    // string tracks[5];
+    // string tracklocation;
     
     cout << "Enter album name \n";
-    cin >> album_name;
+    cin >> store.album_name;
     cout << "Enter genre 0 ->  pop, 1 -> Jazz, 2 -> Classic \n";
-    cin >> kind;
+    cin >> store.kind;
     cout << "Enter number of tracks in the album \n";
-    cin >> track_number;
-    cout << "Enter the names for these 3 tracks\n";
-    for (int i = 0; i < track_number; i++) {
-        cin >> tracks[i];
+    cin >> store.track_number;
+    cout << "Enter the names for these " << store.track_number << " tracks\n";
+    for (int i = 0; i < store.track_number; i++) {
+        cin >> store.tracks[i];
     }
     cout << "Enter the file location of these tracks\n";
-    cin >> tracklocation;
-    add.push_back({album_name, kind, track_number,tracklocation}); 
+    cin >> store.tracklocation;
+    add.push_back({store.album_name, store.kind, store.track_number,store.tracklocation}); 
 }
 
-// void print_all_album()
+// void print_all_album(vector <album> add)
 // {
-
-
+    
 // }
+
 
 // void select_track_to_play()
 // {
