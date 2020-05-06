@@ -61,7 +61,7 @@ int add_album(vector <album> add)
     cout << "Enter album name \n";
     cin >> store.album_name;
     cout << "Enter genre 0 ->  pop, 1 -> Jazz, 2 -> Classic \n";
-    cin >> store.kind;
+    //cin >> store.kind; enum
     cout << "Enter number of tracks in the album \n";
     cin >> store.track_number;
     cout << "Enter the names for these " << store.track_number << " tracks\n";
