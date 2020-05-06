@@ -8,7 +8,7 @@ enum genre{pop, Jazz, Classic};
 typedef struct album
 {
     string album_name;
-    int kind;
+    genre kind;
     int track_number;
     string tracks[5];
     string tracklocation;
