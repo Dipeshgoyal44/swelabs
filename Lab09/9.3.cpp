@@ -3,9 +3,10 @@
 
 using namespace std;
 
-enum genre{pop, Jazz, Classic};
+enum genre{pop, Jazz, Classic}; // Enumeration
 
-typedef struct album
+//struct
+typedef struct album // typdef so dont have to use struct everytime
 {
     string album_name;
     genre kind;
@@ -14,6 +15,7 @@ typedef struct album
     string tracklocation;
 }album;
 
+//Function prototypes
 int add_album(vector <album> add);
 void print_all_album();
 void select_track_to_play();
