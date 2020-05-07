@@ -22,10 +22,10 @@ void select_track_to_play();
 
 int main()
 {
-    vector <album> add;
+    vector <album> add; 
     int menu =0;
     
-    do {
+    do { //switch menu 
         cout << "\n(1)Enter 1 to add an album\n" <<
         "(2)Enter 2 to print the album details.\n" <<
         "(3)Enter 3 to play a track from an album.\n" <<
