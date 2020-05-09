@@ -3,7 +3,7 @@
 
 using namespace std;
 
-enum genre{pop, Jazz, Classic}; // Enumeration
+enum genre{ pop, Jazz, Classic}; // Enumeration
 
 //struct
 typedef struct album // typdef so dont have to use struct everytime
@@ -16,7 +16,7 @@ typedef struct album // typdef so dont have to use struct everytime
 }album;
 
 //Function prototypes
-int add_album(vector <album> add);
+int add_album(vector <album> store);
 void print_all_album();
 void select_track_to_play();
 
@@ -57,23 +57,30 @@ int main()
     }}while(menu != 4);
 }
 
-int add_album(vector <album> add)
+int add_album(vector <album> store(4))
 {
-    album store;
+    string album_name;
+    genre kind;
+    int track_number;
+    string tracks[5];
+    string tracklocation;
+
     cout << "Enter album name \n";
-    cin >> store.album_name;
-    cout << "Enter genre 0 ->  pop, 1 -> Jazz, 2 -> Classic \n";
+    cin >> album_name;
+    //cout << "Enter genre 0 ->  pop, 1 -> Jazz, 2 -> Classic \n";
     //cin >> store.kind; enum
     cout << "Enter number of tracks in the album \n";
-    cin >> store.track_number;
-    cout << "Enter the names for these " << store.track_number << " tracks\n";
-    for (int i = 0; i < store.track_number; i++) {
-        cin >> store.tracks[i];
+    cin >> track_number;
+    cout << "Enter the names for these " << track_number << " tracks\n";
+    for (int i = 0; i < track_number; i++) {
+        cin >> tracks[i];
     }
-    
     cout << "Enter the file location of these tracks\n";
-    cin >> store.tracklocation;
-    add.push_back({store.album_name, store.kind, store.track_number,store.tracklocation}); 
+    cin >> tracklocation;
+    store.album_name[0] = album_name;
+
+    add.push_back(store); 
+    cout << store[0].album_name;
 }
 
 // void print_all_album(vector <album> add)
