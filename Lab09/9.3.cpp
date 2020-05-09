@@ -70,6 +70,7 @@ int add_album(vector <album> add)
     for (int i = 0; i < store.track_number; i++) {
         cin >> store.tracks[i];
     }
+    
     cout << "Enter the file location of these tracks\n";
     cin >> store.tracklocation;
     add.push_back({store.album_name, store.kind, store.track_number,store.tracklocation}); 
