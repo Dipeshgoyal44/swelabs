@@ -27,15 +27,15 @@ typedef struct
 //function protypes
 int read_file(student_tag *s, int *temp);
 void display_students(student_tag *s, int temp);
+int search_student(student_tag *s, int *temp, string name);
 //void find_maximum(student_tag *s, int temp);
 void update_file();
 
 int main()
 {
-    FILE *fp;
     student_tag student_array[100]; //array of size 100 of datatype student
     int temp = 0;
-
+    string name;
     int c; //switch statement to display menu
     do
     {
@@ -60,6 +60,9 @@ int main()
             
             break;
         case 3:
+            cout << "Input name: ";
+            cin >> name;
+            search_student(student_array, &temp,name);
             break;
         case 4:
             read_file(student_array, &temp);
@@ -159,6 +162,38 @@ void display_students(student_tag *s, int temp) //display function
         cout << "------------------------\n\n";
     }
 }
+
+int search_student(student_tag *s, int *temp, string name)
+{
+    int choice;
+    cout << "1.Linear Search\n";
+    cout << "2.Binary Search\n";
+    cin >> choice;
+    cout << "Input choice: " << choice << "\n";
+     switch (choice) //c is storing the user input for choice
+        {
+        case 1:
+
+            break;
+        case 2:
+            cout << "Can't perform binary search on unsorted array\n";
+            break;
+        default:
+            cout << "Please try again! Your input is invalid!\n";
+            break;
+        }
+
+
+
+
+
+
+}
+
+
+
+
+
 
 // void find_maximum(student_tag *s, int temp) //display function
 // {
