@@ -66,9 +66,9 @@ int main()
             //find_maximum(student_array, temp);
             break;
         case 5:
-        read_file(student_array, &temp);
-        update_file();
-        read_file(student_array, &temp);
+            read_file(student_array, &temp);
+            update_file();
+            read_file(student_array, &temp);
             break;
         case 6:
             printf("SEE YOU LATER! \n");
@@ -108,7 +108,6 @@ int read_file(student_tag *s, int *temp) //readfile function
         i++;
     }
     *temp = i; // temp has the same value of i to check how many records of data is in the file
-
     inFile.close(); //close file
 }
 
@@ -141,7 +140,6 @@ void update_file() //update function
 
 void display_students(student_tag *s, int temp) //display function
 {
-    
     int i;
     cout << "-----STUDENTS' LIST-----\n\n";
     for (i = 0; i < temp - 1 ; i++)
@@ -159,7 +157,6 @@ void display_students(student_tag *s, int temp) //display function
         double average =  total/s[i].course_info.no_of_units;
         cout << "Average : " << setprecision(2) << fixed << average << "\n";
         cout << "------------------------\n\n";
-
     }
 }
 
