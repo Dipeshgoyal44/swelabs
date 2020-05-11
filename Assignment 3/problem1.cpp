@@ -24,7 +24,56 @@ typedef struct
     course_tag course_info;
 }student_tag;
 
-int readFile(student_tag *s, int *temp) //readfile function
+//function protypes
+int read_file(student_tag *s, int *temp);
+void display_students(student_tag *s, int temp);
+
+int main()
+{
+    FILE *fp;
+    student_tag student_array[100]; //array of size 100 of datatype student
+    int temp = 0;
+
+    int c; //switch statement to display menu
+    do
+    {
+        cout << "----MENU----\n";
+        cout << "1.Display student's details\n";
+        cout << "2.Sort the student's details\n";
+        cout << "3.Search for a particular student's mark\n";
+        cout << "4.Display student's details\n";
+        cout << "5.Add new student to the record\n";
+        cout << "6.Quit program\n";
+        cin >> c;
+        cout << "Your choice: " << c << "\n\n";
+       // if(c==(int)c && c <= 6 && c >= 1){
+            
+        switch (c) //c is storing the user input for choice
+        {
+        case 1:
+            read_file(student_array, &temp); // reads the file
+            display_students(student_array, temp); // displays the file contents
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+        case 6:
+            printf("SEE YOU LATER! \n");
+            exit(1);
+            break;
+        default:
+            cout << "Please try again! Your input is invalid!\n";
+            break;
+        }
+    } while (c != 6); //while loop keeps running till 4 is chosen as an option.
+}
+
+int read_file(student_tag *s, int *temp) //readfile function
 {
     string filename = "students.txt";
     ifstream inFile;
@@ -74,7 +123,7 @@ int readFile(student_tag *s, int *temp) //readfile function
 //     fclose(fp); //closing
 // }
 
-void displayStudents(student_tag *s, int temp) //display function
+void display_students(student_tag *s, int temp) //display function
 {
     
     int i;
@@ -98,46 +147,3 @@ void displayStudents(student_tag *s, int temp) //display function
     }
 }
 
-int main()
-{
-    FILE *fp;
-    student_tag student_array[100]; //array of size 100 of datatype student
-    int temp = 0;
-
-    int c; //switch statement to display menu
-    do
-    {
-        cout << "----MENU----\n";
-        cout << "1.Display student's details\n";
-        cout << "2.Sort the student's details\n";
-        cout << "3.Search for a particular student's mark\n";
-        cout << "4.Display student's details\n";
-        cout << "5.Add new student to the record\n";
-        cout << "6.Quit program\n";
-        cin >> c;
-        cout << "Your choice: " << c << "\n";
-
-        switch (c) //c is storing the user input for choice
-        {
-        case 1:
-            readFile(student_array, &temp); // reads the file
-            displayStudents(student_array, temp); // displays the file contents
-            break;
-        case 2:
-            break;
-        case 3:
-            break;
-        case 4:
-            break;
-        case 5:
-            break;
-        case 6:
-            printf("SEE YOU LATER! \n");
-            exit(1);
-            break;
-        default:
-            cout << "Please try again! Your input is invalid!\n";
-            break;
-        }
-    } while (c != 4); //while loop keeps running till 4 is chosen as an option.
-}
