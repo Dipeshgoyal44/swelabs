@@ -181,10 +181,18 @@ void search_student(student_tag *s, int temp, string name)
     switch (choice) //c is storing the user input for choice
     {
     case 1:
+
+    for (i = 0; i < temp; i++){
+            if (name != s[i].student_info.name){
+            check = 1;
+            }}
+        if(check == 1){
+            cout << "Student with name " << name << " is not in the list\n\n";
+        }
+
         for (i = 0; i < temp; i++)
             if (s[i].student_info.name == name)
             {
-                check = 1;
                 double total = 0;
                 cout << "Name: " << s[i].student_info.name << "\n";
                 cout << "ID: " << s[i].student_info.id << "\n";
@@ -200,7 +208,7 @@ void search_student(student_tag *s, int temp, string name)
                 cout << "------------------------\n\n";
                 cout << "-----> SEARCHING FINISHED!!!!\n\n";
             }else if(check != 1) {
-                //cout << "Student with name " << name << " is not in the list\n\n"; THIS sht not working
+                cout << "Student with name " << name << " is not in the list\n\n"; 
             }
 
         break;
