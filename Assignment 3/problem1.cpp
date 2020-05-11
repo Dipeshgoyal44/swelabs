@@ -27,7 +27,8 @@ typedef struct
 //function protypes
 int read_file(student_tag *s, int *temp);
 void display_students(student_tag *s, int temp);
-void find_maximum(student_tag *s, int temp);
+//void find_maximum(student_tag *s, int temp);
+void update_file();
 
 int main()
 {
@@ -62,9 +63,12 @@ int main()
             break;
         case 4:
             read_file(student_array, &temp);
-            find_maximum(student_array, temp);
+            //find_maximum(student_array, temp);
             break;
         case 5:
+        read_file(student_array, &temp);
+        update_file();
+        read_file(student_array, &temp);
             break;
         case 6:
             printf("SEE YOU LATER! \n");
@@ -108,24 +112,32 @@ int read_file(student_tag *s, int *temp) //readfile function
     inFile.close(); //close file
 }
 
-// void updateFile(FILE *fp) //update function
-// {
-//     student_tag a;
-//     fp = fopen("grades.txt", "a"); //opening in append mode
-//     printf("\n Enter the details \n");
-//     printf("\n Enter the name:  \n");
-//     fflush(stdin);
-//     gets(a.name);
-//     printf("\n Enter the ID:  \n");
-//     fflush(stdin);
-//     scanf("%d", &a.id);
-//     printf("\n Enter the Marks:  \n");
-//     fflush(stdin);
-//     scanf("%f", &a.mark);
-//     fprintf(fp, "%s %d %.2f \n", a.name, a.id, a.mark); //printing in file
-//     printf("\nData Stored Successfully ..\n");
-//     fclose(fp); //closing
-// }
+void update_file() //update function
+{
+    ofstream outFile;
+    student_tag s;
+    outFile.open("students.txt",ios::app);
+    cout << "-----UPDATE DATA-----\n\n";
+    cout << "Enter name: ";
+    cin >>  s.student_info.name;
+    outFile << s.student_info.name << "\n";
+    cout << "Enter ID: ";
+    cin >>  s.student_info.id;
+    outFile << s.student_info.id << "\n";
+    cout << "Enter course name: ";
+    cin >>  s.course_info.course_name;
+    outFile << s.course_info.course_name << "\n";
+    cout << "Enter number of units: ";
+    cin >>  s.course_info.no_of_units;
+    outFile << s.course_info.no_of_units << "\n";
+    cout << "Enter " << s.course_info.no_of_units <<" marks: \n";
+    for (int j = 0; j < s.course_info.no_of_units; j++) {
+        cin >> s.course_info.marks[j];
+        outFile << s.course_info.marks[j] << "\n";
+        }
+    cout << "\n\n-----> UPDATE FINISHED!!!!\n\n";
+    outFile.close(); //close file
+}
 
 void display_students(student_tag *s, int temp) //display function
 {
