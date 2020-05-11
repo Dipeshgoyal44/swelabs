@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#define SIZE 100;
 
 using namespace std;
 
@@ -25,7 +26,7 @@ typedef struct
 void readFile(FILE *fp, student_tag *s, int *temp) //readfile function
 {
 
-    fp = fopen("grades.txt", "r");
+    fp = fopen("students.txt", "r");
 
     if (fp == NULL)
     {
