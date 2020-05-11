@@ -27,6 +27,7 @@ typedef struct
 //function protypes
 int read_file(student_tag *s, int *temp);
 void display_students(student_tag *s, int temp);
+void find_maximum(student_tag *s, int temp);
 
 int main()
 {
@@ -55,10 +56,13 @@ int main()
             display_students(student_array, temp); // displays the file contents
             break;
         case 2:
+            
             break;
         case 3:
             break;
         case 4:
+            read_file(student_array, &temp);
+            find_maximum(student_array, temp);
             break;
         case 5:
             break;
@@ -147,3 +151,22 @@ void display_students(student_tag *s, int temp) //display function
     }
 }
 
+// void find_maximum(student_tag *s, int temp) //display function
+// {
+//     int i;
+//     double max;
+//     for (i = 0; i < temp - 1 ; i++)
+//     { //loop runs till the count is same as the value of temp, which is the end of the file.
+//         double total = 0;
+//         double average = 0;
+//         for (int j = 0; j < s[i].course_info.no_of_units; j++) {
+//         cout << s[i].course_info.marks[j] << "\n";
+//         total = total + s[i].course_info.marks[j];
+//         }
+//         average  =  total/s[i].course_info.no_of_units;
+//         double average2 = average;
+//         if (average > average2) // condition for max
+//             max = average;
+//             cout << max << "\n";
+//     }
+// }
