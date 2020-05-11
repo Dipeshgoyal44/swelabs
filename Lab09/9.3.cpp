@@ -57,7 +57,7 @@ int main()
     }}while(menu != 4);
 }
 
-int add_album(vector <album> store(4))
+int add_album(vector <album> store)
 {
     string album_name;
     genre kind;
@@ -77,9 +77,9 @@ int add_album(vector <album> store(4))
     }
     cout << "Enter the file location of these tracks\n";
     cin >> tracklocation;
-    store.album_name[0] = album_name;
+   // store.album_name[0] = album_name;
 
-    add.push_back(store); 
+    //add.push_back(store); 
     cout << store[0].album_name;
 }
 
