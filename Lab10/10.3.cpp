@@ -1,13 +1,14 @@
 #include <iostream>
+#include <ctime>
 
 using namespace std;
 
-struct Node
+typedef struct Node
 {
     int data;
-    struct Node *next;
-};
-struct Node *head = NULL;
+    Node *next;
+}Node;
+Node *head = NULL;
 
 //function protypes
 void insert(int new_data);
@@ -17,6 +18,7 @@ void BubbleSort(int array[]);
 int main()
 {
     int array[10];
+    srand(time(NULL)); 
     
     for (int i = 0; i < 10; i++)
     {
@@ -37,14 +39,14 @@ int main()
 
 void insert(int new_data)
 {
-    struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
+    Node *new_node = (Node *)malloc(sizeof(Node));
     new_node->data = new_data;
     new_node->next = head;
     head = new_node;
 }
 void display()
 {
-    struct Node *ptr;
+    Node *ptr;
     ptr = head;
     while (ptr != NULL)
     {
