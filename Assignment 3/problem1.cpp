@@ -26,6 +26,7 @@ typedef struct
 } student_tag;
 
 //function protypes
+int menu();
 int read_file(student_tag *s, int *temp);
 void display_students(student_tag *s, int temp);
 void search_student(student_tag *s, int temp, string name);
@@ -41,15 +42,8 @@ int main()
     int c; //switch statement to display menu
     do
     {
-        cout << "----MENU----\n";
-        cout << "1.Display student's details\n";
-        cout << "2.Sort the student's details\n";
-        cout << "3.Search for a particular student's mark\n";
-        cout << "4.Display student's details\n";
-        cout << "5.Add new student to the record\n";
-        cout << "6.Quit program\n";
-        cin >> c;
-        cout << "Your choice: " << c << "\n\n";
+        c = menu();
+        cout << "\nYour choice: " << c << "\n\n";
         // if(c==(int)c && c <= 6 && c >= 1){
 
         switch (c) //c is storing the user input for choice
@@ -59,7 +53,8 @@ int main()
             display_students(student_array, temp); // displays the file contents
             break;
         case 2:
-            read_file(student_array, &temp); 
+            read_file(student_array, &temp);
+            sort_details();
             break;
         case 3:
             cout << "Input name: ";
@@ -86,6 +81,21 @@ int main()
             break;
         }
     } while (c != 6); //while loop keeps running till 4 is chosen as an option.
+}
+
+
+int menu()
+{
+    int c;
+        cout << "----MENU----\n";
+        cout << "1.Display student's details\n";
+        cout << "2.Sort the student's details\n";
+        cout << "3.Search for a particular student's mark\n";
+        cout << "4.Display student's details\n";
+        cout << "5.Add new student to the record\n";
+        cout << "6.Quit program\n";
+        cin >> c;
+        return c;
 }
 
 int read_file(student_tag *s, int *temp) //readfile function
@@ -241,14 +251,15 @@ void sort_details()
     default:
         cout << "Please try again! Your input is invalid!\n";
         break;
-    }} while (choice != 1 || 2);
-
-
-
-
-
-
+    }} while (choice < 1 || choice > 2);
 }
+
+
+
+
+
+
+
 
 // void find_maximum(student_tag *s, int temp) //display function
 // {
