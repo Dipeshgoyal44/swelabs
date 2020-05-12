@@ -29,6 +29,7 @@ typedef struct
 int read_file(student_tag *s, int *temp);
 void display_students(student_tag *s, int temp);
 void search_student(student_tag *s, int temp, string name);
+void sort_details();
 //void find_maximum(student_tag *s, int temp);
 void update_file();
 
@@ -58,7 +59,7 @@ int main()
             display_students(student_array, temp); // displays the file contents
             break;
         case 2:
-
+            read_file(student_array, &temp); 
             break;
         case 3:
             cout << "Input name: ";
@@ -68,6 +69,7 @@ int main()
             break;
         case 4:
             read_file(student_array, &temp);
+            sort_details();
             //find_maximum(student_array, temp);
             break;
         case 5:
@@ -181,7 +183,6 @@ void search_student(student_tag *s, int temp, string name)
     switch (choice) //c is storing the user input for choice
     {
     case 1:
-
     for (i = 0; i < temp; i++){
             if (name != s[i].student_info.name){
             check = 1;
@@ -189,7 +190,6 @@ void search_student(student_tag *s, int temp, string name)
         if(check == 1){
             cout << "Student with name " << name << " is not in the list\n\n";
         }
-
         for (i = 0; i < temp; i++)
             if (s[i].student_info.name == name)
             {
@@ -210,7 +210,6 @@ void search_student(student_tag *s, int temp, string name)
             }else if(check != 1) {
                 cout << "Student with name " << name << " is not in the list\n\n"; 
             }
-
         break;
     case 2:
         cout << "Can't perform binary search on unsorted array\n\n";
@@ -219,6 +218,36 @@ void search_student(student_tag *s, int temp, string name)
         cout << "Please try again! Your input is invalid!\n";
         break;
     }
+}
+
+
+void sort_details()
+{
+    int choice;
+    int i = 0;
+    do {
+    cout << "------SORTING------\n";
+    cout << "1.Sort by name\n";
+    cout << "2.Sort by average mark\n";
+    cin >> choice;
+    cout << "Input choice: " << choice << "\n";
+     switch (choice) //c is storing the user input for choice
+    {
+    case 1:
+        break;
+    case 2:
+        cout << "Can't perform binary search on unsorted array\n\n";
+        break;
+    default:
+        cout << "Please try again! Your input is invalid!\n";
+        break;
+    }} while (choice != 1 || 2);
+
+
+
+
+
+
 }
 
 // void find_maximum(student_tag *s, int temp) //display function

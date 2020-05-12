@@ -3,41 +3,43 @@
 
 using namespace std;
 
-typedef struct company_detail 
+typedef struct 
 {
     string company_id;
     string company_name;
-};
+}company_detail;
 
-typedef struct Emp
+typedef struct 
 {
     string emp_name;
     string emp_id;
     double salary;
     company_detail cmp_detail;
-};
+}Emp;
 
 Emp get_data();
 void print_data(Emp a[]);
-double get_average( Emp a[], int temp);
+double get_average( Emp a[], string y);
 double get_salary( Emp y[],string x);
 
 int main()
 {
     Emp employee[5];    
     string x;
+    string y;
     int i;
-    for (i = 0; i < 2; i++)
+    for (i = 0; i < 5; i++)
     {
         employee[i] = get_data();
     }
     print_data(employee);
-    get_average(employee, 5);
-    printf("\n The Average Salary is: %.2f\n", get_average(employee, 5));
-    cout << "Enter a name: ";
+    cout << "\nEnter a name: ";
     cin >> x;
     cout << "\n";
     get_salary(employee, x);
+    cout << "Enter the company name to get average salary: ";
+    cin >> y;
+    cout << "The average salary for this company is " << get_average(employee,y);
 }
 
 Emp get_data()
@@ -71,13 +73,18 @@ void print_data(Emp a[])
         cout <<"Company Name: " << a[i].cmp_detail.company_name << endl;
     }
 }
-double get_average( Emp a[], int temp)
+double get_average( Emp a[], string y)
 {
     double sum = 0;
     int i;
-    for (i = 0; i < temp; i++)
+    double temp = 0;
+    for (i = 0; i < 5; i++)
     {
-        sum += a[i].salary;
+        if (a[i].cmp_detail.company_name == y)
+        {
+            sum += a[i].salary;
+            temp++;
+        }
     }
     temp = sum / temp;
     return temp;
@@ -85,13 +92,12 @@ double get_average( Emp a[], int temp)
 
 double get_salary( Emp a[],string x)
 {
-    int i, temp = 0;
+    int i;
     for (i = 0; i < 5; i++)
     {
         if (a[i].emp_name == x)
         {
-            temp = 1;
-            cout << "The Salary of this employee is: " <<  a[i].salary << endl;
+            cout << "The Salary of this employee is: $" <<  a[i].salary << endl;
             return a[i].salary;
         }
     }
