@@ -9,6 +9,7 @@ struct Node
 };
 struct Node *head = NULL;
 
+//function protypes
 void insert(int new_data);
 void display();
 void BubbleSort(int array[]);
