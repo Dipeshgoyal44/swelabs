@@ -34,7 +34,8 @@ Jose
 Software
 2
 34
-56Ronny
+56
+Ronny
 4444
 Mechatronics
 4
