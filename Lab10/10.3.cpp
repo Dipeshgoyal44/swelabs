@@ -8,7 +8,8 @@ typedef struct Node
     int data;
     Node *next;
 }Node;
-Node *head = NULL;
+
+Node *hptr = NULL;
 
 //function protypes
 void insert(int new_data);
@@ -19,7 +20,7 @@ int main()
 {
     int array[10];
     srand(time(NULL)); 
-    
+
     for (int i = 0; i < 10; i++)
     {
     array[i] = rand() % 50 + 1;
@@ -36,18 +37,17 @@ int main()
     return 0;
 }
 
-
-void insert(int new_data)
+void insert(int data)
 {
-    Node *new_node = (Node *)malloc(sizeof(Node));
-    new_node->data = new_data;
-    new_node->next = head;
-    head = new_node;
+    Node *nptr = (Node *)malloc(sizeof(Node));
+    nptr->data = data;
+    nptr->next = hptr;
+    hptr = nptr;
 }
 void display()
 {
     Node *ptr;
-    ptr = head;
+    ptr = hptr;
     while (ptr != NULL)
     {
         cout << ptr->data << " ";
