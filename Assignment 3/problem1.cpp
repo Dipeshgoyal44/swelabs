@@ -30,7 +30,7 @@ int menu();
 int read_file(student_tag *s, int *temp);
 void display_students(student_tag *s, int temp);
 void search_student(student_tag *s, int temp, string name);
-void sort_details();
+void sort_details(student_tag *s);
 //void find_maximum(student_tag *s, int temp);
 void update_file();
 
@@ -54,7 +54,7 @@ int main()
             break;
         case 2:
             read_file(student_array, &temp);
-            sort_details();
+            sort_details(student_array);
             break;
         case 3:
             cout << "Input name: ";
@@ -64,7 +64,6 @@ int main()
             break;
         case 4:
             read_file(student_array, &temp);
-            sort_details();
             //find_maximum(student_array, temp);
             break;
         case 5:
@@ -100,6 +99,7 @@ int menu()
 
 int read_file(student_tag *s, int *temp) //readfile function
 {
+    double total =0;
     string filename = "students.txt";
     ifstream inFile;
 
@@ -122,9 +122,13 @@ int read_file(student_tag *s, int *temp) //readfile function
         for (int j = 0; j < s[i].course_info.no_of_units; j++)
         {
             inFile >> s[i].course_info.marks[j];
+            total = total + s[i].course_info.marks[j];
         }
         i++;
+        double average = total / s[i].course_info.no_of_units;
+        s[i].course_info.avg = average;
     }
+        
     *temp = i;      // temp has the same value of i to check how many records of data is in the file
     inFile.close(); //close file
 }
@@ -153,6 +157,7 @@ void update_file() //update function
         cin >> s.course_info.marks[j];
         outFile << s.course_info.marks[j] << "\n";
     }
+    
     cout << "\n\n-----> UPDATE FINISHED!!!!\n\n";
     outFile.close(); //close file
 }
@@ -231,7 +236,7 @@ void search_student(student_tag *s, int temp, string name)
 }
 
 
-void sort_details()
+void sort_details(student_tag *s)
 {
     int choice;
     int i = 0;
@@ -247,6 +252,9 @@ void sort_details()
         break;
     case 2:
         cout << "Can't perform binary search on unsorted array\n\n";
+        for (int i = 0; i < 5; i++) {
+        cout << s[i].course_info.avg << "\n";
+        }
         break;
     default:
         cout << "Please try again! Your input is invalid!\n";
