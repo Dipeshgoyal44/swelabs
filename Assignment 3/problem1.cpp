@@ -3,7 +3,6 @@
 #include <fstream>
 #include <iomanip>
 
-
 using namespace std;
 
 typedef struct
@@ -30,8 +29,9 @@ typedef struct
 int menu();
 int read_file(student_tag *s, int *temp);
 void display_students(student_tag *s, int temp);
-void search_student(student_tag *s, int temp, string name,int count);
-void sort_details(student_tag *s, int temp,int *count);
+void search_student(student_tag *s, int temp, string name, int count);
+void sort_details(student_tag *s, int temp, int *count);
+int binarySearch(student_tag *s, string x, int temp);
 //void find_maximum(student_tag *s, int temp);
 void update_file();
 
@@ -39,15 +39,13 @@ int main()
 {
     student_tag student_array[100]; //array of size 100 of datatype student
     int temp = 0;
-    int var =0;
+    int var = 0;
     string name;
-    int count =0 ;
+    int count = 0;
     int c; //switch statement to display menu
     do
     {
         c = menu();
-        cout << "\nYour choice: " << c << "\n\n";
-        // if(c==(int)c && c <= 6 && c >= 1){
 
         switch (c) //c is storing the user input for choice
         {
@@ -57,10 +55,11 @@ int main()
             break;
         case 2:
             read_file(student_array, &temp);
-            sort_details(student_array, temp,&count);
+            sort_details(student_array, temp, &count);
             display_students(student_array, temp);
             break;
         case 3:
+            cout << "------SEARCHING----------\n";
             cout << "Input name: ";
             cin >> name;
             read_file(student_array, &temp);
@@ -97,6 +96,7 @@ int menu()
     cout << "4.Find the details of student who received maximum average\n";
     cout << "5.Add new student to the record\n";
     cout << "6.Quit program\n";
+    cout << "Your choice: ";
     cin >> c;
     return c;
 }
@@ -187,71 +187,75 @@ void display_students(student_tag *s, int temp) //display function
     }
 }
 
-void search_student(student_tag *s, int temp, string name,int count)
+void search_student(student_tag *s, int temp, string name, int count)
 {
+    student_tag student_array[100];
     char choice;
     int i = 0;
     int check;
     int total;
     int invalid = 0;
+
     do
     {
         invalid = 0;
-    cout << "1.Linear Search\n";
-    cout << "2.Binary Search\n";
-    cin >> choice;
-    cout << "Input choice: " << choice << "\n";
-    if (choice == '1'){
-        for (i = 0; i < temp; i++)
+        cout << "1.Linear Search\n";
+        cout << "2.Binary Search\n";
+        cout << "Input choice: ";
+        cin >> choice;
+        if (choice == '1')
         {
-            if (name != s[i].student_info.name)
-            {
-                check = 1;
-            }
-        }
-        if (check == 1)
-        {
-           // cout << "Student with name " << name << " is not in the list\n\n";
-            //cout << "count is " << count << "\n";
-        }
-        for (i = 0; i < temp; i++)
-            if (s[i].student_info.name == name)
-            {
-                double total = 0;
-                cout << "Name: " << s[i].student_info.name << "\n";
-                cout << "ID: " << s[i].student_info.id << "\n";
-                cout << "Course Name: " << s[i].course_info.course_name << "\n";
-                cout << "Number of units: " << s[i].course_info.no_of_units << "\n";
-                for (int j = 0; j < s[i].course_info.no_of_units; j++)
+            for (i = 0; i < temp; i++)
+                if (s[i].student_info.name == name)
                 {
-                    cout << s[i].course_info.marks[j] << "\n";
-                    total = total + s[i].course_info.marks[j];
+                    double total = 0;
+                    cout << "\n\nName: " << s[i].student_info.name << "\n";
+                    cout << "ID: " << s[i].student_info.id << "\n";
+                    cout << "Course Name: " << s[i].course_info.course_name << "\n";
+                    cout << "Number of units: " << s[i].course_info.no_of_units << "\n";
+                    for (int j = 0; j < s[i].course_info.no_of_units; j++)
+                    {
+                        cout << s[i].course_info.marks[j] << "\n";
+                    }
+                    cout << "Average : " << setprecision(2) << fixed << s[i].course_info.avg << "\n";
+                    cout << "------------------------\n\n";
+                    cout << "-----> SEARCHING FINISHED!!!!\n\n";
                 }
-                double average = total / s[i].course_info.no_of_units;
-                cout << "Average : " << setprecision(2) << fixed << average << "\n";
-                cout << "------------------------\n\n";
-                cout << "-----> SEARCHING FINISHED!!!!\n\n";
-            }
-        }else if(choice == '2' && count != 1){
+                else
+                {
+                    //cout << "Student with name " << name << " is not in the list\n\n";
+                }
+        }
+        else if (choice == '2' && count != 1)
+        {
+
             cout << "Can't perform binary search on unsorted array!!!\n\n";
-        }else if (choice =='2' && count == 1){
-            cout << "Binary nigga\n";
-        }else {
+            cout << "-----> SEARCHING FINISHED!!!!\n\n";
+        }
+        else if (choice == '2' && count == 1)
+        {
+            int result = binarySearch(student_array, name, temp);
+            cout << "Binary search\n";
+            cout << "result :" << result << "\n";
+            cout << "-----> SEARCHING FINISHED!!!!\n\n";
+        }
+        else
+        {
             cout << "Please try again! Your input is invalid!\n\n";
             invalid = 1;
-        }} while (invalid == 1);
-    
+        }
+    } while (invalid == 1);
 }
 
-void sort_details(student_tag *s, int temp,int *count)
+void sort_details(student_tag *s, int temp, int *count)
 {
-    
+
     int invalid = 0;
     student_tag sort;
     student_tag sort1;
     char choice;
     int i = 0;
-    int m =0;
+    int m = 0;
     string L;
 
     cout << "------SORTING--------\n";
@@ -264,8 +268,9 @@ void sort_details(student_tag *s, int temp,int *count)
         cin >> choice;
         if (choice == '1')
         {
+            *count = 1;
             cout << "sort by name\n";
-            for (i = 0; i < temp -1; i++)
+            for (i = 0; i < temp - 1; i++)
             {
                 for (m = i + 1; m < temp - 1; m++)
                 {
@@ -307,6 +312,31 @@ void sort_details(student_tag *s, int temp,int *count)
     } while (invalid == 1);
 }
 
+int binarySearch(student_tag* s, string x, int temp)
+{
+    int low = 0;
+    int high = temp -1;
+    int middle; //variable for storing middle value
+    //while loop continue until low subscript is greater then higher
+    while (low <= high)
+    {
+        middle = (low + high) / 2; //determines middle element
+
+        //if search query is same as middle element, return middle
+        if (x == s[middle].student_info.name)
+            return middle;
+
+        //if search is less than middle, set new high
+        else if (x < s[middle].student_info.name)
+            high = middle - 1; //search lowest end of the array
+
+        //if search query is greater than middle, set new low
+        else
+            low = middle + 1;
+    }
+
+    return -1; //search value not found
+}
 // void find_maximum(student_tag *s, int temp) //display function
 // {
 //     int i;
