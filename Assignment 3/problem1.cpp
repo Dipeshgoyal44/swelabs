@@ -99,6 +99,7 @@ int menu()
 
 int read_file(student_tag *s, int *temp) //readfile function
 {
+    int count;
     double total =0;
     string filename = "students.txt";
     ifstream inFile;
@@ -114,6 +115,7 @@ int read_file(student_tag *s, int *temp) //readfile function
     int i = 0;
     while (inFile.peek() != EOF) // until the end of the file
     {
+        double total =0;
         //name, id,course_name,no of units, marks, average
         inFile >> s[i].student_info.name;
         inFile >> s[i].student_info.id;
@@ -124,12 +126,10 @@ int read_file(student_tag *s, int *temp) //readfile function
             inFile >> s[i].course_info.marks[j];
             total = total + s[i].course_info.marks[j];
         }
+        s[i].course_info.avg = total / s[i].course_info.no_of_units;
         i++;
-        double average = total / s[i].course_info.no_of_units;
-        s[i].course_info.avg = average;
     }
-        
-    *temp = i;      // temp has the same value of i to check how many records of data is in the file
+    *temp = i;  // temp has the same value of i to check how many records of data is in the file
     inFile.close(); //close file
 }
 
@@ -177,10 +177,8 @@ void display_students(student_tag *s, int temp) //display function
         for (int j = 0; j < s[i].course_info.no_of_units; j++)
         {
             cout << s[i].course_info.marks[j] << "\n";
-            total = total + s[i].course_info.marks[j];
         }
-        double average = total / s[i].course_info.no_of_units;
-        cout << "Average : " << setprecision(2) << fixed << average << "\n";
+        cout << "Average : " << setprecision(2) << fixed << s[i].course_info.avg << "\n";
         cout << "------------------------\n\n";
     }
 }
