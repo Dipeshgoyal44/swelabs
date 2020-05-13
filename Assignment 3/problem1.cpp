@@ -30,7 +30,7 @@ int menu();
 int read_file(student_tag *s, int *temp);
 void display_students(student_tag *s, int temp);
 void search_student(student_tag *s, int temp, string name);
-void sort_details(student_tag *s);
+void sort_details(student_tag *s, int temp);
 //void find_maximum(student_tag *s, int temp);
 void update_file();
 
@@ -54,7 +54,8 @@ int main()
             break;
         case 2:
             read_file(student_array, &temp);
-            sort_details(student_array);
+            sort_details(student_array, temp);
+            display_students(student_array, temp);
             break;
         case 3:
             cout << "Input name: ";
@@ -82,25 +83,24 @@ int main()
     } while (c != 6); //while loop keeps running till 4 is chosen as an option.
 }
 
-
 int menu()
 {
     int c;
-        cout << "----MENU----\n";
-        cout << "1.Display student's details\n";
-        cout << "2.Sort the student's details\n";
-        cout << "3.Search for a particular student's mark\n";
-        cout << "4.Display student's details\n";
-        cout << "5.Add new student to the record\n";
-        cout << "6.Quit program\n";
-        cin >> c;
-        return c;
+    cout << "----MENU----\n";
+    cout << "1.Display student's details\n";
+    cout << "2.Sort the student's details\n";
+    cout << "3.Search for a particular student's mark\n";
+    cout << "4.Display student's details\n";
+    cout << "5.Add new student to the record\n";
+    cout << "6.Quit program\n";
+    cin >> c;
+    return c;
 }
 
 int read_file(student_tag *s, int *temp) //readfile function
 {
     int count;
-    double total =0;
+    double total = 0;
     string filename = "students.txt";
     ifstream inFile;
 
@@ -115,7 +115,7 @@ int read_file(student_tag *s, int *temp) //readfile function
     int i = 0;
     while (inFile.peek() != EOF) // until the end of the file
     {
-        double total =0;
+        double total = 0;
         //name, id,course_name,no of units, marks, average
         inFile >> s[i].student_info.name;
         inFile >> s[i].student_info.id;
@@ -129,7 +129,7 @@ int read_file(student_tag *s, int *temp) //readfile function
         s[i].course_info.avg = total / s[i].course_info.no_of_units;
         i++;
     }
-    *temp = i;  // temp has the same value of i to check how many records of data is in the file
+    *temp = i;      // temp has the same value of i to check how many records of data is in the file
     inFile.close(); //close file
 }
 
@@ -157,7 +157,7 @@ void update_file() //update function
         cin >> s.course_info.marks[j];
         outFile << s.course_info.marks[j] << "\n";
     }
-    
+
     cout << "\n\n-----> UPDATE FINISHED!!!!\n\n";
     outFile.close(); //close file
 }
@@ -196,11 +196,15 @@ void search_student(student_tag *s, int temp, string name)
     switch (choice) //c is storing the user input for choice
     {
     case 1:
-    for (i = 0; i < temp; i++){
-            if (name != s[i].student_info.name){
-            check = 1;
-            }}
-        if(check == 1){
+        for (i = 0; i < temp; i++)
+        {
+            if (name != s[i].student_info.name)
+            {
+                check = 1;
+            }
+        }
+        if (check == 1)
+        {
             cout << "Student with name " << name << " is not in the list\n\n";
         }
         for (i = 0; i < temp; i++)
@@ -220,8 +224,10 @@ void search_student(student_tag *s, int temp, string name)
                 cout << "Average : " << setprecision(2) << fixed << average << "\n";
                 cout << "------------------------\n\n";
                 cout << "-----> SEARCHING FINISHED!!!!\n\n";
-            }else if(check != 1) {
-                cout << "Student with name " << name << " is not in the list\n\n"; 
+            }
+            else if (check != 1)
+            {
+                cout << "Student with name " << name << " is not in the list\n\n";
             }
         break;
     case 2:
@@ -233,39 +239,43 @@ void search_student(student_tag *s, int temp, string name)
     }
 }
 
-
-void sort_details(student_tag *s)
+void sort_details(student_tag *s, int temp)
 {
-    int choice;
+    int invalid = 0;
+    student_tag sort;
+    char choice;
     int i = 0;
-    do {
-    cout << "------SORTING------\n";
-    cout << "1.Sort by name\n";
-    cout << "2.Sort by average mark\n";
-    cin >> choice;
-    cout << "Input choice: " << choice << "\n";
-     switch (choice) //c is storing the user input for choice
-    {
-    case 1:
-        break;
-    case 2:
-        cout << "Can't perform binary search on unsorted array\n\n";
-        for (int i = 0; i < 5; i++) {
-        cout << s[i].course_info.avg << "\n";
+    
+        cout << "------SORTING------\n";
+        do
+        {
+        invalid =0;
+        cout << "1.Sort by name\n";
+        cout << "2.Sort by average mark\n";
+        cout << "Input choice: ";
+        cin >> choice;
+        if(choice == '1'){
+            cout << "sort by name\n";
+        }else if(choice == '2'){
+                int j; 
+                for (i = 0; i < (temp - 1); ++i)
+                {
+                    for (j = 0; j < temp - 1 - i; ++j)
+                    {
+                        if (s[j].course_info.avg > s[j + 1].course_info.avg)
+                        {
+                            sort = s[j + 1];
+                            s[j + 1] = s[j];
+                            s[j] = sort;
+                        }
+                    }
+                }
+        }else {
+            cout << "Please try again! Your input is invalid!\n\n";
+            invalid = 1;
         }
-        break;
-    default:
-        cout << "Please try again! Your input is invalid!\n";
-        break;
-    }} while (choice < 1 || choice > 2);
+        } while (invalid == 1);
 }
-
-
-
-
-
-
-
 
 // void find_maximum(student_tag *s, int temp) //display function
 // {
