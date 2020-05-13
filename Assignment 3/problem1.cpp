@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iomanip>
 #include <algorithm>
+#include <iterator>
 
 using namespace std;
 
@@ -246,41 +247,59 @@ void sort_details(student_tag *s, int temp)
     student_tag sort;
     char choice;
     int i = 0;
-    
-        cout << "------SORTING--------\n";
-        do
-        {
-        invalid =0;
+    int m =0;
+    string L;
+
+    cout << "------SORTING--------\n";
+    do
+    {
+        invalid = 0;
         cout << "1.Sort by name\n";
         cout << "2.Sort by average mark\n";
         cout << "Input choice: ";
         cin >> choice;
-        if(choice == '1'){
+        if (choice == '1')
+        {
             cout << "sort by name\n";
-        
-                cout << "\n------SORTING FINISHED----------\n\n";
-                cout << "Array after sorting by name :\n\n";
-        }else if(choice == '2'){
-                int j; 
-                for (i = 0; i < (temp - 1); ++i)
+            for (i = 0; i < temp -1; i++)
+            {
+                for (m = i + 1; m < temp - 1; m++)
                 {
-                    for (j = 0; j < temp - 1 - i; ++j)
+                    if ((s[i].student_info.name) > (s[m].student_info.name))
                     {
-                        if (s[j].course_info.avg > s[j + 1].course_info.avg)
-                        {
-                            sort = s[j + 1];
-                            s[j + 1] = s[j];
-                            s[j] = sort;
-                        }
+                        L = s[i].student_info.name;
+                        s[i].student_info.name = s[m].student_info.name;
+                        s[m].student_info.name = L;
                     }
                 }
-                cout << "\n------SORTING FINISHED----------\n\n";
-                cout << "Array after sorting by marks :\n\n";
-        }else {
+            }
+            cout << "\n------SORTING FINISHED----------\n\n";
+            cout << "Array after sorting by name :\n\n";
+        }
+        else if (choice == '2')
+        {
+            int j;
+            for (i = 0; i < (temp - 1); ++i)
+            {
+                for (j = 0; j < temp - 1 - i; ++j)
+                {
+                    if (s[j].course_info.avg > s[j + 1].course_info.avg)
+                    {
+                        sort = s[j + 1];
+                        s[j + 1] = s[j];
+                        s[j] = sort;
+                    }
+                }
+            }
+            cout << "\n------SORTING FINISHED----------\n\n";
+            cout << "Array after sorting by marks :\n\n";
+        }
+        else
+        {
             cout << "Please try again! Your input is invalid!\n\n";
             invalid = 1;
         }
-        } while (invalid == 1);
+    } while (invalid == 1);
 }
 
 // void find_maximum(student_tag *s, int temp) //display function
