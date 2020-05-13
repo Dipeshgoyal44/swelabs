@@ -345,20 +345,20 @@ void find_maximum(student_tag *s, int temp) //display function
     for (i = 0; i < temp - 1; i++)
     {
         if (s[i].course_info.avg > max) // condition for max
-        max = s[i].course_info.avg;
+            max = s[i].course_info.avg;
     }
     for (i = 0; i < temp; i++)
         if (s[i].course_info.avg == max)
         {
-    cout << "\nName: " << s[i].student_info.name << "\n";
-    cout << "ID: " << s[i].student_info.id << "\n";
-    cout << "Course Name: " << s[i].course_info.course_name << "\n";
-    cout << "Number of units: " << s[i].course_info.no_of_units << "\n";
-    for (int j = 0; j < s[i].course_info.no_of_units; j++)
-    {
-        cout << s[i].course_info.marks[j] << "\n";
-    }
-    cout << "Average : " << setprecision(2) << fixed << s[i].course_info.avg << "\n";
-    cout << "------------------------\n\n";
-}
+            cout << "\nName: " << s[i].student_info.name << "\n";
+            cout << "ID: " << s[i].student_info.id << "\n";
+            cout << "Course Name: " << s[i].course_info.course_name << "\n";
+            cout << "Number of units: " << s[i].course_info.no_of_units << "\n";
+            for (int j = 0; j < s[i].course_info.no_of_units; j++)
+            {
+                cout << s[i].course_info.marks[j] << "\n";
+            }
+            cout << "Average : " << setprecision(2) << fixed << s[i].course_info.avg << "\n";
+            cout << "------------------------\n\n";
+        }
 }
