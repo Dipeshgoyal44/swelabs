@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <iomanip>
+#include <algorithm>
 
 using namespace std;
 
@@ -169,7 +170,7 @@ void display_students(student_tag *s, int temp) //display function
     for (i = 0; i < temp - 1; i++)
     { //loop runs till the count is same as the value of temp, which is the end of the file.
         double total = 0;
-        cout << "------------------------\n";
+        cout << "---------------------------\n";
         cout << "Name: " << s[i].student_info.name << "\n";
         cout << "ID: " << s[i].student_info.id << "\n";
         cout << "Course Name: " << s[i].course_info.course_name << "\n";
@@ -246,7 +247,7 @@ void sort_details(student_tag *s, int temp)
     char choice;
     int i = 0;
     
-        cout << "------SORTING------\n";
+        cout << "------SORTING--------\n";
         do
         {
         invalid =0;
@@ -256,6 +257,9 @@ void sort_details(student_tag *s, int temp)
         cin >> choice;
         if(choice == '1'){
             cout << "sort by name\n";
+        
+                cout << "\n------SORTING FINISHED----------\n\n";
+                cout << "Array after sorting by name :\n\n";
         }else if(choice == '2'){
                 int j; 
                 for (i = 0; i < (temp - 1); ++i)
@@ -270,6 +274,8 @@ void sort_details(student_tag *s, int temp)
                         }
                     }
                 }
+                cout << "\n------SORTING FINISHED----------\n\n";
+                cout << "Array after sorting by marks :\n\n";
         }else {
             cout << "Please try again! Your input is invalid!\n\n";
             invalid = 1;
