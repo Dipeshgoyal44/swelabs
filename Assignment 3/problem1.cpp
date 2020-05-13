@@ -32,7 +32,7 @@ void display_students(student_tag *s, int temp);
 void search_student(student_tag *s, int temp, string name, int count);
 void sort_details(student_tag *s, int temp, int *count);
 int binarySearch(student_tag *s, string x, int temp);
-//void find_maximum(student_tag *s, int temp);
+void find_maximum(student_tag *s, int temp);
 void update_file();
 
 int main()
@@ -67,8 +67,9 @@ int main()
             search_student(student_array, temp, name, var);
             break;
         case 4:
+            cout << "\n-------DETAILS OF STUDENT WHO GOT MAXIMUM AVERAGE MARK--------\n";
             read_file(student_array, &temp);
-            //find_maximum(student_array, temp);
+            find_maximum(student_array, temp);
             break;
         case 5:
             read_file(student_array, &temp);
@@ -312,10 +313,10 @@ void sort_details(student_tag *s, int temp, int *count)
     } while (invalid == 1);
 }
 
-int binarySearch(student_tag* s, string x, int temp)
+int binarySearch(student_tag *s, string x, int temp)
 {
     int low = 0;
-    int high = temp -1;
+    int high = temp - 1;
     int middle; //variable for storing middle value
     //while loop continue until low subscript is greater then higher
     while (low <= high)
@@ -337,22 +338,27 @@ int binarySearch(student_tag* s, string x, int temp)
 
     return -1; //search value not found
 }
-// void find_maximum(student_tag *s, int temp) //display function
-// {
-//     int i;
-//     double max;
-//     for (i = 0; i < temp - 1 ; i++)
-//     { //loop runs till the count is same as the value of temp, which is the end of the file.
-//         double total = 0;
-//         double average = 0;
-//         for (int j = 0; j < s[i].course_info.no_of_units; j++) {
-//         cout << s[i].course_info.marks[j] << "\n";
-//         total = total + s[i].course_info.marks[j];
-//         }
-//         average  =  total/s[i].course_info.no_of_units;
-//         double average2 = average;
-//         if (average > average2) // condition for max
-//             max = average;
-//             cout << max << "\n";
-//     }
-// }
+void find_maximum(student_tag *s, int temp) //display function
+{
+    double max = 0;
+    int i = 0;
+    for (i = 0; i < temp - 1; i++)
+    {
+        if (s[i].course_info.avg > max) // condition for max
+        max = s[i].course_info.avg;
+    }
+    for (i = 0; i < temp; i++)
+        if (s[i].course_info.avg == max)
+        {
+    cout << "\nName: " << s[i].student_info.name << "\n";
+    cout << "ID: " << s[i].student_info.id << "\n";
+    cout << "Course Name: " << s[i].course_info.course_name << "\n";
+    cout << "Number of units: " << s[i].course_info.no_of_units << "\n";
+    for (int j = 0; j < s[i].course_info.no_of_units; j++)
+    {
+        cout << s[i].course_info.marks[j] << "\n";
+    }
+    cout << "Average : " << setprecision(2) << fixed << s[i].course_info.avg << "\n";
+    cout << "------------------------\n\n";
+}
+}
