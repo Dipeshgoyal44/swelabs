@@ -311,7 +311,7 @@ void search_student(student_tag *s, int array_size, string name, int count)
         }
         else if (choice == '2' && count == 1)
         {
-            sort_mark(s, array_size);
+            sort_mark(s, array_size);// temporary
             index = binary_search(s, name, array_size);
             if(index == -1){
             cout << "Student with name " << name << " is not in the list\n\n";
