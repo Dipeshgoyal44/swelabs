@@ -26,7 +26,7 @@ typedef struct
 } student_tag;
 
 //function protypes
-int menu();
+void menu();
 int read_file(student_tag *s, int *array_size);
 void display_students(student_tag *s, int array_size);
 void sort_mark(student_tag *s, int array_size);
@@ -45,23 +45,24 @@ int main()
     int var = 0;
     string name;
     int count = 0;
-    int c; //switch statement to display menu
+    char c; //switch statement to display menu
     do
     {
-        c = menu();
-
+        menu();
+    cout << "Your choice: ";
+    cin >> c;
         switch (c) //c is storing the user input for choice
         {
-        case 1:
+        case '1':
             read_file(student_array, &array_size);       // reads the file
             display_students(student_array, array_size); // displays the file contents
             break;
-        case 2:
+        case '2':
             read_file(student_array, &array_size);
             sort_details(student_array, array_size, &count);
             display_students(student_array, array_size);
             break;
-        case 3:
+        case '3':
             cout << "------SEARCHING----------\n";
             cout << "Input name: ";
             cin >> name;
@@ -69,17 +70,17 @@ int main()
             var = count;
             search_student(student_array, array_size, name, var);
             break;
-        case 4:
+        case '4':
             cout << "\n-------DETAILS OF STUDENT WHO GOT MAXIMUM AVERAGE MARK--------\n";
             read_file(student_array, &array_size);
             find_maximum(student_array, array_size);
             break;
-        case 5:
+        case '5':
             read_file(student_array, &array_size);
             update_file();
             read_file(student_array, &array_size);
             break;
-        case 6:
+        case '6':
             printf("SEE YOU LATER! \n");
             exit(1);
             break;
@@ -90,19 +91,17 @@ int main()
     } while (c != 6); //while loop keeps running till 4 is chosen as an option.
 }
 
-int menu()
+void menu()
 {
-    int c;
-    cout << "----MENU----\n";
+    char c;
+    cout << "\n----MENU----\n";
     cout << "1.Display student's details\n";
     cout << "2.Sort the student's details\n";
     cout << "3.Search for a particular student's mark\n";
     cout << "4.Find the details of student who received maximum average\n";
     cout << "5.Add new student to the record\n";
     cout << "6.Quit program\n";
-    cout << "Your choice: ";
-    cin >> c;
-    return c;
+    
 }
 
 int read_file(student_tag *s, int *array_size) //readfile function
@@ -400,4 +399,4 @@ void update_file() //update function
 
 // THINGS NOT WORKING
 //1.  need to change original array after sorting.
-//2. give error in search if name not found
+//2. give error in search if name not found. ONLY FOR LINEAR search
