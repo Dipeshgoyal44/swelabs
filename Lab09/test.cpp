@@ -24,7 +24,6 @@ int add_album(vector <album> &add)
     cout << "Enter Genre 0-2" << endl;
     cin >> genre_id;
     temp.kind = static_cast<genre>(genre_id);
-    cout << temp.kind;
     cout << "Enter number of tracks in the album \n";
     cin >> temp.track_number;
     cout << "Enter the names for these " << temp.track_number << " tracks\n";
@@ -39,19 +38,44 @@ int add_album(vector <album> &add)
 void print_all_album(vector <album> add)
 {
     for(int i = 0; i < add.size(); i ++){
-        cout << add[i].album_name << "\n";
-        cout <<  add[i].kind << "\n";
-        cout << add[i].track_number << "\n";
-        for (int i = 0; i < add[i].track_number; i++) {
-        cout << add[i].tracks[i];
+        cout << "Name of the album : " << add[i].album_name << "\n";
+        cout << "Genre of the album : " << add[i].kind << "\n";
+        cout << "No. of tracks : " << add[i].track_number << "\n";
+        for (int j = 0; i < add[i].track_number; j++) {
+        cout << "Tracks  are : " << add[i].tracks[j] << "\n";
         }
-        cout << add[i].tracklocation;
+        cout << "Tracks are located at " <<  add[i].tracklocation << "\n";
     }
 }
 
+void select_track_to_play(vector <album>add, string album_name)
+{
+    string track_name;
+    for (int i = 0; i < add.size(); i++){
+        if (add[i].album_name == album_name)
+        {
+            cout << "This album contains " << add[i].track_number << " and those tracks are \n";
+            for (int j = 1; i <= add[i].track_number; j++) {
+            cout << i << ". "<< add[i].tracks[j] << "\n";
+            }
+            cout << "Please select a track to play from the above list\n";
+            cin >> track_name;
+            cout << "The track you selected " << track_name << " from the Album: " << album_name 
+            << " is now playing from the location " << add[i].tracklocation << "\n";
+        }
+    }
+    cout << "Album not found\n";
+}
+    
+
 int main()
 {
+    string album_name;
     vector <album> albums; 
     add_album(albums);
     print_all_album(albums);
+    cout << "Select an album to play\n";
+    cin >> album_name;
+    select_track_to_play(albums,album_name);
+
 }
