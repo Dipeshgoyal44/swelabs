@@ -236,16 +236,9 @@ int linear_search(student_tag *s, string name, int array_size)
         if (s[i].student_info.name == name)
         {
             return i;
-            const int temp = i;
-            temp1 = temp;
         }
-        cout << temp1;
-        // else if(s[i].student_info.name != name){
-        //     cout << "poggers :" << i << name << "\n";
-        //     return -1;
-        // }
     }
-    //cout << "Student with name " << name << " is not in the list\n";
+    return -1;
 }
 
 int binary_search(student_tag *s, string name, int array_size)
@@ -282,6 +275,7 @@ void search_student(student_tag *s, int array_size, string name, int count)
     int index1 = 0;
     int index = 0;
     int invalid = 0;
+    char temp;
     do
     {
         invalid = 0;
@@ -292,10 +286,8 @@ void search_student(student_tag *s, int array_size, string name, int count)
         if (choice == '1')
         {
         index1 = linear_search(s, name, array_size);
-        if(index1 == -1){
-            cout << "Student with name " << name << " is not in the list\n\n";
-            cout << "-----> SEARCHING FINISHED!!!!\n\n";
-            }else{
+        ///cout << "LINEAR SEARCH KEY: " << s[index1].student_info.name << "\n";
+        if(index1 != -1 ){
             cout << "\n\nName: " << s[index1].student_info.name << "\n";
             cout << "ID: " << s[index1].student_info.id << "\n";
             cout << "Course Name: " << s[index1].course_info.course_name << "\n";
@@ -306,7 +298,10 @@ void search_student(student_tag *s, int array_size, string name, int count)
             }
             cout << "Average : " << setprecision(2) << fixed << s[index1].course_info.avg << "\n";
             cout << "------------------------\n\n";
-            cout << "-----> SEARCHING FINISHED!!!!\n\n"; 
+            cout << "-----> SEARCHING FINISHED!!!!\n\n";
+            }else{
+            cout << "Student with name " << name << " is not in the list\n\n";
+            cout << "-----> SEARCHING FINISHED!!!!\n\n";
             }
         }
         else if (choice == '2' && count != 1)
@@ -399,4 +394,3 @@ void update_file() //update function
 
 // THINGS NOT WORKING
 //1.  need to change original array after sorting.
-//2. give error in search if name not found. ONLY FOR LINEAR search
