@@ -33,7 +33,7 @@ void sort_mark(student_tag *s, int array_size);
 void sort_name(student_tag *s, int array_size);
 void sort_details(student_tag *s, int array_size, int *count);
 int binary_search(student_tag *s, string name, int array_size);
-void linear_search(student_tag *s, string name, int array_size);
+int linear_search(student_tag *s, string name, int array_size);
 void search_student(student_tag *s, int array_size, string name, int count);
 void find_maximum(student_tag *s, int array_size);
 void update_file();
@@ -229,23 +229,23 @@ void sort_details(student_tag *s, int array_size, int *count)
     } while (invalid == 1);
 }
 
-void linear_search(student_tag *s, string name, int array_size)
+int linear_search(student_tag *s, string name, int array_size)
 {
-    for (int i = 0; i < array_size; i++)
+    int i;
+    int temp1;
+    for (i = 0; i < array_size; i++){
         if (s[i].student_info.name == name)
         {
-            cout << "\n\nName: " << s[i].student_info.name << "\n";
-            cout << "ID: " << s[i].student_info.id << "\n";
-            cout << "Course Name: " << s[i].course_info.course_name << "\n";
-            cout << "Number of units: " << s[i].course_info.no_of_units << "\n";
-            for (int j = 0; j < s[i].course_info.no_of_units; j++)
-            {
-                cout << s[i].course_info.marks[j] << "\n";
-            }
-            cout << "Average : " << setprecision(2) << fixed << s[i].course_info.avg << "\n";
-            cout << "------------------------\n\n";
-            cout << "-----> SEARCHING FINISHED!!!!\n\n";
+            return i;
+            const int temp = i;
+            temp1 = temp;
         }
+        cout << temp1;
+        // else if(s[i].student_info.name != name){
+        //     cout << "poggers :" << i << name << "\n";
+        //     return -1;
+        // }
+    }
     //cout << "Student with name " << name << " is not in the list\n";
 }
 
@@ -272,7 +272,7 @@ int binary_search(student_tag *s, string name, int array_size)
         else
             low = middle + 1;
     }
-    cout << "Student with name " << name << " is not in the list\n";
+    return -1;
 }
 
 void search_student(student_tag *s, int array_size, string name, int count)
@@ -280,8 +280,8 @@ void search_student(student_tag *s, int array_size, string name, int count)
     // student_tag student_array[100];
     char choice;
     int i = 0;
-    int check;
-    int total;
+    int index1 = 0;
+    int index = 0;
     int invalid = 0;
     do
     {
@@ -292,7 +292,23 @@ void search_student(student_tag *s, int array_size, string name, int count)
         cin >> choice;
         if (choice == '1')
         {
-            linear_search(s, name, array_size);
+        index1 = linear_search(s, name, array_size);
+        if(index1 == -1){
+            cout << "Student with name " << name << " is not in the list\n\n";
+            cout << "-----> SEARCHING FINISHED!!!!\n\n";
+            }else{
+            cout << "\n\nName: " << s[index1].student_info.name << "\n";
+            cout << "ID: " << s[index1].student_info.id << "\n";
+            cout << "Course Name: " << s[index1].course_info.course_name << "\n";
+            cout << "Number of units: " << s[index1].course_info.no_of_units << "\n";
+            for (int j = 0; j < s[index1].course_info.no_of_units; j++)
+            {
+                cout << s[index1].course_info.marks[j] << "\n";
+            }
+            cout << "Average : " << setprecision(2) << fixed << s[index1].course_info.avg << "\n";
+            cout << "------------------------\n\n";
+            cout << "-----> SEARCHING FINISHED!!!!\n\n"; 
+            }
         }
         else if (choice == '2' && count != 1)
         {
@@ -302,7 +318,11 @@ void search_student(student_tag *s, int array_size, string name, int count)
         else if (choice == '2' && count == 1)
         {
             sort_mark(s, array_size);
-            int index = binary_search(s, name, array_size);
+            index = binary_search(s, name, array_size);
+            if(index == -1){
+            cout << "Student with name " << name << " is not in the list\n\n";
+            cout << "-----> SEARCHING FINISHED!!!!\n\n";
+            }else{
             cout << "\n\nName: " << s[index].student_info.name << "\n";
             cout << "ID: " << s[index].student_info.id << "\n";
             cout << "Course Name: " << s[index].course_info.course_name << "\n";
@@ -313,7 +333,8 @@ void search_student(student_tag *s, int array_size, string name, int count)
             }
             cout << "Average : " << setprecision(2) << fixed << s[index].course_info.avg << "\n";
             cout << "------------------------\n\n";
-            cout << "-----> SEARCHING FINISHED!!!!\n\n";
+            cout << "-----> SEARCHING FINISHED!!!!\n\n"; 
+            }
         }
         else
         {
@@ -376,3 +397,7 @@ void update_file() //update function
     cout << "\n\n-----> UPDATE FINISHED!!!!\n\n";
     outFile.close(); //close file
 }
+
+// THINGS NOT WORKING
+//1.  need to change original array after sorting.
+//2. give error in search if name not found
