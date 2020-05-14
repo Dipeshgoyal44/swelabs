@@ -6,7 +6,7 @@ using namespace std;
 enum genre{ pop, Jazz, Classic}; // Enumeration
 
 //struct
-typedef struct album // typdef so dont have to use struct everytime
+typedef struct  // typdef so dont have to use struct everytime
 {
     string album_name;
     genre kind;
@@ -16,8 +16,8 @@ typedef struct album // typdef so dont have to use struct everytime
 }album;
 
 //Function prototypes
-int add_album(vector <album> store);
-void print_all_album();
+int add_album(vector <album> &add);
+void print_all_album(vector <album> add, int size);
 void select_track_to_play();
 
 int main()
@@ -36,9 +36,8 @@ int main()
     {
     case 1:
     add_album(add);
-
         break;
-
+    print_all_album(add,2);
     case 2:
 
         break;
@@ -57,36 +56,27 @@ int main()
     }}while(menu != 4);
 }
 
-int add_album(vector <album> store)
+int add_album(vector <album> &add)
 {
-    string album_name;
-    genre kind;
-    int track_number;
-    string tracks[5];
-    string tracklocation;
-
-    cout << "Enter album name \n";
-    cin >> album_name;
-    //cout << "Enter genre 0 ->  pop, 1 -> Jazz, 2 -> Classic \n";
-    //cin >> store.kind; enum
-    cout << "Enter number of tracks in the album \n";
-    cin >> track_number;
-    cout << "Enter the names for these " << track_number << " tracks\n";
-    for (int i = 0; i < track_number; i++) {
-        cin >> tracks[i];
-    }
-    cout << "Enter the file location of these tracks\n";
-    cin >> tracklocation;
-   // store.album_name[0] = album_name;
-
-    //add.push_back(store); 
-    cout << store[0].album_name;
+    album temp;
+    int genre_id;
+    cout << "Enter Name" <<endl;   
+    cin >> temp.album_name;
+    cout << "Enter Genre 0-2" << endl;
+    cin >> genre_id;
+    temp.kind = static_cast<genre>(genre_id);
+    add.push_back(temp);
 }
 
-// void print_all_album(vector <album> add)
-// {
-    
-// }
+void print_all_album(vector <album> add, int size)
+{
+    //int size = 2;
+    for(int i = 0; i < size; i ++){
+        cout << add[i].album_name << "\n";
+        cout << add.at(i).album_name << "\n";
+        cout <<  add[i].kind << "\n";
+    }
+}
 
 
 // void select_track_to_play()
