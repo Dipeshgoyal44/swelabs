@@ -29,11 +29,11 @@ typedef struct
 int menu();
 int read_file(student_tag *s, int *array_size);
 void display_students(student_tag *s, int array_size);
-void sort_mark(student_tag* s, int array_size);
-void sort_name(student_tag* s, int array_size);
+void sort_mark(student_tag *s, int array_size);
+void sort_name(student_tag *s, int array_size);
 void sort_details(student_tag *s, int array_size, int *count);
 int binary_search(student_tag *s, string name, int array_size);
-int linear_search(student_tag *s, string name, int array_size);
+void linear_search(student_tag *s, string name, int array_size);
 void search_student(student_tag *s, int array_size, string name, int count);
 void find_maximum(student_tag *s, int array_size);
 void update_file();
@@ -137,10 +137,9 @@ int read_file(student_tag *s, int *array_size) //readfile function
         s[i].course_info.avg = total / s[i].course_info.no_of_units;
         i++;
     }
-    *array_size = i;      // temp has the same value of i to check how many records of data is in the file
-    inFile.close(); //close file
+    *array_size = i; // temp has the same value of i to check how many records of data is in the file
+    inFile.close();  //close file
 }
-
 
 void display_students(student_tag *s, int array_size) //display function
 {
@@ -163,20 +162,28 @@ void display_students(student_tag *s, int array_size) //display function
     }
 }
 
-void sort_mark(student_tag* s, int array_size) {
-    for (int key = 0; key < array_size - 1; key++) {
-        for (int i = 0; i < array_size - 1; i++) {
-            if (s[i].course_info.avg > s[key].course_info.avg) {
+void sort_mark(student_tag *s, int array_size)
+{
+    for (int key = 0; key < array_size - 1; key++)
+    {
+        for (int i = 0; i < array_size - 1; i++)
+        {
+            if (s[i].course_info.avg > s[key].course_info.avg)
+            {
                 std::swap(s[key], s[i]);
             }
         }
     }
 }
 
-void sort_name(student_tag* s, int array_size) {
-    for (int i = 0; i < array_size - 1; i++){
-        for (int m = i + 1; m < array_size - 1; m++){
-            if ((s[i].student_info.name) > (s[m].student_info.name)){
+void sort_name(student_tag *s, int array_size)
+{
+    for (int i = 0; i < array_size - 1; i++)
+    {
+        for (int m = i + 1; m < array_size - 1; m++)
+        {
+            if ((s[i].student_info.name) > (s[m].student_info.name))
+            {
                 std::swap(s[i], s[m]);
             }
         }
@@ -203,14 +210,14 @@ void sort_details(student_tag *s, int array_size, int *count)
         {
             *count = 1;
             cout << "sort by name\n";
-            sort_name(s,array_size);
+            sort_name(s, array_size);
             cout << "\n------SORTING FINISHED----------\n\n";
             cout << "Array after sorting by name :\n\n";
         }
         else if (choice == '2')
         {
             *count = 1;
-            sort_mark(s,array_size);
+            sort_mark(s, array_size);
             cout << "\n------SORTING FINISHED----------\n\n";
             cout << "Array after sorting by average marks :\n\n";
         }
@@ -222,25 +229,24 @@ void sort_details(student_tag *s, int array_size, int *count)
     } while (invalid == 1);
 }
 
-int linear_search(student_tag *s, string name, int array_size)
+void linear_search(student_tag *s, string name, int array_size)
 {
     for (int i = 0; i < array_size; i++)
-                if (s[i].student_info.name == name)
-                {
-                    double total = 0;
-                    cout << "\n\nName: " << s[i].student_info.name << "\n";
-                    cout << "ID: " << s[i].student_info.id << "\n";
-                    cout << "Course Name: " << s[i].course_info.course_name << "\n";
-                    cout << "Number of units: " << s[i].course_info.no_of_units << "\n";
-                    for (int j = 0; j < s[i].course_info.no_of_units; j++)
-                    {
-                        cout << s[i].course_info.marks[j] << "\n";
-                    }
-                    cout << "Average : " << setprecision(2) << fixed << s[i].course_info.avg << "\n";
-                    cout << "------------------------\n\n";
-                    cout << "-----> SEARCHING FINISHED!!!!\n\n";
-                }
-
+        if (s[i].student_info.name == name)
+        {
+            cout << "\n\nName: " << s[i].student_info.name << "\n";
+            cout << "ID: " << s[i].student_info.id << "\n";
+            cout << "Course Name: " << s[i].course_info.course_name << "\n";
+            cout << "Number of units: " << s[i].course_info.no_of_units << "\n";
+            for (int j = 0; j < s[i].course_info.no_of_units; j++)
+            {
+                cout << s[i].course_info.marks[j] << "\n";
+            }
+            cout << "Average : " << setprecision(2) << fixed << s[i].course_info.avg << "\n";
+            cout << "------------------------\n\n";
+            cout << "-----> SEARCHING FINISHED!!!!\n\n";
+        }
+    //cout << "Student with name " << name << " is not in the list\n";
 }
 
 int binary_search(student_tag *s, string name, int array_size)
@@ -255,9 +261,10 @@ int binary_search(student_tag *s, string name, int array_size)
 
         //if search query is same as middle element, return middle
         if (name == s[middle].student_info.name)
+        {
             return middle;
-
-        //if search is less than middle, set new high
+            //if search is less than middle, set new high
+        }
         else if (name < s[middle].student_info.name)
             high = middle - 1; //search lowest end of the array
 
@@ -265,9 +272,8 @@ int binary_search(student_tag *s, string name, int array_size)
         else
             low = middle + 1;
     }
-    return -1; //search value not found
+    cout << "Student with name " << name << " is not in the list\n";
 }
-
 
 void search_student(student_tag *s, int array_size, string name, int count)
 {
@@ -286,7 +292,7 @@ void search_student(student_tag *s, int array_size, string name, int count)
         cin >> choice;
         if (choice == '1')
         {
-            linear_search(s,name,array_size);
+            linear_search(s, name, array_size);
         }
         else if (choice == '2' && count != 1)
         {
@@ -295,10 +301,18 @@ void search_student(student_tag *s, int array_size, string name, int count)
         }
         else if (choice == '2' && count == 1)
         {
-            sort_mark(s,array_size);
-            int result = binary_search(s, name, array_size);
-            cout << "Binary search\n";
-            cout << "result :" << s[result].student_info.name << "\n";
+            sort_mark(s, array_size);
+            int index = binary_search(s, name, array_size);
+            cout << "\n\nName: " << s[index].student_info.name << "\n";
+            cout << "ID: " << s[index].student_info.id << "\n";
+            cout << "Course Name: " << s[index].course_info.course_name << "\n";
+            cout << "Number of units: " << s[index].course_info.no_of_units << "\n";
+            for (int j = 0; j < s[index].course_info.no_of_units; j++)
+            {
+                cout << s[index].course_info.marks[j] << "\n";
+            }
+            cout << "Average : " << setprecision(2) << fixed << s[index].course_info.avg << "\n";
+            cout << "------------------------\n\n";
             cout << "-----> SEARCHING FINISHED!!!!\n\n";
         }
         else
