@@ -250,7 +250,6 @@ int binary_search(student_tag *s, string name, int array_size)
     while (low <= high)
     {
         middle = (low + high) / 2; //determines middle element
-
         //if search query is same as middle element, return middle
         if (name == s[middle].student_info.name)
         {
@@ -259,7 +258,6 @@ int binary_search(student_tag *s, string name, int array_size)
         }
         else if (name < s[middle].student_info.name)
             high = middle - 1; //search lowest end of the array
-
         //if search query is greater than middle, set new low
         else
             low = middle + 1;
@@ -311,7 +309,7 @@ void search_student(student_tag *s, int array_size, string name, int count)
         }
         else if (choice == '2' && count == 1)
         {
-            sort_mark(s, array_size);// temporary
+            sort_mark(s, array_size);
             index = binary_search(s, name, array_size);
             if(index == -1){
             cout << "Student with name " << name << " is not in the list\n\n";
