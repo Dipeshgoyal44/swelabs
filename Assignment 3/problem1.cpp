@@ -389,6 +389,3 @@ void update_file() //update function
     cout << "\n\n-----> UPDATE FINISHED!!!!\n\n";
     outFile.close(); //close file
 }
-
-// THINGS NOT WORKING
-//1.  need to change original array after sorting.
