@@ -1,67 +1,54 @@
 #include <iostream>
 #include <vector>
-#include <string>
-#include<cstdlib>
 
 using namespace std;
 
 enum genre{ pop, Jazz, Classic}; // Enumeration
 
 //struct
-typedef struct  // typdef so dont have to use struct everytime
+struct album // typdef so dont have to use struct everytime
 {
     string album_name;
     genre kind;
     int track_number;
     string tracks[5];
     string tracklocation;
-}album;
+};
 
-
-//get_album
-album add_album(vector <album> &add)
+int add_album(vector <album> &add)
 {
     album temp;
     int genre_id;
-    cout << "Enter Name" <<endl;  
+    cout << "Enter Name" <<endl;   
     cin >> temp.album_name;
-    //genre temp_kind = static_cast<genre>(genre_id);
-    cout << "Enter number of tracks\n";
+    cout << "Enter Genre 0-2" << endl;
+    cin >> genre_id;
+    temp.kind = static_cast<genre>(genre_id);
+    cout << "Enter number of tracks in the album \n";
     cin >> temp.track_number;
-    for (int i = 0; i < temp.track_number;i++){
+    cout << "Enter the names for these " << temp.track_number << " tracks\n";
+    for (int i = 0; i < temp.track_number; i++) {
         cin >> temp.tracks[i];
     }
-    cout << "Enter the file location\n";
+    cout << "Enter the file location of these tracks\n";
     cin >> temp.tracklocation;
     add.push_back(temp);
-    // getline(cin, temp.album_name); 
-    // fflush(stdin);
-    // cout << "Enter Genre 0-2" << endl;
-    // cin >> genre_id;
-    // temp.kind = static_cast<genre>(genre_id);
-    // fflush(stdin);
-    // cout << "Enter number of tracks in the album \n";
-    // cin >> temp.track_number;
-    // fflush(stdin);
-    // cout << "Enter the na   mes for these " << temp.track_number << " tracks\n";
-    // for (int i = 0; i < temp.track_number; i++) {
-    //     getline(cin, temp.tracks[i]); 
-    // }
-    // fflush(stdin);
-    // cout << "Enter the file location of these tracks\n";
-    // getline(cin,temp.tracklocation); 
-    // add.push_back(temp);
 }
 
 void print_all_album(vector <album> add)
 {
+    int count;
     for(int i = 0; i < add.size(); i ++){
         cout << "Name of the album : " << add[i].album_name << "\n";
         cout << "Genre of the album : " << add[i].kind << "\n";
         cout << "No. of tracks : " << add[i].track_number << "\n";
-        for (int j = 0; i < add[i].track_number; j++) {
-        cout << "Tracks  are : " << add.at(i).tracks[j] << "\n";
-        }
+        count = add[i].track_number;
+        cout << "Tracks  are : " << endl; 
+        cout << add.size();
+        // for (int j = 0; i < count; j++) {                         // MESSING UP HERE
+        // cout << "i is :" << i << "j is " << j << "\n";           // MESSING UP HERE
+        // cout <<  add[i].tracks[j] << endl;                       // MESSING UP HERE
+        // }
         cout << "Tracks are located at " <<  add[i].tracklocation << "\n";
     }
 }
@@ -84,24 +71,16 @@ void select_track_to_play(vector <album>add, string album_name)
     }
     cout << "Album not found\n";
 }
+    
 
 int main()
 {
-    vector <album> temp;
     string album_name;
     vector <album> albums; 
     add_album(albums);
     print_all_album(albums);
-    //cout << "Select an album to play\n";
+   // cout << "Select an album to play\n";
     //cin >> album_name;
-  //  select_track_to_play(albums,album_name);
-//    const char*;
-    // system(" cd D:\\BACS Year 1 Semester 1\\Technical Software Development\\Labs\\Lab09\\track_folder");
-    // system("start cross.mp3");
+   // select_track_to_play(albums,album_name);
 
-    
 }
-
-
-// TO PLAY
-// system(PATH)
