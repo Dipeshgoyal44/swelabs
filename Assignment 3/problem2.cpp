@@ -31,6 +31,7 @@ typedef Student_Tag *Student_TagPtr;
 
 //function protypes
 void menu();
+student_tag read(student_tag *s, int *array_size);
 int read_file(student_tag *s, int *array_size);
 void display_students(student_tag *s, int array_size);
 void linear_search(student_tag *s, string name, int array_size);
@@ -41,6 +42,44 @@ Student_TagPtr newptr;          /*pointer to a new node*/
 Student_TagPtr prevptr;         /*pointer to the previous node*/
 Student_TagPtr crntptr;         /*pointer to the current node*/
 Student_TagPtr temp;
+
+
+student_tag read(student_tag *s, int *array_size) //readfile function
+{
+    int count;
+    double total = 0;
+    string filename = "students.txt";
+    ifstream inFile;
+
+    inFile.open(filename.c_str());
+
+    if (inFile.fail()) // if file doesnt open successfully
+    {
+        cout << "The File was not opened successfully\n";
+        cout << "Please check that the file currently exists\n";
+        exit(1);
+    }
+    int i = 0;
+    while (inFile.peek() != EOF) // until the end of the file
+    {
+        double total = 0;
+        //name, id,course_name,no of units, marks, average
+        inFile >> s[i].student_info.name;
+        inFile >> s[i].student_info.id;
+        inFile >> s[i].course_info.course_name;
+        inFile >> s[i].course_info.no_of_units;
+        for (int j = 0; j < s[i].course_info.no_of_units; j++)
+        {
+            inFile >> s[i].course_info.marks[j];
+            total = total + s[i].course_info.marks[j];
+        }
+        s[i].course_info.avg = total / s[i].course_info.no_of_units;
+        i++;
+    }
+    *array_size = i; // temp has the same value of i to check how many records of data is in the file
+    inFile.close();  //close file
+    return *s;
+}
 
 
 int read_file(student_tag *s, int *array_size) //readfile function
