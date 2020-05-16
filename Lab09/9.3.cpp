@@ -113,13 +113,13 @@ void select_track_to_play(vector <album>add, string album_name)
             cout << number << ". "<< add[i].tracks[j] << "\n";
             number++;
             }
-            cout << "Please select a track to play from the above list\n";
+            cout << "Please select a track to play from the above list\n"; // VALIDATION
             cin >> track_name;
             cout << "The track you selected " << track_name << " from the Album: " << album_name 
             << " is now playing from the location " << add[i].tracklocation << "\n";
-            // system("cd D:\\BACS Year 1 Semester 1\\Technical Software Development\\Labs\\Lab09\\track_folder");
-            // system("start cross.mp3");
-            // getch();
+            system("d:");
+            system("cd D:\\BACS Year 1 Semester 1\\Technical Software Development\\Labs\\Lab09\track_folder");
+            system("start cross.mp3");
         }else{
             cout << "Album not found\n";
         }
