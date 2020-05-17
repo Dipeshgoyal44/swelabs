@@ -65,8 +65,8 @@ void read() //readfile function
             inFile >> cptr->course_info.marks[j];
             total = total + cptr->course_info.marks[j];
         }
-        double average =    total/ cptr->course_info.no_of_units;
-        cptr -> course_info.avg = average;
+        double average = total / cptr->course_info.no_of_units;
+        cptr->course_info.avg = average;
         if (hptr == NULL)
         {
             // First item in the list. hptr pointing to first item
@@ -102,12 +102,92 @@ void display()
         cout << "------------------------\n\n";
         ptr = ptr->next;
     }
+}
+
+void linear_search(string name) // linear search
+{
+    student_tag *ptr;
+    ptr = hptr;
+    student_tag *temp; // if name not found
+    temp = hptr;
+    int check=0;
+    //CHECKING IF NAME IS IN THE LIST
+    while (temp != NULL)
+    {
+        if (temp->student_info.name != name){
+            check=1;
+        }
+        temp = temp->next;
+    }
+    if(check==1){
+        cout << "Not found\n";
+    }
+
+    while (ptr != NULL)
+    {
+        if (ptr->student_info.name == name)
+        {
+            cout << "The Student Name: " << ptr->student_info.name << "  \n";
+            cout << "The Student ID: " << ptr->student_info.id << "  \n";
+            cout << "The course name: " << ptr->course_info.course_name << "  \n";
+            cout << "Number of units " << ptr->course_info.no_of_units << "  \n";
+            cout << "Marks recieved: \n";
+            for (int j = 0; j < ptr->course_info.no_of_units; j++)
+            {
+                cout << ptr->course_info.marks[j] << "  \n";
+            }
+            cout << "Average : " << setprecision(2) << fixed << ptr->course_info.avg << " \n";
+            cout << "------------------------\n\n";
+            cout << "-----> SEARCHING FINISHED!!!!\n\n";
+        }
+        ptr = ptr->next;
+    }
+}
+
+void find_maximum() //display function
+{
+    cout << "\n-------DETAILS OF STUDENT WHO GOT MAXIMUM AVERAGE MARK--------\n";
+    student_tag *ptr;
+    student_tag *temp;
+    ptr = hptr; // to get max
+    temp =hptr; // to display largest average
+    double max;
     
+    while (ptr != NULL)
+    {
+        if (ptr->course_info.avg > max){ 
+            max = ptr->course_info.avg; // getting max
+        }
+        ptr = ptr->next;
+    }
+        while (temp != NULL){
+        if (temp->course_info.avg == max) // Checking for max
+        {
+            cout << "The Student Name: " << temp->student_info.name << "  \n";
+            cout << "The Student ID: " << temp->student_info.id << "  \n";
+            cout << "The course name: " << temp->course_info.course_name << "  \n";
+            cout << "Number of units " << temp->course_info.no_of_units << "  \n";
+            cout << "Marks recieved: \n";
+            for (int j = 0; j < temp->course_info.no_of_units; j++)
+            {
+                cout << temp->course_info.marks[j] << "  \n";
+            }
+            cout << "Average : " << setprecision(2) << fixed << temp->course_info.avg << " \n";
+            cout << "------------------------\n\n";
+        }
+        temp = temp->next;
+        }
 }
 
 int main()
 {
+    string name;
     read();
     display();
+    cout << "Enter a name to search\n";
+    cin >> name;
+    cout << "------SEARCHING----------\n";
+    linear_search(name);
+    find_maximum();
     return 0;
 }
