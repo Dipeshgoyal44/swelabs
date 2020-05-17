@@ -24,24 +24,47 @@ double get_salary( Emp y[],string x);
 
 int main()
 {
+    char menu;
     Emp employee[5];    
-    string x;
-    string y;
+    string name;
+    string cname;
     int i;
+    
+    do { //switch menu 
+        cout << "\n(1)Enter 1 to store employee data\n" <<
+        "(2)Enter 2 to print the employee details.\n" <<
+        "(3)Enter 3 to search for employee salary by name\n" <<
+        "(4)Enter 4 to calculate average salary of particular company\n" <<
+        "(5)Enter 5 to Exit.\n";
+    cin >> menu;
+    switch (menu)
+    {
+    case '1':
     for (i = 0; i < 5; i++)
     {
         employee[i] = get_data();
     }
+        break;
+    case '2':
     print_data(employee);
-    cout << "\nEnter a name: ";
-    cin >> x;
-    cout << "\n";
-    get_salary(employee, x);
+        break;
+    case '3':
+    cout << "\nEnter the employee name to search for salary: ";
+    cin >> name;
+    get_salary(employee,name);
+        break;
+    case '4':
     cout << "Enter the company name to get average salary: ";
-    cin >> y;
-    cout << "The average salary for this company is " << get_average(employee,y);
-}
-
+    cin >> cname;
+    cout << "The average salary for this company is " << get_average(employee,cname); 
+    case '5':
+    return 0;
+        break;
+    default:
+        cout << "Error! Invalid Selection";
+        break;
+    }}while(menu != 5);
+}    
 Emp get_data()
 {
     Emp x;
@@ -101,4 +124,5 @@ double get_salary( Emp a[],string x)
             return a[i].salary;
         }
     }
+    cout << "Employee not found\n";
 }
