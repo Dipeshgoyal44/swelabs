@@ -32,19 +32,18 @@ int main()
         "(3)Enter 3 to play a track from an album.\n" <<
         "(4)Enter 4 to Exit.\n";
     cin >> menu;
-
     switch (menu)
     {
     case '1':
-    add_album(albums);
+    add_album(albums); // add albums
         break;
     case '2':
-    print_all_album(albums);
+    print_all_album(albums); // prints albums
         break;
     case '3':
     cout << "Select an album to play\n";
     cin >> album_name;
-    select_track_to_play(albums,album_name);
+    select_track_to_play(albums,album_name); // play album
         break;
     case '4':
         return 0;
@@ -57,6 +56,7 @@ int main()
 
 int add_album(vector <album> &add)
 {
+    // storting album data
     album temp;
     int genre_id;
     cout << "Enter album name" <<endl;   
@@ -72,16 +72,17 @@ int add_album(vector <album> &add)
     }
     cout << "Enter the file location of these tracks\n";
     cin >> temp.tracklocation;
-    add.push_back(temp);
+    add.push_back(temp); // pushing data to vector
 }
 
 void print_all_album(vector <album> add)
 {
+    //displaying album data
     int count;
     for(int i = 0; i < add.size(); i ++){
         cout << "\nName of the album : " << add[i].album_name << "\n";
         cout << "Genre of the album :  " ;
-        if(add[i].kind == 0){
+        if(add[i].kind == 0){ // for enum 
             cout << "Rock\n";
         }else if(add[i].kind == 1){
             cout << "Pop\n";
@@ -101,8 +102,8 @@ void select_track_to_play(vector <album>add, string album_name)
 {
     string track_name;
     int number = 1;
-        if(add.empty()){
-        cout << "Album not found\n";
+        if(add.empty()){ // if no albums in vector
+        cout << "You have no albums saved currently.\n";
         }
     for (int i = 0; i < add.size(); i++){
         if (add[i].album_name == album_name)
@@ -112,7 +113,7 @@ void select_track_to_play(vector <album>add, string album_name)
             cout << number << ". "<< add[i].tracks[j] << "\n";
             number++;
             }
-            cout << "Please select a track to play from the above list\n"; // VALIDATION
+            cout << "Please select a track to play from the above list\n"; 
             cin >> track_name;
             cout << "The track you selected " << track_name << " from the Album: " << album_name 
             << " is now playing from the location " << add[i].tracklocation << "\n";

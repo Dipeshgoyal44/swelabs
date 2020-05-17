@@ -3,6 +3,7 @@
 
 using namespace std;
 
+//structures
 typedef struct 
 {
     string company_id;
@@ -17,6 +18,7 @@ typedef struct
     company_detail cmp_detail;
 }Emp;
 
+//function prototypes
 Emp get_data();
 void print_data(Emp a[]);
 double get_average( Emp a[], string y);
@@ -26,10 +28,9 @@ int main()
 {
     char menu;
     Emp employee[5];    
-    string name;
-    string cname;
+    string name; // employee name
+    string cname; //company name
     int i;
-    
     do { //switch menu 
         cout << "\n(1)Enter 1 to store employee data\n" <<
         "(2)Enter 2 to print the employee details.\n" <<
@@ -40,18 +41,18 @@ int main()
     switch (menu)
     {
     case '1':
-    for (i = 0; i < 5; i++)
+    for (i = 0; i < 5; i++) // loop to store 5 records of employee
     {
         employee[i] = get_data();
     }
         break;
     case '2':
-    print_data(employee);
+    print_data(employee); // prints all the data 
         break;
     case '3':
     cout << "\nEnter the employee name to search for salary: ";
     cin >> name;
-    get_salary(employee,name);
+    get_salary(employee,name); //gets salary for employee name entered
         break;
     case '4':
     cout << "Enter the company name to get average salary: ";
@@ -67,6 +68,7 @@ int main()
 }    
 Emp get_data()
 {
+    // gets employee data
     Emp x;
     company_detail y;
     cout << "\nEnter Employee Details.." << endl;
@@ -81,10 +83,11 @@ Emp get_data()
     cin >> x.cmp_detail.company_name;
     cout << "Enter Employee Salary:.." << endl;
     cin >> x.salary;
-    return x;
+    return x; //returns x which has a datatype of emp
 }
 void print_data(Emp a[])
 {
+    // prints all data
     int i;
     for (i = 4; i >= 0; i--)
     {   
@@ -98,12 +101,13 @@ void print_data(Emp a[])
 }
 double get_average( Emp a[], string y)
 {
+    //gets averages
     double sum = 0;
     int i;
     double temp = 0;
     for (i = 0; i < 5; i++)
     {
-        if (a[i].cmp_detail.company_name == y)
+        if (a[i].cmp_detail.company_name == y) 
         {
             sum += a[i].salary;
             temp++;
