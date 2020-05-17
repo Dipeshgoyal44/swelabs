@@ -3,11 +3,11 @@
 
 using namespace std;
 
-typedef struct Node
+struct Node
 {
     int data;
     Node *next;
-} Node;
+};
 
 Node *hptr = NULL;
 
