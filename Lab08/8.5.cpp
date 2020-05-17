@@ -7,10 +7,11 @@ void reorder(int *a , int *b, int *c);
 
 int main()
 {
-    int a = 9;
-    int b = 6;
-    int c = 7;
+    int a;
+    int b;
+    int c;
     
+    //Ask user to enter data
     cout << "Enter the value for A \n";
     cin >> a;
     cout << "Enter the value for B \n";
@@ -18,7 +19,9 @@ int main()
     cout << "Enter the value for C \n";  
     cin >> c;
 
+    // pass the address to function so it changes original values too.
     reorder(&a,&b,&c);
+    //displaying results
     cout << "A: " << a << "\n";
     cout << "B: " << b << "\n";
     cout << "C: " << c << "\n";
@@ -30,6 +33,7 @@ int main()
 //Function with pointers
 void reorder(int *a , int *b, int *c)
 {
+    //if statements to order the integers
     int temp = 0;
     if(*a>*c)
     {
@@ -48,6 +52,5 @@ void reorder(int *a , int *b, int *c)
         temp=*c;
         *c=*b;
         *b=temp;
-
     }
     }
