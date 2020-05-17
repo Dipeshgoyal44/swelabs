@@ -37,16 +37,11 @@ void display_students(student_tag *s, int array_size);
 void linear_search(student_tag *s, string name, int array_size);
 void find_maximum(student_tag *s, int array_size);
 
-Student_TagPtr startptr = NULL; /*This is question 1 part A*/
-Student_TagPtr newptr;          /*pointer to a new node*/
-Student_TagPtr prevptr;         /*pointer to the previous node*/
-Student_TagPtr crntptr;         /*pointer to the current node*/
-Student_TagPtr temp;
+
 Student_TagPtr hptr;
 
 student_tag read(int *array_size) //readfile function
 {
-    student_tag *s;
     int count;
     double total = 0;
     string filename = "students.txt";
@@ -64,22 +59,20 @@ student_tag read(int *array_size) //readfile function
     while (inFile.peek() != EOF) // until the end of the file
     {
         double total = 0;
-        //name, id,course_name,no of units, marks, average
-        inFile >> s[i].student_info.name;
-        inFile >> s[i].student_info.id;
-        inFile >> s[i].course_info.course_name;
-        inFile >> s[i].course_info.no_of_units;
-        for (int j = 0; j < s[i].course_info.no_of_units; j++)
-        {
-            inFile >> s[i].course_info.marks[j];
-            total = total + s[i].course_info.marks[j];
-        }
-        s[i].course_info.avg = total / s[i].course_info.no_of_units;
+        inFile >> hptr-> student_info.name ;
+        inFile >> hptr->student_info.id;
+        // inFile >> s[i].course_info.course_name; for testing
+        // inFile >> s[i].course_info.no_of_units;
+        // for (int j = 0; j < s[i].course_info.no_of_units; j++)
+        // {
+        //     inFile >> s[i].course_info.marks[j];
+        //     total = total + s[i].course_info.marks[j];
+        // }
+        // s[i].course_info.avg = total / s[i].course_info.no_of_units;
         i++;
     }
     *array_size = i; // temp has the same value of i to check how many records of data is in the file
     inFile.close();  //close file
-    return *s;
 }
 
 student_tag *read_file() //readfile function
@@ -99,7 +92,6 @@ student_tag *read_file() //readfile function
     }
     int i = 0;
     student_tag *tail = nullptr;
-    hptr = nullptr;
     student_tag *nptr = new student_tag;
     read(&count);
     while (inFile.peek() != EOF) // until the end of the file
@@ -143,9 +135,8 @@ void display()
 
 int main()
 {
-    student_tag student_array[100]; //array of size 100 of datatype student
     int array_size = 0;
-    read_file(student_array, &array_size);
+    read_file();
     cout << "The linked list is: ";
     display();
     return 0;

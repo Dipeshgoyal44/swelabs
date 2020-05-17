@@ -4,10 +4,10 @@
 
 using namespace std;
 
-enum genre{ pop, Jazz, Classic}; // Enumeration
+enum genre{ Rock, Pop, Country}; // Enumeration
 
 //struct
-typedef struct  // typdef so dont have to use struct everytime
+typedef struct  
 {
     string album_name;
     genre kind;
@@ -60,9 +60,9 @@ int add_album(vector <album> &add)
 {
     album temp;
     int genre_id;
-    cout << "Enter Name" <<endl;   
+    cout << "Enter album name" <<endl;   
     cin >> temp.album_name;
-    cout << "Enter Genre 0-2" << endl;
+    cout << "Enter genre 0 -> Rock, 1 -> Pop, 2 ->Country" << endl;
     cin >> genre_id;
     temp.kind = static_cast<genre>(genre_id);
     cout << "Enter number of tracks in the album \n";
@@ -81,13 +81,13 @@ void print_all_album(vector <album> add)
     int count;
     for(int i = 0; i < add.size(); i ++){
         cout << "\nName of the album : " << add[i].album_name << "\n";
-        cout << "Genre of the album : " ;
+        cout << "Genre of the album :  " ;
         if(add[i].kind == 0){
-            cout << "pop\n";
+            cout << "Rock\n";
         }else if(add[i].kind == 1){
-            cout << "Jazz\n";
+            cout << "Pop\n";
         }else if(add[i].kind == 2) {
-            cout << "Classic\n";
+            cout << "Country\n";
         }
         cout << "No. of tracks : " << add[i].track_number << "\n";
         cout << "Tracks  are : " << endl; 
@@ -117,9 +117,7 @@ void select_track_to_play(vector <album>add, string album_name)
             cin >> track_name;
             cout << "The track you selected " << track_name << " from the Album: " << album_name 
             << " is now playing from the location " << add[i].tracklocation << "\n";
-            system("d:");
-            system("cd D:\\BACS Year 1 Semester 1\\Technical Software Development\\Labs\\Lab09\track_folder");
-            system("start cross.mp3");
+            system(("cd "+add[i].tracklocation+" && start "+track_name+".mp3").c_str());
         }else{
             cout << "Album not found\n";
         }
