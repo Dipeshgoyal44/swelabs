@@ -23,40 +23,40 @@ int main()
     int array[10];
     srand(time(NULL));
 
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 10; i++) // generating random numbers
     {
-        array[i] = rand() % 50 + 1;
+        array[i] = rand() % 50 + 1; // storing random numbers in array
     }
 
-    BubbleSort(array);
+    BubbleSort(array); //passing array to get sorted
     for (int i = 0; i < 10; i++)
     {
-        insert(array[i]);
+        insert(array[i]); // passing in function to read in linked list
     }
 
     cout << "The linked list is: ";
-    display();
+    display(); // displaying linked list
     return 0;
 }
 
-void insert(int data)
+void insert(int data) // insert to linked list
 {
     Node *nptr = (Node *)malloc(sizeof(Node));
     nptr->data = data;
     nptr->next = hptr;
     hptr = nptr;
 }
-void display()
+void display() // displaying lunked list
 {
     struct Node* head = NULL; 
     Node *ptr;
     ptr = hptr;
-    while (ptr != NULL)
+    while (ptr != NULL) // till ptr is empty
     {
         cout << ptr->data << " ";
         ptr = ptr->next;   
     }
-    cout << "\nAverage of nodes = " << node_average(hptr);  
+    cout << "\nAverage of nodes = " << node_average(hptr);   // average
 }
 
 void BubbleSort(int array[]) //bubble sort
