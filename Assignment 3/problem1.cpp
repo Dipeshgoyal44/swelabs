@@ -5,6 +5,7 @@
 
 using namespace std;
 
+//Structures
 typedef struct
 {
     string name;
@@ -26,7 +27,7 @@ typedef struct
 } student_tag;
 
 //function protypes
-void menu();
+char menu();
 int read_file(student_tag *s, int *array_size);
 void display_students(student_tag *s, int array_size);
 void sort_mark(student_tag *s, int array_size);
@@ -40,7 +41,7 @@ void update_file();
 
 int main()
 {
-    student_tag student_array[100]; //array of size 100 of datatype student
+    student_tag student_array[100]; //array of size 100 of datatype student_tag
     int array_size = 0;
     int var = 0;
     string name;
@@ -48,9 +49,7 @@ int main()
     char c; //switch statement to display menu
     do
     {
-        menu();
-    cout << "Your choice: ";
-    cin >> c;
+    c = menu(); // MENU function displays option and returns user input
         switch (c) //c is storing the user input for choice
         {
         case '1':
@@ -58,11 +57,13 @@ int main()
             display_students(student_array, array_size); // displays the file contents
             break;
         case '2':
-            read_file(student_array, &array_size);
+            //Sorting
+            read_file(student_array, &array_size); 
             sort_details(student_array, array_size, &count);
             display_students(student_array, array_size);
             break;
         case '3':
+            //Searching
             cout << "------SEARCHING----------\n";
             cout << "Input name: ";
             cin >> name;
@@ -71,11 +72,13 @@ int main()
             search_student(student_array, array_size, name, var);
             break;
         case '4':
+            //Find Max Average
             cout << "\n-------DETAILS OF STUDENT WHO GOT MAXIMUM AVERAGE MARK--------\n";
             read_file(student_array, &array_size);
             find_maximum(student_array, array_size);
             break;
         case '5':
+            //Update File 
             read_file(student_array, &array_size);
             update_file();
             read_file(student_array, &array_size);
@@ -91,8 +94,9 @@ int main()
     } while (c != 6); //while loop keeps running till 4 is chosen as an option.
 }
 
-void menu()
+char menu()
 {
+    //displays options
     char c;
     cout << "\n----MENU----\n";
     cout << "1.Display student's details\n";
@@ -101,14 +105,16 @@ void menu()
     cout << "4.Find the details of student who received maximum average\n";
     cout << "5.Add new student to the record\n";
     cout << "6.Quit program\n";
-    
+    cout << "Your choice: ";
+    cin >> c;
+    return c; // returns input for the switch
 }
 
 int read_file(student_tag *s, int *array_size) //readfile function
 {
     int count;
     double total = 0;
-    string filename = "students.txt";
+    string filename = "students.txt"; // filename
     ifstream inFile;
 
     inFile.open(filename.c_str());
@@ -123,7 +129,6 @@ int read_file(student_tag *s, int *array_size) //readfile function
     while (inFile.peek() != EOF) // until the end of the file
     {
         double total = 0;
-        //name, id,course_name,no of units, marks, average
         inFile >> s[i].student_info.name;
         inFile >> s[i].student_info.id;
         inFile >> s[i].course_info.course_name;
@@ -133,7 +138,7 @@ int read_file(student_tag *s, int *array_size) //readfile function
             inFile >> s[i].course_info.marks[j];
             total = total + s[i].course_info.marks[j];
         }
-        s[i].course_info.avg = total / s[i].course_info.no_of_units;
+        s[i].course_info.avg = total / s[i].course_info.no_of_units; //storing average
         i++;
     }
     *array_size = i; // temp has the same value of i to check how many records of data is in the file
@@ -161,7 +166,7 @@ void display_students(student_tag *s, int array_size) //display function
     }
 }
 
-void sort_mark(student_tag *s, int array_size)
+void sort_mark(student_tag *s, int array_size)// sorting by marks
 {
     for (int key = 0; key < array_size - 1; key++)
     {
@@ -175,7 +180,7 @@ void sort_mark(student_tag *s, int array_size)
     }
 }
 
-void sort_name(student_tag *s, int array_size)
+void sort_name(student_tag *s, int array_size) // sorting by name
 {
     for (int i = 0; i < array_size - 1; i++)
     {
@@ -194,8 +199,6 @@ void sort_details(student_tag *s, int array_size, int *count)
     int invalid = 0;
     char choice;
     int i = 0;
-    int m = 0;
-    string L;
 
     cout << "------SORTING--------\n";
     do
@@ -207,7 +210,7 @@ void sort_details(student_tag *s, int array_size, int *count)
         cin >> choice;
         if (choice == '1')
         {
-            *count = 1;
+            *count = 1; // for the binary search to know the data is sorted before using binary
             cout << "sort by name\n";
             sort_name(s, array_size);
             cout << "\n------SORTING FINISHED----------\n\n";
@@ -215,7 +218,7 @@ void sort_details(student_tag *s, int array_size, int *count)
         }
         else if (choice == '2')
         {
-            *count = 1;
+            *count = 1; // for the binary search to know the data is sorted before using binary
             sort_mark(s, array_size);
             cout << "\n------SORTING FINISHED----------\n\n";
             cout << "Array after sorting by average marks :\n\n";
@@ -228,10 +231,9 @@ void sort_details(student_tag *s, int array_size, int *count)
     } while (invalid == 1);
 }
 
-int linear_search(student_tag *s, string name, int array_size)
+int linear_search(student_tag *s, string name, int array_size) // linear search
 {
     int i;
-    int temp1;
     for (i = 0; i < array_size; i++){
         if (s[i].student_info.name == name)
         {
@@ -267,13 +269,12 @@ int binary_search(student_tag *s, string name, int array_size)
 
 void search_student(student_tag *s, int array_size, string name, int count)
 {
-    // student_tag student_array[100];
+    // ssearch student
     char choice;
     int i = 0;
     int index1 = 0;
     int index = 0;
     int invalid = 0;
-    char temp;
     do
     {
         invalid = 0;
@@ -281,7 +282,7 @@ void search_student(student_tag *s, int array_size, string name, int count)
         cout << "2.Binary Search\n";
         cout << "Input choice: ";
         cin >> choice;
-        if (choice == '1')
+        if (choice == '1') // Linear
         {
         index1 = linear_search(s, name, array_size);
         ///cout << "LINEAR SEARCH KEY: " << s[index1].student_info.name << "\n";
@@ -302,7 +303,7 @@ void search_student(student_tag *s, int array_size, string name, int count)
             cout << "-----> SEARCHING FINISHED!!!!\n\n";
             }
         }
-        else if (choice == '2' && count != 1)
+        else if (choice == '2' && count != 1) // count is to check if data is sorted or not
         {
             cout << "Can't perform binary search on unsorted array!!!\n\n";
             cout << "-----> SEARCHING FINISHED!!!!\n\n";
@@ -342,11 +343,11 @@ void find_maximum(student_tag *s, int array_size) //display function
     int i = 0;
     for (i = 0; i < array_size - 1; i++)
     {
-        if (s[i].course_info.avg > max) // condition for max
-            max = s[i].course_info.avg;
+        if (s[i].course_info.avg > max) 
+            max = s[i].course_info.avg; // getting max
     }
     for (i = 0; i < array_size; i++)
-        if (s[i].course_info.avg == max)
+        if (s[i].course_info.avg == max) // Checking for max
         {
             cout << "\nName: " << s[i].student_info.name << "\n";
             cout << "ID: " << s[i].student_info.id << "\n";
@@ -363,6 +364,7 @@ void find_maximum(student_tag *s, int array_size) //display function
 
 void update_file() //update function
 {
+    // adding to file
     ofstream outFile;
     student_tag s;
     outFile.open("students.txt", ios::app);
