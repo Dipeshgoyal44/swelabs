@@ -25,18 +25,18 @@ struct student_tag
     course_tag course_info;
     student_tag *next;
 };
-
+//self referential structure
 typedef struct student_tag Student_Tag;
 typedef Student_Tag *Student_TagPtr;
 
-Student_TagPtr hptr;
-Student_TagPtr cptr;
-Student_TagPtr nptr;
+Student_TagPtr hptr; //headptr
+Student_TagPtr cptr; // currentptr
+Student_TagPtr nptr; 
 
 //function protypes
 void menu();
-void read();
-void display();
+void read_file();
+void display_students();
 void linear_search(string name);
 void find_maximum();
 
@@ -54,16 +54,19 @@ int main()
         switch (c) //c is storing the user input for choice
         {
         case '1':
-            read();       // reads the file
-            display(); // displays the file contents
+        //display
+            read_file();      // reads the file
+            display_students(); // displays the file contents
             break;
         case '2':
+        //search
             cout << "Input name: ";
             cin >> name;
             cout << "----------SEARCHING----------\n";
             linear_search(name);
             break;
         case '3':
+        //max average
             find_maximum();
             break;
         case '4':
@@ -87,7 +90,7 @@ void menu()
     cout << "4.Quit program\n\n";
 }
 
-void read() //readfile function
+void read_file() //readfile function
 {
     double total;
     hptr = nptr = NULL; //intialized to null
@@ -104,7 +107,7 @@ void read() //readfile function
     {
         total = 0;
         cptr = new Student_Tag;
-        // Read the data into the new item
+        // Read the data into the node
         inFile >> cptr->student_info.name;
         inFile >> cptr->student_info.id;
         inFile >> cptr->course_info.course_name;
@@ -115,7 +118,7 @@ void read() //readfile function
             total = total + cptr->course_info.marks[j];
         }
         double average = total / cptr->course_info.no_of_units;
-        cptr->course_info.avg = average;
+        cptr->course_info.avg = average; //storing average
         if (hptr == NULL)
         {
             // First item in the list. hptr pointing to first item
@@ -123,7 +126,7 @@ void read() //readfile function
         }
         else
         {
-            // Not the first item, append it to the tail.
+            // if tot the first item, appending it to the tail.
             nptr->next = cptr;
         }
         nptr = cptr; // Move the tail pointer
@@ -132,7 +135,7 @@ void read() //readfile function
     inFile.close();    //close file
 }
 
-void display()
+void display_students()
 {
     Student_TagPtr ptr;
     ptr = hptr;
