@@ -29,9 +29,9 @@ struct student_tag
 typedef struct student_tag Student_Tag;
 typedef Student_Tag *Student_TagPtr;
 
-Student_Tag *hptr;
-Student_Tag *cptr;
-Student_Tag *nptr;
+Student_TagPtr hptr;
+Student_TagPtr cptr;
+Student_TagPtr nptr;
 
 //function protypes
 void menu();
@@ -85,7 +85,7 @@ void read() //readfile function
 
 void display()
 {
-    student_tag *ptr;
+    Student_TagPtr ptr;
     ptr = hptr;
     while (ptr != NULL)
     {
@@ -106,9 +106,9 @@ void display()
 
 void linear_search(string name) // linear search
 {
-    student_tag *ptr;
+    Student_TagPtr ptr;
     ptr = hptr;
-    student_tag *temp; // if name not found
+    Student_TagPtr temp; // if name not found
     temp = hptr;
     int check=0;
     //CHECKING IF NAME IS IN THE LIST
@@ -147,8 +147,8 @@ void linear_search(string name) // linear search
 void find_maximum() //display function
 {
     cout << "\n-------DETAILS OF STUDENT WHO GOT MAXIMUM AVERAGE MARK--------\n";
-    student_tag *ptr;
-    student_tag *temp;
+    Student_TagPtr ptr;
+    Student_TagPtr temp;
     ptr = hptr; // to get max
     temp =hptr; // to display largest average
     double max;

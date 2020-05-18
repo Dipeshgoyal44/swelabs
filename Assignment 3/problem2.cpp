@@ -29,105 +29,22 @@ struct student_tag
 typedef struct student_tag Student_Tag;
 typedef Student_Tag *Student_TagPtr;
 
+Student_TagPtr hptr;
+Student_TagPtr cptr;
+Student_TagPtr nptr;
+
 //function protypes
 void menu();
-student_tag read(student_tag *s, int *array_size);
-int read_file(student_tag *s, int *array_size);
-void display_students(student_tag *s, int array_size);
-void linear_search(student_tag *s, string name, int array_size);
-void find_maximum(student_tag *s, int array_size);
+void read();
+void display();
+void linear_search(string name);
+void find_maximum();
 
-Student_TagPtr startptr = NULL; /*This is question 1 part A*/
-Student_TagPtr newptr;          /*pointer to a new node*/
-Student_TagPtr prevptr;         /*pointer to the previous node*/
-Student_TagPtr crntptr;         /*pointer to the current node*/
-Student_TagPtr temp;
-
-
-student_tag read(student_tag *s, int *array_size) //readfile function
-{
-    int count;
-    double total = 0;
-    string filename = "students.txt";
-    ifstream inFile;
-
-    inFile.open(filename.c_str());
-
-    if (inFile.fail()) // if file doesnt open successfully
-    {
-        cout << "The File was not opened successfully\n";
-        cout << "Please check that the file currently exists\n";
-        exit(1);
-    }
-    int i = 0;
-    while (inFile.peek() != EOF) // until the end of the file
-    {
-        double total = 0;
-        //name, id,course_name,no of units, marks, average
-        inFile >> s[i].student_info.name;
-        inFile >> s[i].student_info.id;
-        inFile >> s[i].course_info.course_name;
-        inFile >> s[i].course_info.no_of_units;
-        for (int j = 0; j < s[i].course_info.no_of_units; j++)
-        {
-            inFile >> s[i].course_info.marks[j];
-            total = total + s[i].course_info.marks[j];
-        }
-        s[i].course_info.avg = total / s[i].course_info.no_of_units;
-        i++;
-    }
-    *array_size = i; // temp has the same value of i to check how many records of data is in the file
-    inFile.close();  //close file
-    return *s;
-}
-
-
-int read_file(student_tag *s, int *array_size) //readfile function
-{
-    int count;
-    double total = 0;
-    string filename = "students.txt";
-    ifstream inFile;
-
-    inFile.open(filename.c_str());
-
-    if (inFile.fail()) // if file doesnt open successfully
-    {
-        cout << "The File was not opened successfully\n";
-        cout << "Please check that the file currently exists\n";
-        return 0;
-    }
-    int i = 0;
-    while (inFile.peek() != EOF) // until the end of the file
-    {
-        double total = 0;
-        //name, id,course_name,no of units, marks, average
-        inFile >> s[i].student_info.name;
-        inFile >> s[i].student_info.id;
-        inFile >> s[i].course_info.course_name;
-        inFile >> s[i].course_info.no_of_units;
-        for (int j = 0; j < s[i].course_info.no_of_units; j++)
-        {
-            inFile >> s[i].course_info.marks[j];
-            total = total + s[i].course_info.marks[j];
-        }
-        s[i].course_info.avg = total / s[i].course_info.no_of_units;
-        i++;
-    }
-    *array_size = i; // temp has the same value of i to check how many records of data is in the file
-    inFile.close();  //close file
-}
 
 
 int main()
 {
-    //linkedlist prep
-
-    student_tag student_array[100]; //array of size 100 of datatype student
-    int array_size = 0;
-    int var = 0;
     string name;
-    int count = 0;
     char c; //switch statement to display menu
     do
     {
@@ -137,20 +54,17 @@ int main()
         switch (c) //c is storing the user input for choice
         {
         case '1':
-            read_file(student_array, &array_size);       // reads the file
-            display_students(student_array, array_size); // displays the file contents
+            read();       // reads the file
+            display(); // displays the file contents
             break;
         case '2':
-            cout << "------SEARCHING----------\n";
             cout << "Input name: ";
             cin >> name;
-            read_file(student_array, &array_size);
-            var = count;
+            cout << "----------SEARCHING----------\n";
+            linear_search(name);
             break;
         case '3':
-            cout << "\n-------DETAILS OF STUDENT WHO GOT MAXIMUM AVERAGE MARK--------\n";
-            read_file(student_array, &array_size);
-            find_maximum(student_array, array_size);
+            find_maximum();
             break;
         case '4':
             printf("SEE YOU LATER! \n");
@@ -163,23 +77,6 @@ int main()
     } while (c != 4); //while loop keeps running till 4 is chosen as an option.
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void menu()
 {
     char c;
@@ -190,115 +87,143 @@ void menu()
     cout << "4.Quit program\n";
 }
 
-
-
-
-
-
-
-void display_students(student_tag *s, int array_size) //display function
+void read() //readfile function
 {
-    int i;
-    cout << "-----STUDENTS' LIST-----\n\n";
-    for (i = 0; i < array_size - 1; i++)
-    { //loop runs till the count is same as the value of temp, which is the end of the file.
-        double total = 0;
-        cout << "---------------------------\n";
-        cout << "Name: " << s[i].student_info.name << "\n";
-        cout << "ID: " << s[i].student_info.id << "\n";
-        cout << "Course Name: " << s[i].course_info.course_name << "\n";
-        cout << "Number of units: " << s[i].course_info.no_of_units << "\n";
-        for (int j = 0; j < s[i].course_info.no_of_units; j++)
+    double total;
+    hptr = nptr = NULL; //intialized to null
+    string filename = "students.txt";
+    ifstream inFile(filename);
+
+    if (inFile.fail()) // if file doesnt open successfully
+    {
+        cout << "The File was not opened successfully\n";
+        cout << "Please check that the file currently exists\n";
+        exit(1);
+    }
+    while (inFile.peek() != EOF) // until the end of the file
+    {
+        total = 0;
+        cptr = new Student_Tag;
+        // Read the data into the new item
+        inFile >> cptr->student_info.name;
+        inFile >> cptr->student_info.id;
+        inFile >> cptr->course_info.course_name;
+        inFile >> cptr->course_info.no_of_units;
+        for (int j = 0; j < cptr->course_info.no_of_units; j++)
         {
-            cout << s[i].course_info.marks[j] << "\n";
+            inFile >> cptr->course_info.marks[j];
+            total = total + cptr->course_info.marks[j];
         }
-        cout << "Average : " << setprecision(2) << fixed << s[i].course_info.avg << "\n";
+        double average = total / cptr->course_info.no_of_units;
+        cptr->course_info.avg = average;
+        if (hptr == NULL)
+        {
+            // First item in the list. hptr pointing to first item
+            hptr = cptr;
+        }
+        else
+        {
+            // Not the first item, append it to the tail.
+            nptr->next = cptr;
+        }
+        nptr = cptr; // Move the tail pointer
+    }
+    cptr->next = NULL; //  last items next pointer set to NULL
+    inFile.close();    //close file
+}
+
+void display()
+{
+    Student_TagPtr ptr;
+    ptr = hptr;
+    while (ptr != NULL)
+    {
+        cout << "The Student Name: " << ptr->student_info.name << "  \n";
+        cout << "The Student ID: " << ptr->student_info.id << "  \n";
+        cout << "The course name: " << ptr->course_info.course_name << "  \n";
+        cout << "Number of units " << ptr->course_info.no_of_units << "  \n";
+        cout << "Marks recieved: \n";
+        for (int j = 0; j < ptr->course_info.no_of_units; j++)
+        {
+            cout << ptr->course_info.marks[j] << "  \n";
+        }
+        cout << "Average : " << setprecision(2) << fixed << ptr->course_info.avg << " \n";
         cout << "------------------------\n\n";
+        ptr = ptr->next;
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-void linear_search(student_tag *s, string name, int array_size)
+void linear_search(string name) // linear search
 {
-    int i;
-    int temp1;
-    for (i = 0; i < array_size; i++)
+    Student_TagPtr ptr;
+    ptr = hptr;
+    Student_TagPtr temp; // if name not found
+    temp = hptr;
+    int check=0;
+    //CHECKING IF NAME IS IN THE LIST
+    while (temp != NULL)
     {
-        if (s[i].student_info.name == name)
+        if (temp->student_info.name != name){
+            check=1;
+        }
+        temp = temp->next;
+    }
+    if(check==1){
+        cout << "Not found\n";
+    }
+
+    while (ptr != NULL)
+    {
+        if (ptr->student_info.name == name)
         {
-            cout << "\n\nName: " << s[i].student_info.name << "\n";
-            cout << "ID: " << s[i].student_info.id << "\n";
-            cout << "Course Name: " << s[i].course_info.course_name << "\n";
-            cout << "Number of units: " << s[i].course_info.no_of_units << "\n";
-            for (int j = 0; j < s[i].course_info.no_of_units; j++)
+            cout << "The Student Name: " << ptr->student_info.name << "  \n";
+            cout << "The Student ID: " << ptr->student_info.id << "  \n";
+            cout << "The course name: " << ptr->course_info.course_name << "  \n";
+            cout << "Number of units " << ptr->course_info.no_of_units << "  \n";
+            cout << "Marks recieved: \n";
+            for (int j = 0; j < ptr->course_info.no_of_units; j++)
             {
-                cout << s[i].course_info.marks[j] << "\n";
+                cout << ptr->course_info.marks[j] << "  \n";
             }
-            cout << "Average : " << setprecision(2) << fixed << s[i].course_info.avg << "\n";
+            cout << "Average : " << setprecision(2) << fixed << ptr->course_info.avg << " \n";
             cout << "------------------------\n\n";
             cout << "-----> SEARCHING FINISHED!!!!\n\n";
-            //return i;
         }
+        ptr = ptr->next;
     }
-    cout << "Student with name " << name << " is not in the list\n\n";
-    cout << "-----> SEARCHING FINISHED!!!!\n\n";
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-void find_maximum(student_tag *s, int array_size) //display function
+void find_maximum() //display function
 {
-    double max = 0;
-    int i = 0;
-    for (i = 0; i < array_size - 1; i++)
+    cout << "\n-------DETAILS OF STUDENT WHO GOT MAXIMUM AVERAGE MARK--------\n";
+    Student_TagPtr ptr;
+    Student_TagPtr temp;
+    ptr = hptr; // to get max
+    temp =hptr; // to display largest average
+    double max;
+    
+    while (ptr != NULL)
     {
-        if (s[i].course_info.avg > max) // condition for max
-            max = s[i].course_info.avg;
+        if (ptr->course_info.avg > max){ 
+            max = ptr->course_info.avg; // getting max
+        }
+        ptr = ptr->next;
     }
-    for (i = 0; i < array_size; i++)
-        if (s[i].course_info.avg == max)
+        while (temp != NULL){
+        if (temp->course_info.avg == max) // Checking for max
         {
-            cout << "\nName: " << s[i].student_info.name << "\n";
-            cout << "ID: " << s[i].student_info.id << "\n";
-            cout << "Course Name: " << s[i].course_info.course_name << "\n";
-            cout << "Number of units: " << s[i].course_info.no_of_units << "\n";
-            for (int j = 0; j < s[i].course_info.no_of_units; j++)
+            cout << "The Student Name: " << temp->student_info.name << "  \n";
+            cout << "The Student ID: " << temp->student_info.id << "  \n";
+            cout << "The course name: " << temp->course_info.course_name << "  \n";
+            cout << "Number of units " << temp->course_info.no_of_units << "  \n";
+            cout << "Marks recieved: \n";
+            for (int j = 0; j < temp->course_info.no_of_units; j++)
             {
-                cout << s[i].course_info.marks[j] << "\n";
+                cout << temp->course_info.marks[j] << "  \n";
             }
-            cout << "Average : " << setprecision(2) << fixed << s[i].course_info.avg << "\n";
+            cout << "Average : " << setprecision(2) << fixed << temp->course_info.avg << " \n";
             cout << "------------------------\n\n";
+        }
+        temp = temp->next;
         }
 }
