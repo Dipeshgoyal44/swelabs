@@ -84,7 +84,7 @@ void menu()
     cout << "1.Display student's details\n";
     cout << "2.Search for a student's mark\n";
     cout << "3.Find the details of student with largest average\n";
-    cout << "4.Quit program\n";
+    cout << "4.Quit program\n\n";
 }
 
 void read() //readfile function
@@ -159,23 +159,24 @@ void linear_search(string name) // linear search
     ptr = hptr;
     Student_TagPtr temp; // if name not found
     temp = hptr;
-    int check=0;
+    int check = 0;
     //CHECKING IF NAME IS IN THE LIST
     while (temp != NULL)
     {
         if (temp->student_info.name != name){
-            check=1;
+            check=1;    
         }
         temp = temp->next;
     }
     if(check==1){
-        cout << "Not found\n";
+        cout << "Student with name " << name << " is not in the list\n\n";
     }
 
     while (ptr != NULL)
     {
         if (ptr->student_info.name == name)
         {
+            check = 0;
             cout << "The Student Name: " << ptr->student_info.name << "  \n";
             cout << "The Student ID: " << ptr->student_info.id << "  \n";
             cout << "The course name: " << ptr->course_info.course_name << "  \n";
