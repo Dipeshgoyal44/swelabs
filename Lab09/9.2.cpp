@@ -66,6 +66,7 @@ int main()
         break;
     }}while(menu != 5);
 }    
+
 Emp get_data()
 {
     // gets employee data
@@ -85,6 +86,7 @@ Emp get_data()
     cin >> x.salary;
     return x; //returns x which has a datatype of emp
 }
+
 void print_data(Emp a[])
 {
     // prints all data
@@ -99,6 +101,7 @@ void print_data(Emp a[])
         cout <<"Company Name: " << a[i].cmp_detail.company_name << endl;
     }
 }
+
 double get_average( Emp a[], string y)
 {
     //gets averages
