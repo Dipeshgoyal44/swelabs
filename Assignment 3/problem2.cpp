@@ -31,7 +31,7 @@ typedef Student_Tag *Student_TagPtr;
 
 Student_TagPtr hptr; //headptr
 Student_TagPtr cptr; // currentptr
-Student_TagPtr nptr; 
+Student_TagPtr nptr;  //nextptr
 
 //function protypes
 void menu();
