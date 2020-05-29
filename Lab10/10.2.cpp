@@ -14,7 +14,6 @@ typedef STUDENTName *STUDENTNamePtr;
 
 int main()
 {
-
     STUDENTName *hptr;
     STUDENTName *cptr;
     STUDENTName *nptr;

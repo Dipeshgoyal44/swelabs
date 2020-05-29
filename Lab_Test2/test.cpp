@@ -25,14 +25,13 @@ struct employee_tag{
 int read_file(employee_tag a[],int * array_size);
 void display_students(employee_tag a[], int array_size);
 int find_max_salary(employee_tag a[], int array_size);
-double find_average_salary(employee_tag a[], string y);
+double find_average_salary(employee_tag *a, string y,int array_size);
 void menu();
-
 
 int main()
 {   
     int error =0;
-    char choice;
+    int choice;
     int max = 0;
     string cname;
     employee_tag employee[100];
@@ -44,16 +43,16 @@ int main()
         cin >> choice;
         switch (choice) //c is storing the user input for choice
         {
-        case '1':
+        case 1:
         read_file(employee, &array_size);
         display_students(employee, array_size);
             break;
-        case '2':
+        case 2:
         read_file(employee, &array_size);
         max =  find_max_salary(employee,array_size);
         cout << "Max Salary is: " << max << "\n";
             break;
-        case '3':
+        case 3:
         read_file(employee, &array_size);
         do{
         cout << "Enter Company Name: \n"; 
@@ -61,13 +60,18 @@ int main()
         for (int i = 0; i <  5; i++){
         if (employee[i].official_info.cmp_name != cname){
             error = 1;
-        } }
-        cout << "Company name not found. Please try again.\n";
+        }else{
+            error=0;
+        }
+        }
+        if(error == 1){
+            cout << "No such company in the database. Please try again.\n";
+        }
         }while(error==1);
-        average_salary = find_average_salary(employee,cname);
-        cout << "The average salary for this company is: " << average_salary << "\n";
+        average_salary = find_average_salary(employee,cname,array_size);
+        cout << "Average salary of " << cname << " is " << average_salary << "\n";
             break;
-        case '4':
+        case -1:
             printf("SEE YOU LATER! \n");
             return 0;
             break;
@@ -75,22 +79,24 @@ int main()
             cout << "Please try again! Your input is invalid!\n";
             break;
         }
-    } while (choice != 4); //while loop keeps running till 4 is chosen as an option.
+        cin.clear();
+        cin.ignore(1000,'\n');
+    } while (choice != -1); //while loop keeps running till 4 is chosen as an option.
 }
 
 void menu()
 {
     cout << "\nEnter your choice\n" <<
-        "(2)Enter 1 to display the grade details.\n" <<
-        "(3)Enter 2 to print the employee's detail with \n" <<
-        "(4)Enter 3 to calculate average salary of particular company\n" <<
-        "(5)Enter 4 to Exit.\n";
+        "Enter 1 to display the employee details\n" <<
+        "Enter 2 to find the employee who gets the highest salary \n" <<
+        "Enter 3 to  find the average salary of all employees in a company\n" <<
+        "Enter -1 to exit the program\n";
 }
 
 void display_students(employee_tag a[], int array_size) //display function
 {
     int i;
-    cout << "Name" << "\t\t" << "Age" << "\t\t" << "Dept_ID" << "\t\t" << "Company" <<  "\t\t" << "Salary\n";
+    cout << "Name" << "\t\t" << "Age" << "\t\t" << "Dept id" << "\t\t" << "Company" <<  "\t\t" << "Salary\n";
     for (i = 0; i < array_size; i++)
     { //loop runs till the count is same as the value of temp, which is the end of the file.
         double total = 0;
@@ -110,10 +116,8 @@ int read_file(employee_tag a[],int * array_size) //readfile function
     string salary;
     int count;
     double total = 0;
-    string filename = "data.txt"; // filename
-    ifstream inFile;
-
-    inFile.open(filename.c_str());
+    string filename = "employee.txt"; // filename
+    ifstream inFile(filename);
 
     if (inFile.fail()) // if file doesnt open successfully
     {
@@ -134,13 +138,13 @@ int read_file(employee_tag a[],int * array_size) //readfile function
 }
 
 
-double find_average_salary(employee_tag a[], string y)
+double find_average_salary(employee_tag *a, string y,int array_size)
 {
     double sum = 0;
     int i;
     double temp = 0;
 
-    for (i = 0; i < 5; i++)
+    for (i = 0; i < array_size - 1; i++)
     {
         if (a[i].official_info.cmp_name == y) 
         {
@@ -176,4 +180,3 @@ int find_max_salary(employee_tag a[], int array_size)
     }
     return max;
 }
-
