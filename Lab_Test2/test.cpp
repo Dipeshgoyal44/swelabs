@@ -54,23 +54,25 @@ int main()
             break;
         case 3:
         read_file(employee, &array_size);
+        for (int i = 0; i <  5; i++){
         do{
+        error =0;
         cout << "Enter Company Name: \n"; 
         cin >> cname;
-        for (int i = 0; i <  5; i++){
+        
         if (employee[i].official_info.cmp_name != cname){
-            error = 1;
-        }else{
-            error=0;
-        }
-        }
-        if(error == 1){
             cout << "No such company in the database. Please try again.\n";
         }
-        }while(error==1);
+        }while(employee[i].official_info.cmp_name != cname);
+        }
         average_salary = find_average_salary(employee,cname,array_size);
         cout << "Average salary of " << cname << " is " << average_salary << "\n";
             break;
+
+
+
+
+            
         case -1:
             printf("SEE YOU LATER! \n");
             return 0;
