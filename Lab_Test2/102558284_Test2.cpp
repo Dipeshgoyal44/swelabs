@@ -30,7 +30,7 @@ void menu();
 
 int main()
 {   
-    int error =0;
+    int error;
     int choice;
     int max = 0;
     string cname;
@@ -49,30 +49,26 @@ int main()
             break;
         case 2:
         read_file(employee, &array_size);
-        max =  find_max_salary(employee,array_size);
-        cout << "Max Salary is: " << max << "\n";
+        cout << "Details of employee who gets highest pay: \n";
+        find_max_salary(employee,array_size);
             break;
         case 3:
+        error = 1;
         read_file(employee, &array_size);
-        for (int i = 0; i <  5; i++){
-        do{
-        error =0;
         cout << "Enter Company Name: \n"; 
         cin >> cname;
-        
-        if (employee[i].official_info.cmp_name != cname){
-            cout << "No such company in the database. Please try again.\n";
+        for (int i = 0; i < array_size; i++)
+        {
+            if(employee[i].official_info.cmp_name == cname){
+                error=0;
+            average_salary = find_average_salary(employee,cname,array_size);
+            cout << "Average salary of " << cname << " is $" << average_salary << "\n";
         }
-        }while(employee[i].official_info.cmp_name != cname);
         }
-        average_salary = find_average_salary(employee,cname,array_size);
-        cout << "Average salary of " << cname << " is " << average_salary << "\n";
+            if(error !=0){
+                cout << "No such company in the database\n";
+            }
             break;
-
-
-
-
-            
         case -1:
             printf("SEE YOU LATER! \n");
             return 0;
@@ -93,20 +89,6 @@ void menu()
         "Enter 2 to find the employee who gets the highest salary \n" <<
         "Enter 3 to  find the average salary of all employees in a company\n" <<
         "Enter -1 to exit the program\n";
-}
-
-void display_students(employee_tag a[], int array_size) //display function
-{
-    int i;
-    cout << "Name" << "\t\t" << "Age" << "\t\t" << "Dept id" << "\t\t" << "Company" <<  "\t\t" << "Salary\n";
-    for (i = 0; i < array_size; i++)
-    { //loop runs till the count is same as the value of temp, which is the end of the file.
-        double total = 0;
-        cout << a[i].personal_info.name << "\t\t" << a[i].personal_info.age << "\t\t" <<
-        a[i].official_info.dept_id << "\t\t" << a[i].official_info.cmp_name << "\t\t" << 
-        a[i].official_info.salary;
-        cout  << "\n";  
-    }
 }
 
 int read_file(employee_tag a[],int * array_size) //readfile function
@@ -137,6 +119,19 @@ int read_file(employee_tag a[],int * array_size) //readfile function
     }
     *array_size = i; // temp has the same value of i to check how many records of data is in the file
     inFile.close();  //close file
+}
+void display_students(employee_tag a[], int array_size) //display function
+{
+    int i;
+    cout << "Name" << "\t\t" << "Age" << "\t\t" << "Dept id" << "\t\t" << "Company" <<  "\t\t" << "Salary\n";
+    for (i = 0; i < array_size; i++)
+    { //loop runs till the count is same as the value of temp, which is the end of the file.
+        double total = 0;
+        cout << a[i].personal_info.name << "\t\t" << a[i].personal_info.age << "\t\t" <<
+        a[i].official_info.dept_id << "\t\t" << a[i].official_info.cmp_name << "\t\t" << 
+        a[i].official_info.salary;
+        cout  << "\n";  
+    }
 }
 
 
@@ -175,10 +170,9 @@ int find_max_salary(employee_tag a[], int array_size)
         {
         cout << "Name: " <<  a[i].personal_info.name << "\n";
         cout << "Age: " <<  a[i].personal_info.age << "\n";
-        cout << "Company: " <<  a[i].official_info.cmp_name << "\n";
         cout << "Dept_ID: " <<  a[i].official_info.dept_id << "\n";
+        cout << "Company Name: " <<  a[i].official_info.cmp_name << "\n";
         cout << "Salary: $" <<  a[i].official_info.salary << "\n";
         }
     }
-    return max;
 }
