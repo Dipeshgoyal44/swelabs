@@ -31,14 +31,21 @@ double find_average_salary(employee_tag a[], string y);
 int main()
 {   
     int max = 0;
+    string cname;
     employee_tag employee[100];
     int array_size =0;
+    double average_salary= 0;
 
     read_file(employee, &array_size);
     display_students(employee, array_size);
     cout << "MAX SALARY \n";
     max =  find_max_salary(employee,array_size);
     cout << "Max Salary is: " << max << "\n";
+    cout << "Enter Company Name: \n"; 
+    cin >> cname;
+    average_salary = find_average_salary(employee,cname);
+    cout << "The average salary for this company is: " << average_salary << "\n";
+    
     return 0;
 }
 
@@ -55,21 +62,24 @@ void menu()
 void display_students(employee_tag a[], int array_size) //display function
 {
     int i;
-    for (i = 0; i < array_size - 1; i++)
+    cout << "Name" << "\t\t" << "Age" << "\t\t" << "Dept_ID" << "\t\t" << "Company" <<  "\t\t" << "Salary\n";
+    for (i = 0; i < array_size; i++)
     { //loop runs till the count is same as the value of temp, which is the end of the file.
         double total = 0;
-        cout << "Name :" <<  a[i].personal_info.name << "\n";
-        cout << "Age :" <<a[i].personal_info.age<< "\n";
-        cout << "Department ID :" <<a[i].official_info.dept_id << "\n";
-        cout << "Employee Name: " <<a[i].official_info.cmp_name << "\n";
-        cout << "Salary :" <<a[i].official_info.salary << "\n";
+        cout << a[i].personal_info.name << "\t\t" << a[i].personal_info.age << "\t\t" <<
+        a[i].official_info.dept_id << "\t\t" << a[i].official_info.cmp_name << "\t\t" << 
+        a[i].official_info.salary;
         cout  << "\n";  
     }
 }
 
-
 int read_file(employee_tag a[],int * array_size) //readfile function
 {
+    string titlename;
+    string titleage;
+    string titleid;
+    string company;
+    string salary;
     int count;
     double total = 0;
     string filename = "data.txt"; // filename
@@ -83,6 +93,7 @@ int read_file(employee_tag a[],int * array_size) //readfile function
         cout << "Please check that the file currently exists\n";
         return 0;
     }
+    inFile >> titlename >> titleage >> titleid >> company >> salary;
     int i = 0;
     while (inFile.peek() != EOF) // until the end of the file
     {
@@ -102,9 +113,9 @@ double find_average_salary(employee_tag a[], string y)
     double temp = 0;
     for (i = 0; i < 5; i++)
     {
-        if (a[i].cmp_detail.company_name == y) 
+        if (a[i].official_info.cmp_name == y) 
         {
-            sum += a[i].salary;
+            sum += a[i].official_info.salary;
             temp++;
         }
     }
