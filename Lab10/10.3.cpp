@@ -18,6 +18,7 @@ double averageList(NodePtr cptr);
 
 int main()
 {
+    double average;
     NodePtr hptr = NULL;
     srand(time(NULL));
     int data;
@@ -29,7 +30,8 @@ int main()
     }
     cout << "The linked list is: ";
     printList(hptr); // displaying linked list
-    cout << "The average of the list is " << averageList(hptr) <<endl;
+    average = averageList(hptr);
+    cout << "The average of the list is " << average  <<endl;
     return 0;
 }
 
@@ -96,7 +98,7 @@ void printList(NodePtr cptr )
 
 double averageList(NodePtr cptr )
 {
-    int sum = 0;
+    double sum = 0;
     int count= 0;
     double average;
     while(cptr != NULL) // till list is NULL
