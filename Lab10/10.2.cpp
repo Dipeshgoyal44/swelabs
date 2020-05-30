@@ -8,6 +8,7 @@ struct studentname
     char letter;
     struct studentname *next;
 };
+
 typedef struct studentname STUDENTName;
 typedef STUDENTName *STUDENTNamePtr;
 //self referential structure
@@ -19,51 +20,42 @@ int main()
     STUDENTName *nptr;
     STUDENTName *pptr;
 
-    hptr = NULL; //intialized to null
+    nptr =  new STUDENTName;
+	nptr->letter = 'G';
+    nptr -> next = NULL;
+	hptr = nptr;
 
-    hptr = cptr = nptr;
-    nptr = new STUDENTName;
-    nptr->letter = 'A';
-    cout << "Linked List\n";
-    //cout << nptr-> letter << "--> "; //printing nptr
-    nptr->next = NULL; //nptr to next =null
-    hptr = nptr;
-    cptr = nptr;
+	nptr = new STUDENTName;
+	nptr->letter = 'O';
+	nptr -> next = NULL;
+	hptr->next = nptr;
 
-    nptr = new STUDENTName;
-    nptr->letter = 'G';
-    //cout << nptr-> letter << "--> "; //printing nptr
-    nptr->next = NULL; //nptr to next =null
-    hptr->next = nptr;
-    cptr = hptr->next;
+	nptr = new STUDENTName;
+	nptr->letter = 'A';
+	pptr = NULL;
+	cptr = hptr;
+	nptr ->next = cptr;
+	hptr = nptr;
+	pptr = (hptr ->next)->next;
+	cptr = NULL;	
 
-    nptr = new STUDENTName;
-    nptr->letter = 'L';
-    //cout << nptr-> letter << "--> "; //printing nptr
-    nptr->next = NULL; //nptr to next =null
-    hptr->next = nptr;
-    cptr = hptr->next;
+	nptr = new STUDENTName;
+	nptr->letter = 'Y';
+    nptr -> next = cptr;
+	pptr -> next = nptr;
+	cptr = pptr;
+	
+	nptr = new STUDENTName;
+	nptr->letter = 'L';
+	pptr=hptr->next;
+	cptr=pptr->next;
+	pptr->next=nptr;
+	nptr ->next=cptr;
 
-    nptr = new STUDENTName;
-    nptr->letter = 'O';
-    //cout << nptr -> letter << "--> "; //printing nptr
-    nptr->next = NULL; //nptr to next =null
-    hptr->next = nptr;
-    cptr = hptr->next;
-
-    nptr = new STUDENTName;
-    nptr->letter = 'Y';
-    //cout << nptr-> letter << "\n"; //printing nptr
-    nptr->next = NULL; //nptr to next =null
-    cptr->next = nptr;
-    cptr = hptr;
-
-    cout << "Linked List:\n";
-    while (cptr != NULL) //runs only when currentptr is not null
-    {
-
-        cout << cptr->letter << "\n"; // prints all the letters and number while the loop is running
-        cptr = cptr->next;
-    }
-    return 0;
+	cptr = hptr;
+	while (cptr !=NULL)
+	{
+		cout<<cptr -> letter <<"->"; //AGLOY
+		cptr = cptr -> next;
+	}
 }

@@ -32,7 +32,7 @@ int main()
 	startptr->next = newptr;
 
 	newptr = new BANKEmployee;
-	newptr->name = "A";
+	newptr->name = "Y";
 	prevptr = NULL;
 	crntptr = startptr;
 	newptr ->next = crntptr;
@@ -41,7 +41,7 @@ int main()
 	crntptr = NULL;	
 
 	newptr = new BANKEmployee;
-	newptr->name = "Y";
+	newptr->name = "A";
     newptr -> next = crntptr;
 	prevptr -> next = newptr;
 	crntptr = prevptr;
