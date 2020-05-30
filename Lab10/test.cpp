@@ -23,21 +23,35 @@ int main()
 	
 	newptr =  new BANKEmployee;
 	newptr->name = "G";
-    startptr=newptr ->next;
+    newptr -> next = NULL;
+	startptr = newptr;
 
 	newptr = new BANKEmployee;
 	newptr->name = "O";
+	newptr -> next = NULL;
+	startptr->next = newptr;
 
 	newptr = new BANKEmployee;
 	newptr->name = "Y";
+	prevptr = NULL;
+	crntptr = startptr;
+	newptr ->next = crntptr;
+	startptr = newptr;
+	prevptr = (startptr ->next)->next;
+	crntptr = NULL;	
 
 	newptr = new BANKEmployee;
 	newptr->name = "A";
-    newptr->next = NULL;
-    startptr = newptr;
+    newptr -> next = crntptr;
+	prevptr -> next = newptr;
+	crntptr = prevptr;
 	
 	newptr = new BANKEmployee;
 	newptr->name = "L";
+	prevptr=startptr->next;
+	crntptr=prevptr->next;
+	prevptr->next=newptr;
+	newptr ->next=crntptr;
 
 	crntptr = startptr;
 	while (crntptr !=NULL)
@@ -45,7 +59,6 @@ int main()
 		cout<<crntptr -> name <<"->" <<endl; //AGLOY
 		crntptr = crntptr -> next;
 	}
-
 }
 	
 	
