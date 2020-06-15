@@ -2,37 +2,43 @@
 
 using namespace std;
 
-class Employee{
+class Rectangle{
     private:
-        string Name;
-        double Basic;
-        double Bonus;
-        double Salary;
+        double length;
+        double width;
+        double area;
     public:
-        Employee(string name1, double b1, double b2, double sal)
+        Rectangle()
         {
-            Name = name1;
-            Basic = b1;
-            Bonus = b2;
-            Salary = sal;
+            length = 5;
+            width = 2;
         }
-        Employee();
-        int calculateSalary(){
-            Salary = Basic + Bonus;
+        Rectangle(double l, double w, double a)
+        {
+            length = l;
+            width = w;
+            area = a;
         }
-        void printEmployee(){
-            cout << "\nName: " << Name;
-            cout << "\nBasic: " << Basic;
-            cout << "\nBonus: " << Bonus;
-            cout << "\nSalary: " << Salary;
+        int calculateArea(){
+            area = length * width;
+        }
+        void printRectangle(){
+            cout << "\nLength: " << length;
+            cout << "\nWidth: " << width;
+            cout << "\nArea: " << area;
         }
 };
 
 int main()
 {
-    Employee Employee1("Dipesh",10000,2000,0);
-    Employee1.calculateSalary();
-    Employee1.printEmployee();
+    Rectangle rectangle1,rectangle2(10,5,0);
+    cout << "Rectangle 1:\n";
+    rectangle1.calculateArea();
+    rectangle1.printRectangle();
+    
+    cout << "\n\nRectangle 2:\n";
+    rectangle2.calculateArea();
+    rectangle2.printRectangle();
     return 0;
 }
 

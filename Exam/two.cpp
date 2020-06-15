@@ -2,60 +2,55 @@
 
 using namespace std;
 
-struct personalDetails{
-    string name;
-    int age;
+struct model_details{
+    string brand;
+    string type;
+    int id;
 };
 
-struct companyDetails
-{
-	string cmpName;
-	double salary;
+struct vehicle{
+        int year;
+        double price;
+        struct model_details model;
+        struct vehicle *next;
 };		
 
-struct employeeDetails
-{
-    personalDetails personalInfo;
-    companyDetails companyInfo;
-    struct employeeDetails *nextptr;
-};	
+typedef struct vehicle Vehicle;
+typedef Vehicle *VehiclePtr;
 
-typedef struct employeeDetails EMPLOYEEdetails;
-typedef EMPLOYEEdetails *employeeDetailsPtr;
-
-void displayList(employeeDetails * head);
+void print_list(Vehicle * head);
 
 int main()
 { 
-	employeeDetailsPtr startptr = NULL;   
-	employeeDetailsPtr newptr;           
-	employeeDetailsPtr crntptr; 	 
+	VehiclePtr startptr = NULL;   
+	VehiclePtr newptr;           
+	VehiclePtr crntptr; 	 
 	
-	newptr =  new employeeDetails;
-	newptr->personalInfo.name = "Alex";
-	newptr -> personalInfo.age = 35;
-    newptr -> companyInfo.cmpName = "Apple";
-    newptr -> companyInfo.salary = 10000;
-	newptr -> nextptr = NULL;
+	newptr =  new Vehicle;
+	newptr->model.brand = "Kia";
+	newptr -> model.id = 1;
+    newptr -> year = 2010;
+    newptr -> price = 20000;
+	newptr -> next = NULL;
 	startptr = newptr;
 	
-	newptr = new employeeDetails;
-	newptr->personalInfo.name = "Mary";
-	newptr -> personalInfo.age = 44;
-    newptr -> companyInfo.cmpName = "Coles";
-    newptr -> companyInfo.salary = 5000;
-	newptr -> nextptr = NULL;
-	startptr->nextptr = newptr;
+	newptr = new Vehicle;
+	newptr->model.brand = "Mazda";
+	newptr -> model.id = 2;
+    newptr -> year = 2020;
+    newptr -> price = 40000;
+	newptr -> next = NULL;
+	startptr->next = newptr;
 	crntptr = startptr;
-    displayList(crntptr);
+    print_list(crntptr);
 }
 
-void displayList(employeeDetails * head)
+void print_list(Vehicle * head)
 {
     while (head !=NULL)
 	{
-		cout<<"\nEmployee Name:\t"<<head -> personalInfo.name <<"\nEmployee Age: \t"<< head -> personalInfo.age << "\nCompany Name: " << head -> companyInfo.cmpName << "\nCompany Salary: " << head -> companyInfo.salary <<endl;
-		head = head -> nextptr;
+		cout<<"\nBrand Name:\t"<<head -> model.brand <<"\nModel ID: \t"<< head -> model.id << "\nModel Year: " << head -> year << "\nPrice: " << head -> price <<endl;
+		head = head -> next;
 	}
 }
 
