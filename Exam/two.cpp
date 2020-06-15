@@ -1,7 +1,5 @@
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include <cstring>
+
 using namespace std;
 
 struct personalDetails{
@@ -29,9 +27,9 @@ void displayList(employeeDetails * head);
 
 int main()
 { 
-	employeeDetailsPtr startptr = NULL;/*This is question 1 part A*/	   
-	employeeDetailsPtr newptr;  /*pointer to a new node*/           
-	employeeDetailsPtr crntptr; 	/*pointer to the current node*/	  	 
+	employeeDetailsPtr startptr = NULL;   
+	employeeDetailsPtr newptr;           
+	employeeDetailsPtr crntptr; 	 
 	
 	newptr =  new employeeDetails;
 	newptr->personalInfo.name = "Alex";
@@ -60,5 +58,4 @@ void displayList(employeeDetails * head)
 		head = head -> nextptr;
 	}
 }
-	
 
