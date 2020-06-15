@@ -12,12 +12,12 @@ int main()
     int result1 = countNegative(arrayint,5);
     int result2 = countNegative(arrayfloat,5);
     if(result1==0){
-        cout << "No Negative Numbers \n";
+        cout << "No Negative Integers \n";
     }else{
         cout << "Integer: " << result1 << " \n";
     }
     if(result2==0){
-        cout << "No Negative Numbers \n";
+        cout << "No Negative float values \n";
     }else{
         cout << "Float: " << result2 << " \n";
     }
