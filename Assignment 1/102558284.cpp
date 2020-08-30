@@ -189,6 +189,7 @@ int main()
     }
     return 0;
 }
+
 void decode(int array[], int arraylength) // function to decode logic taken from video
 {
     for (int i = 0; i < arraylength; i++)
@@ -197,6 +198,7 @@ void decode(int array[], int arraylength) // function to decode logic taken from
         array[i] = array[i] % 10;
     }
 }
+
 void reverse_array(int array[], int length) // Function to reverse arrays that are passed
 {
     for (int i = 0; i < (length / 2); i++)
